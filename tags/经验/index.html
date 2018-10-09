@@ -3,20 +3,15 @@
 <head>
     <meta charset="utf-8">
     
-    <title>深入理解 Python package | Mr.wang</title>
+    <title>标签: 经验 | Mr.wang</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Python 是通过 module 组织代码的，module 即一个 py 文件，module 又是通过 package 来组织的，package 是一个包含 __init__.py 的文件夹，代码，module，package 它们三者的关系就是：module 包含代码，package 至少包含一个为 __init__.py 的 module。 12345package├── __init__.">
-<meta name="keywords" content="基础">
-<meta property="og:type" content="article">
-<meta property="og:title" content="深入理解 Python package">
-<meta property="og:url" content="http://lucas0625.github.io/2018/10/08/深入理解Python-package/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Mr.wang">
+<meta property="og:url" content="http://lucas0625.github.io/tags/经验/index.html">
 <meta property="og:site_name" content="Mr.wang">
-<meta property="og:description" content="Python 是通过 module 组织代码的，module 即一个 py 文件，module 又是通过 package 来组织的，package 是一个包含 __init__.py 的文件夹，代码，module，package 它们三者的关系就是：module 包含代码，package 至少包含一个为 __init__.py 的 module。 12345package├── __init__.">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-08T13:28:24.378Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深入理解 Python package">
-<meta name="twitter:description" content="Python 是通过 module 组织代码的，module 即一个 py 文件，module 又是通过 package 来组织的，package 是一个包含 __init__.py 的文件夹，代码，module，package 它们三者的关系就是：module 包含代码，package 至少包含一个为 __init__.py 的 module。 12345package├── __init__.">
+<meta name="twitter:title" content="Mr.wang">
     
 
     
@@ -187,187 +182,50 @@
 </aside>
 
             
-            <section id="main"><article id="post-深入理解Python-package" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
+            <section id="main">
+<div class="timeline timeline-wrap">
+    <div class="timeline-row timeline-row-major">
+        <span class="node"><i class="fas fa-tag"></i></span>
+        <h1 class="title">#经验</h1>
+    </div>
+    
+        <div class="timeline-row">
+            <span class="node"></span>
+            <div class="content">
                 
     
-        <h1 class="article-title" itemprop="name">
-            深入理解 Python package
+        <h1 itemprop="name">
+            <a class="timeline-article-title" href="/2018/10/09/Python-编码规范/">Python 编码规范</a>
         </h1>
     
 
-                
-                    <div class="article-meta">
-                        
+                <div class="article-meta">
+                    
     <div class="article-date">
         <i class="fas fa-calendar-alt"></i>
-        <a href="/2018/10/08/深入理解Python-package/">
-            <time datetime="2018-10-07T16:00:00.000Z" itemprop="datePublished">2018-10-08</time>
+        <a href="/2018/10/09/Python-编码规范/">
+            <time datetime="2018-10-08T16:00:00.000Z" itemprop="datePublished">2018-10-09</time>
         </a>
     </div>
 
 
-                        
+                    
     <div class="article-category">
     	<i class="fas fa-folder"></i>
         <a class="article-category-link" href="/categories/PYTHON/">PYTHON</a>
     </div>
 
-                        
+                    
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/基础/">基础</a>
+        <a class="tag-link" href="/tags/经验/">经验</a>
     </div>
 
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-                <div id="toc" class="toc-article">
-                <strong class="toc-title">文章目录</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#空的-init-py"><span class="toc-number">1.</span> <span class="toc-text">空的 __init__.py</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不为空-init-py"><span class="toc-number">2.</span> <span class="toc-text">不为空 __init__.py</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#package的初始化工作"><span class="toc-number">2.1.</span> <span class="toc-text">package的初始化工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从package中倒入变量的顺序"><span class="toc-number">2.2.</span> <span class="toc-text">从package中倒入变量的顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-导入"><span class="toc-number">2.3.</span> <span class="toc-text">使用*导入</span></a></li></ol></li></ol>
                 </div>
-            
-            <p>Python 是通过 module 组织代码的，module 即一个 py 文件，module 又是通过 package 来组织的，package 是一个包含 <code>__init__.py</code> 的文件夹，代码，module，package 它们三者的关系就是：module 包含代码，package 至少包含一个为 <code>__init__.py</code> 的 module。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">package</span><br><span class="line">├── __init__.py</span><br><span class="line">├── submodule.py</span><br><span class="line">└── subpackage</span><br><span class="line">    └── __init__.py</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<h2 id="空的-init-py"><a href="#空的-init-py" class="headerlink" title="空的 __init__.py"></a>空的 <code>__init__.py</code></h2><p>不包含任何代码的 <code>__init__.py</code> 只用来标识一个文件夹是一个 package，而 package 是可以被导出的。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> package <span class="keyword">import</span> item</span><br></pre></td></tr></table></figure>
-<p>此处的 <strong>item</strong> 可以是 package 中包含的 submodule 或 subpackage。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> package <span class="keyword">import</span> submodule</span><br><span class="line"><span class="keyword">from</span> package <span class="keyword">import</span> subpackage</span><br></pre></td></tr></table></figure>
-<h2 id="不为空-init-py"><a href="#不为空-init-py" class="headerlink" title="不为空 __init__.py"></a>不为空 <code>__init__.py</code></h2><p>如果 <code>__init__.py</code> 不为空，其中包含的任何变量，包括 function、class、variable 以及 任何被导入的 module 都可以通过 package 导出。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> package <span class="keyword">import</span> item</span><br></pre></td></tr></table></figure>
-<p>此处的 item 可以是 <code>__init__.py</code>中的任何变量</p>
-<h3 id="package的初始化工作"><a href="#package的初始化工作" class="headerlink" title="package的初始化工作"></a>package的初始化工作</h3><p>一个 package 被导入，不管在什么时候 <code>__init__.py</code> 中的代码只执行一次。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> package</span><br><span class="line">hello world</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> package</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> package</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
-<p>由于 package 被导入时<code>__init__.py</code> 中的可执行代码会被执行，所以小心在 package 中放置你的代码，尽可能消除它们产生的副作用，比如把代码尽可能的进行封装成函数或类。</p>
-<h3 id="从package中倒入变量的顺序"><a href="#从package中倒入变量的顺序" class="headerlink" title="从package中倒入变量的顺序"></a>从package中倒入变量的顺序</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> package <span class="keyword">import</span> item</span><br></pre></td></tr></table></figure>
-<p>import 语句首先检查 item 是否是 <code>__init__.py</code> 中定义的变量，然后检查其是不是一个 <strong>subpackage</strong>，如果不是再去检查其是不是一个 <strong>module</strong>，都不是将抛出 <strong>ImportError</strong>。</p>
-<p>在 <strong>import item.subitem.subsubitem</strong> 语句时，除了最后一个 <strong>subsubitem</strong> 之外其他 item 都必须是 package，而最后一个 <strong>subsubitem</strong> 必须是一个 <strong>package</strong> 或者 <strong>module</strong>，不能是他前一个 <strong>item</strong> 定义的 function、class、variable。</p>
-<h3 id="使用-导入"><a href="#使用-导入" class="headerlink" title="使用*导入"></a>使用<code>*</code>导入</h3><p>在 <code>from package import *</code>语句中，如果 <code>__init__.py</code> 中定义了 <code>__all__</code> 变量，一个 <strong>list</strong>，仅仅只有这个 list 中定义的 submodule 或者变量将会被导出。</p>
-<p>如果<code>__init__.py</code>中没有<code>__all__</code>变量，导出将按照一下规则执行：</p>
-<ol>
-<li>此 package 被导入，并且执行 <code>__init__.py</code> 中可被执行的代码</li>
-<li><code>__init__.py</code> 中定义的 variable 被导入</li>
-<li><code>__init__.py</code> 中被显式导入的 module 被导入</li>
-</ol>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://lucas0625.github.io/2018/10/08/深入理解Python-package/" data-id="cjn1qo7780008tr2uvfjfmo6k" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fab fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fab fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fab fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fab fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-        
-<nav id="article-nav">
-    
-        <a href="/2018/10/09/Python-编码规范/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    Python 编码规范
-                
             </div>
-        </a>
+        </div>
     
-    
-        <a href="/2018/09/16/json/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">python 格式化显示字符串</div>
-        </a>
-    
-</nav>
-
-
-    
-</article>
-
-
-    
-    
-
+</div>
 </section>
             
                 

@@ -3,20 +3,22 @@
 <head>
     <meta charset="utf-8">
     
-    <title>深入理解 Python package | Mr.wang</title>
+    <title>Python 编码规范 | Mr.wang</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Python 是通过 module 组织代码的，module 即一个 py 文件，module 又是通过 package 来组织的，package 是一个包含 __init__.py 的文件夹，代码，module，package 它们三者的关系就是：module 包含代码，package 至少包含一个为 __init__.py 的 module。 12345package├── __init__.">
-<meta name="keywords" content="基础">
+    <meta name="description" content="遵循良好的编码风格，可以有效的提高代码的可读性，降低出错几率和维护难度。在团队开发中，使用（尽量）统一的编码风格，还可以降低沟通成本。">
+<meta name="keywords" content="经验">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深入理解 Python package">
-<meta property="og:url" content="http://lucas0625.github.io/2018/10/08/深入理解Python-package/index.html">
+<meta property="og:title" content="Python 编码规范">
+<meta property="og:url" content="http://lucas0625.github.io/2018/10/09/Python-编码规范/index.html">
 <meta property="og:site_name" content="Mr.wang">
-<meta property="og:description" content="Python 是通过 module 组织代码的，module 即一个 py 文件，module 又是通过 package 来组织的，package 是一个包含 __init__.py 的文件夹，代码，module，package 它们三者的关系就是：module 包含代码，package 至少包含一个为 __init__.py 的 module。 12345package├── __init__.">
+<meta property="og:description" content="遵循良好的编码风格，可以有效的提高代码的可读性，降低出错几率和维护难度。在团队开发中，使用（尽量）统一的编码风格，还可以降低沟通成本。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-08T13:28:24.378Z">
+<meta property="og:image" content="http://p727dcva2.bkt.clouddn.com/Markdown/2018-10-09-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-10-09%20%E4%B8%8B%E5%8D%888.48.06.png">
+<meta property="og:updated_time" content="2018-10-09T13:05:42.146Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深入理解 Python package">
-<meta name="twitter:description" content="Python 是通过 module 组织代码的，module 即一个 py 文件，module 又是通过 package 来组织的，package 是一个包含 __init__.py 的文件夹，代码，module，package 它们三者的关系就是：module 包含代码，package 至少包含一个为 __init__.py 的 module。 12345package├── __init__.">
+<meta name="twitter:title" content="Python 编码规范">
+<meta name="twitter:description" content="遵循良好的编码风格，可以有效的提高代码的可读性，降低出错几率和维护难度。在团队开发中，使用（尽量）统一的编码风格，还可以降低沟通成本。">
+<meta name="twitter:image" content="http://p727dcva2.bkt.clouddn.com/Markdown/2018-10-09-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-10-09%20%E4%B8%8B%E5%8D%888.48.06.png">
     
 
     
@@ -187,7 +189,7 @@
 </aside>
 
             
-            <section id="main"><article id="post-深入理解Python-package" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-Python-编码规范" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -195,7 +197,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            深入理解 Python package
+            Python 编码规范
         </h1>
     
 
@@ -204,8 +206,8 @@
                         
     <div class="article-date">
         <i class="fas fa-calendar-alt"></i>
-        <a href="/2018/10/08/深入理解Python-package/">
-            <time datetime="2018-10-07T16:00:00.000Z" itemprop="datePublished">2018-10-08</time>
+        <a href="/2018/10/09/Python-编码规范/">
+            <time datetime="2018-10-08T16:00:00.000Z" itemprop="datePublished">2018-10-09</time>
         </a>
     </div>
 
@@ -219,7 +221,7 @@
                         
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/基础/">基础</a>
+        <a class="tag-link" href="/tags/经验/">经验</a>
     </div>
 
                     </div>
@@ -232,32 +234,85 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">文章目录</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#空的-init-py"><span class="toc-number">1.</span> <span class="toc-text">空的 __init__.py</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不为空-init-py"><span class="toc-number">2.</span> <span class="toc-text">不为空 __init__.py</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#package的初始化工作"><span class="toc-number">2.1.</span> <span class="toc-text">package的初始化工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#从package中倒入变量的顺序"><span class="toc-number">2.2.</span> <span class="toc-text">从package中倒入变量的顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-导入"><span class="toc-number">2.3.</span> <span class="toc-text">使用*导入</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#缩紧"><span class="toc-number">1.</span> <span class="toc-text">缩紧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#空格"><span class="toc-number">2.</span> <span class="toc-text">空格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#空行"><span class="toc-number">3.</span> <span class="toc-text">空行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#换行"><span class="toc-number">4.</span> <span class="toc-text">换行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#命名"><span class="toc-number">5.</span> <span class="toc-text">命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#import"><span class="toc-number">6.</span> <span class="toc-text">import</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注释"><span class="toc-number">7.</span> <span class="toc-text">注释</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#异常"><span class="toc-number">8.</span> <span class="toc-text">异常</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Class-类"><span class="toc-number">9.</span> <span class="toc-text">Class(类)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编码建议"><span class="toc-number">10.</span> <span class="toc-text">编码建议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#字符串"><span class="toc-number">10.1.</span> <span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#比较"><span class="toc-number">10.2.</span> <span class="toc-text">比较</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-number">11.</span> <span class="toc-text">其他</span></a></li></ol>
                 </div>
             
-            <p>Python 是通过 module 组织代码的，module 即一个 py 文件，module 又是通过 package 来组织的，package 是一个包含 <code>__init__.py</code> 的文件夹，代码，module，package 它们三者的关系就是：module 包含代码，package 至少包含一个为 <code>__init__.py</code> 的 module。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">package</span><br><span class="line">├── __init__.py</span><br><span class="line">├── submodule.py</span><br><span class="line">└── subpackage</span><br><span class="line">    └── __init__.py</span><br></pre></td></tr></table></figure>
+            <p>遵循良好的编码风格，可以有效的提高代码的可读性，降低出错几率和维护难度。在团队开发中，使用（尽量）统一的编码风格，还可以降低沟通成本。</p>
 <a id="more"></a>
-<h2 id="空的-init-py"><a href="#空的-init-py" class="headerlink" title="空的 __init__.py"></a>空的 <code>__init__.py</code></h2><p>不包含任何代码的 <code>__init__.py</code> 只用来标识一个文件夹是一个 package，而 package 是可以被导出的。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> package <span class="keyword">import</span> item</span><br></pre></td></tr></table></figure>
-<p>此处的 <strong>item</strong> 可以是 package 中包含的 submodule 或 subpackage。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> package <span class="keyword">import</span> submodule</span><br><span class="line"><span class="keyword">from</span> package <span class="keyword">import</span> subpackage</span><br></pre></td></tr></table></figure>
-<h2 id="不为空-init-py"><a href="#不为空-init-py" class="headerlink" title="不为空 __init__.py"></a>不为空 <code>__init__.py</code></h2><p>如果 <code>__init__.py</code> 不为空，其中包含的任何变量，包括 function、class、variable 以及 任何被导入的 module 都可以通过 package 导出。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> package <span class="keyword">import</span> item</span><br></pre></td></tr></table></figure>
-<p>此处的 item 可以是 <code>__init__.py</code>中的任何变量</p>
-<h3 id="package的初始化工作"><a href="#package的初始化工作" class="headerlink" title="package的初始化工作"></a>package的初始化工作</h3><p>一个 package 被导入，不管在什么时候 <code>__init__.py</code> 中的代码只执行一次。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> package</span><br><span class="line">hello world</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> package</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> package</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
-<p>由于 package 被导入时<code>__init__.py</code> 中的可执行代码会被执行，所以小心在 package 中放置你的代码，尽可能消除它们产生的副作用，比如把代码尽可能的进行封装成函数或类。</p>
-<h3 id="从package中倒入变量的顺序"><a href="#从package中倒入变量的顺序" class="headerlink" title="从package中倒入变量的顺序"></a>从package中倒入变量的顺序</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> package <span class="keyword">import</span> item</span><br></pre></td></tr></table></figure>
-<p>import 语句首先检查 item 是否是 <code>__init__.py</code> 中定义的变量，然后检查其是不是一个 <strong>subpackage</strong>，如果不是再去检查其是不是一个 <strong>module</strong>，都不是将抛出 <strong>ImportError</strong>。</p>
-<p>在 <strong>import item.subitem.subsubitem</strong> 语句时，除了最后一个 <strong>subsubitem</strong> 之外其他 item 都必须是 package，而最后一个 <strong>subsubitem</strong> 必须是一个 <strong>package</strong> 或者 <strong>module</strong>，不能是他前一个 <strong>item</strong> 定义的 function、class、variable。</p>
-<h3 id="使用-导入"><a href="#使用-导入" class="headerlink" title="使用*导入"></a>使用<code>*</code>导入</h3><p>在 <code>from package import *</code>语句中，如果 <code>__init__.py</code> 中定义了 <code>__all__</code> 变量，一个 <strong>list</strong>，仅仅只有这个 list 中定义的 submodule 或者变量将会被导出。</p>
-<p>如果<code>__init__.py</code>中没有<code>__all__</code>变量，导出将按照一下规则执行：</p>
-<ol>
-<li>此 package 被导入，并且执行 <code>__init__.py</code> 中可被执行的代码</li>
-<li><code>__init__.py</code> 中定义的 variable 被导入</li>
-<li><code>__init__.py</code> 中被显式导入的 module 被导入</li>
+<h2 id="缩紧"><a href="#缩紧" class="headerlink" title="缩紧"></a>缩紧</h2><ul>
+<li>不要使用 tab 缩进</li>
+<li>使用任何编辑器写 Python，请把一个 tab 展开为 4 个空格</li>
+<li>绝对不要混用 tab 和空格，否则容易出现 <strong>IndentationError</strong><h2 id="空格"><a href="#空格" class="headerlink" title="空格"></a>空格</h2></li>
+<li>在 list, dict, tuple, set, 参数列表的 <code>,</code> 后面加一个空格</li>
+<li>在 dict 的 <code>:</code> 后面加一个空格</li>
+<li>在注释符号 <code>#</code> 后面加一个空格，但是 <code>#!/usr/bin/python</code> 的 <code>#</code> 后不能有空格</li>
+<li>操作符两端加一个空格，如 <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>|</code>, <code>&amp;</code>, <code>=</code></li>
+<li>接上一条，在参数列表里的 <code>=</code>两端不需要空格</li>
+<li>括号(<code>()</code>, <code>{}</code>, <code>[]</code>)内的两端不需要空格<h2 id="空行"><a href="#空行" class="headerlink" title="空行"></a>空行</h2></li>
+<li>function 和 class 顶上两个空行</li>
+<li>class 的 method 之间一个空行</li>
+<li>函数内逻辑无关的段落之间空一行，不要过度使用空行</li>
+<li>不要把多个语句写在一行，然后用 <code>;</code> 隔开</li>
+<li>if/for/while 语句中，即使执行语句只有一句，也要另起一行<h2 id="换行"><a href="#换行" class="headerlink" title="换行"></a>换行</h2></li>
+<li>每一行代码控制在80字符以内</li>
+<li>使用<code>\</code>或<code>()</code>控制换行，举例：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(first, second, third, fourth, fifth,</span></span></span><br><span class="line"><span class="function"><span class="params">        sixth, and_some_other_very_long_param)</span>:</span></span><br><span class="line">    user = User.objects.filter_by(first=first, second=second, third=third) \</span><br><span class="line">        .skip(<span class="number">100</span>).limit(<span class="number">100</span>) \</span><br><span class="line">        .all()</span><br><span class="line"></span><br><span class="line">text = (<span class="string">'Long strings can be made up '</span></span><br><span class="line">        <span class="string">'of several shorter strings.'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h2><ul>
+<li>使用有意义的，英文单词或词组，绝对不要使用汉语拼音</li>
+<li>package/module 名中不要出现 <code>-</code></li>
+<li>各种类型的命名规范：<br><img src="http://p727dcva2.bkt.clouddn.com/Markdown/2018-10-09-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202018-10-09%20%E4%B8%8B%E5%8D%888.48.06.png" alt=""><h2 id="import"><a href="#import" class="headerlink" title="import"></a>import</h2></li>
+<li>所有 import 尽量放在文件开头，在 docstring 下面，其他变量定义的上面</li>
+<li>不要使用 <code>from foo imort *</code></li>
+<li><p>import 需要分组，每组之间一个空行，每个分组内的顺序尽量采用字典序，分组顺序是：<br>  1.标准库<br>  2.第三方库<br>  3.本项目的 package 和 module</p>
+</li>
+<li><p>不要使用隐式的相对导入（implicit relative imports），可是使用显示的相对导入（explicit relative imports），如 <code>from ..utils import validator</code>，最好使用全路径导入（absolute imports）</p>
+</li>
+<li>对于不同的 package，一个 import 单独一行，同一个 package/module 下的内容可以写一起</li>
+<li>为了避免可能出现的命名冲突，可以使用 as 或导入上一级命名空间</li>
+<li>不要出现循环导入(cyclic import)<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2></li>
+<li>文档字符串 <code>docstring</code>, 是 package, module, class, method, function 级别的注释，可以通过 <code>__doc__</code> 成员访问到，注释内容在一对 <code>&quot;&quot;&quot;</code> 符号之间</li>
+<li>function, method 的文档字符串应当描述其功能、输入参数、返回值，如果有复杂的算法和实现，也需要写清楚</li>
+<li>不要写错误的注释，不要无谓的注释</li>
+<li>优先使用英文写注释，英文不好全部写中文，否则更加看不懂<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2></li>
+<li>不要轻易使用 <code>try/except</code></li>
+<li><code>except</code> 后面需要指定捕捉的异常，裸露的 <code>except</code> 会捕捉所有异常，意味着会隐藏潜在的问题</li>
+<li>可以有多个 <code>except</code> 语句，捕捉多种异常，分别做异常处理</li>
+<li>使用 <code>finally</code> 子句来处理一些收尾操作</li>
+<li><code>try/except</code> 里的内容不要太多，只在可能抛出异常的地方使用</li>
+<li>从 <code>Exception</code> 而不是 <code>BaseException</code> 继承自定义的异常类<h2 id="Class-类"><a href="#Class-类" class="headerlink" title="Class(类)"></a>Class(类)</h2></li>
+<li>显示的写明父类，如果不是继承自别的类，就继承自 <code>object</code> 类</li>
+<li>使用 <code>super</code> 调用父类的方法</li>
+<li>支持多继承，即同时有多个父类，建议使用 <code>Mixin</code><h2 id="编码建议"><a href="#编码建议" class="headerlink" title="编码建议"></a>编码建议</h2><h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3></li>
+<li>使用字符串的 <code>join</code> 方法拼接字符串</li>
+<li>使用字符串类型的方法，而不是 string 模块的方法</li>
+<li>使用 <code>startswith</code> 和 <code>endswith</code> 方法比较前缀和后缀</li>
+<li>使用 <code>format</code> 方法格式化字符串<h3 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h3></li>
+<li>空的 <code>list</code>, <code>str</code>, <code>tuple</code>, <code>set</code>, <code>dict</code> 和 <code>0</code>, <code>0.0</code>, <code>None</code> 都是 <code>False</code></li>
+<li>使用 <code>if some_list</code> 而不是 <code>if len(some_list)</code> 判断某个 <code>list</code> 是否为空，其他类型同理</li>
+<li>使用 <code>is</code> 和 <code>is not</code> 与单例（如 <code>None</code>）进行比较，而不是用 <code>==</code> 和 <code>!=</code></li>
+<li>使用 <code>if a is not None</code> 而不是 <code>if not a is None</code></li>
+<li>用 <code>isinstance</code> 而不是 <code>type</code> 判断类型</li>
+<li>不要用 <code>==</code> 和 <code>!=</code> 与 <code>True</code> 和 <code>False</code> 比较（除非有特殊情况，如在 <code>sqlalchemy</code> 中可能用到）</li>
+<li>使用 in 操作:<ol>
+<li>用 <code>key in dict</code> 而不是 <code>dict.has_key()</code></li>
+<li>用 <code>set</code> 加速 “存在性” 检查，<code>list</code> 的查找是线性的，复杂度 O(n)，<code>set</code> 底层是 hash table, 复杂度 O(1)，但用 <code>set</code>需要比 <code>list</code> 更多内存空间<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2></li>
 </ol>
+</li>
+<li>使用列表表达式（list comprehension），字典表达式(dict comprehension, Python 2.7+) 和生成器(generator)</li>
+<li><code>dict</code> 的 <code>get</code> 方法可以指定默认值，但有些时候应该用 <code>[]</code> 操作，使得可以抛出 KeyError</li>
+<li>使用 <code>for item in list</code> 迭代 <code>list</code>, <code>for index, item in enumerate(list)</code> 迭代 <code>list</code> 并获取下标</li>
+<li>使用内建函数 <code>sorted</code> 和 <code>list.sort</code> 进行排序</li>
+<li>适量使用<code>map</code>, <code>reduce</code>, <code>filter</code> 和 <code>lambda</code>，使用内建的 <code>all</code>, <code>any</code> 处理多个条件的判断</li>
+<li>使用 <code>defaultdict</code> (Python 2.5+), <code>Counter</code>(Python 2.7+) 等 “冷门” 但好用的标准库算法和数据结构</li>
+<li>使用装饰器(decorator)</li>
+<li>使用 with 语句处理上下文</li>
+<li>有些时候不要对类型做太过严格的限制，利用 Python 的鸭子类型（Duck Type）特性</li>
+<li>使用 <code>logging</code> 记录日志，配置好格式和级别</li>
+<li>了解 Python 的 Magic Method：A Guide to Python’s Magic Methods, Python 魔术方法指南</li>
+<li>阅读优秀的开源代码，如 Flask 框架, Requests for Humans</li>
+<li>不要重复造轮子，查看标准库、PyPi、Github、Google 等使用现有的优秀的解决方案</li>
+</ul>
 
         
         </div>
@@ -268,7 +323,7 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/2018/10/08/深入理解Python-package/" data-id="cjn1qo7780008tr2uvfjfmo6k" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/2018/10/09/Python-编码规范/" data-id="cjn1qo7710002tr2ucbvttx02" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -343,19 +398,10 @@
         
 <nav id="article-nav">
     
-        <a href="/2018/10/09/Python-编码规范/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    Python 编码规范
-                
-            </div>
-        </a>
     
-    
-        <a href="/2018/09/16/json/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2018/10/08/深入理解Python-package/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">python 格式化显示字符串</div>
+            <div class="article-nav-title">深入理解 Python package</div>
         </a>
     
 </nav>
