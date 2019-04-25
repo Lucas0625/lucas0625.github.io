@@ -5,18 +5,18 @@
     
     <title>Git 常用操作指南 | Mr.wang</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Git 常用操作指南.gitignore规范 所有空行或者以注释符号 ＃ 开头的行都会被 Git 忽略。 可以使用标准的 glob 模式匹配。 匹配模式最后跟反斜杠（/）说明要忽略的是目录。 要忽略指定模式以外的文件或目录，可以在模式前加上惊叹号（!）取反。[注]:所谓的 glob 模式是指 shell 所使用的简化了的正则表达式。 星号（*）匹配零个或多个任意字符 [abc] 匹配任何一个列在方">
+    <meta name="description" content="本文介绍自己平时工作中常用的一些Git操作">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git 常用操作指南">
 <meta property="og:url" content="http://lucas0625.github.io/2019/04/25/Git常用操作指南/index.html">
 <meta property="og:site_name" content="Mr.wang">
-<meta property="og:description" content="Git 常用操作指南.gitignore规范 所有空行或者以注释符号 ＃ 开头的行都会被 Git 忽略。 可以使用标准的 glob 模式匹配。 匹配模式最后跟反斜杠（/）说明要忽略的是目录。 要忽略指定模式以外的文件或目录，可以在模式前加上惊叹号（!）取反。[注]:所谓的 glob 模式是指 shell 所使用的简化了的正则表达式。 星号（*）匹配零个或多个任意字符 [abc] 匹配任何一个列在方">
+<meta property="og:description" content="本文介绍自己平时工作中常用的一些Git操作">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-25T01:58:14.802Z">
+<meta property="og:updated_time" content="2019-04-25T02:00:30.189Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git 常用操作指南">
-<meta name="twitter:description" content="Git 常用操作指南.gitignore规范 所有空行或者以注释符号 ＃ 开头的行都会被 Git 忽略。 可以使用标准的 glob 模式匹配。 匹配模式最后跟反斜杠（/）说明要忽略的是目录。 要忽略指定模式以外的文件或目录，可以在模式前加上惊叹号（!）取反。[注]:所谓的 glob 模式是指 shell 所使用的简化了的正则表达式。 星号（*）匹配零个或多个任意字符 [abc] 匹配任何一个列在方">
+<meta name="twitter:description" content="本文介绍自己平时工作中常用的一些Git操作">
     
 
     
@@ -205,7 +205,7 @@
     <div class="article-date">
         <i class="fas fa-calendar-alt"></i>
         <a href="/2019/04/25/Git常用操作指南/">
-            <time datetime="2019-04-25T01:58:14.802Z" itemprop="datePublished">2019-04-25</time>
+            <time datetime="2019-04-25T02:00:30.189Z" itemprop="datePublished">2019-04-25</time>
         </a>
     </div>
 
@@ -235,7 +235,9 @@
                     <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Git-常用操作指南"><span class="toc-number">1.</span> <span class="toc-text">Git 常用操作指南</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#gitignore规范"><span class="toc-number">1.1.</span> <span class="toc-text">.gitignore规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看文件之间的差别"><span class="toc-number">1.2.</span> <span class="toc-text">查看文件之间的差别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提交文件"><span class="toc-number">1.3.</span> <span class="toc-text">提交文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除文件"><span class="toc-number">1.4.</span> <span class="toc-text">删除文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改文件名"><span class="toc-number">1.5.</span> <span class="toc-text">修改文件名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看提交历史"><span class="toc-number">1.6.</span> <span class="toc-text">查看提交历史</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#撤销操作"><span class="toc-number">1.7.</span> <span class="toc-text">撤销操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#管理远程仓库"><span class="toc-number">1.8.</span> <span class="toc-text">管理远程仓库</span></a></li></ol></li></ol>
                 </div>
             
-            <h1 id="Git-常用操作指南"><a href="#Git-常用操作指南" class="headerlink" title="Git 常用操作指南"></a>Git 常用操作指南</h1><h2 id="gitignore规范"><a href="#gitignore规范" class="headerlink" title=".gitignore规范"></a>.gitignore规范</h2><ul>
+            <p>本文介绍自己平时工作中常用的一些Git操作</p>
+<a id="more"></a>
+<h1 id="Git-常用操作指南"><a href="#Git-常用操作指南" class="headerlink" title="Git 常用操作指南"></a>Git 常用操作指南</h1><h2 id="gitignore规范"><a href="#gitignore规范" class="headerlink" title=".gitignore规范"></a>.gitignore规范</h2><ul>
 <li>所有空行或者以注释符号 ＃ 开头的行都会被 Git 忽略。</li>
 <li>可以使用标准的 glob 模式匹配。</li>
 <li>匹配模式最后跟反斜杠（/）说明要忽略的是目录。</li>
@@ -303,7 +305,7 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/2019/04/25/Git常用操作指南/" data-id="cjuw00ewc0001bv2ujuhczzsn" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/2019/04/25/Git常用操作指南/" data-id="cjuw02w7m0006cr2ueys89iks" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -420,7 +422,7 @@
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/工具/">工具</a></p>
                             <p class="item-title"><a href="/2019/04/25/Git常用操作指南/" class="title">Git 常用操作指南</a></p>
-                            <p class="item-date"><time datetime="2019-04-25T01:58:14.802Z" itemprop="datePublished">2019-04-25</time></p>
+                            <p class="item-date"><time datetime="2019-04-25T02:00:30.189Z" itemprop="datePublished">2019-04-25</time></p>
                         </div>
                     </li>
                 
@@ -439,25 +441,6 @@
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/深度学习/">深度学习</a></p>
                             <p class="item-title"><a href="/2019/02/05/基本概念/" class="title">1. Pytorch 基本概念</a></p>
-                            <p class="item-date"><time datetime="2019-02-04T16:00:00.000Z" itemprop="datePublished">2019-02-05</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2019/02/05/Logistic回归/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/深度学习/">深度学习</a></p>
-                            <p class="item-title"><a href="/2019/02/05/Logistic回归/" class="title">2.3 Logistic 回归</a></p>
                             <p class="item-date"><time datetime="2019-02-04T16:00:00.000Z" itemprop="datePublished">2019-02-05</time></p>
                         </div>
                     </li>
@@ -496,6 +479,25 @@
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/深度学习/">深度学习</a></p>
                             <p class="item-title"><a href="/2019/02/05/多项式回归/" class="title">2.2 多项式回归</a></p>
+                            <p class="item-date"><time datetime="2019-02-04T16:00:00.000Z" itemprop="datePublished">2019-02-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/02/05/Logistic回归/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/深度学习/">深度学习</a></p>
+                            <p class="item-title"><a href="/2019/02/05/Logistic回归/" class="title">2.3 Logistic 回归</a></p>
                             <p class="item-date"><time datetime="2019-02-04T16:00:00.000Z" itemprop="datePublished">2019-02-05</time></p>
                         </div>
                     </li>
