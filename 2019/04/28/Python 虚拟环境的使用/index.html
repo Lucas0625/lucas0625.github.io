@@ -3,15 +3,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>分类: 编程 | Mr.wang</title>
+    <title>Python 虚拟环境的使用 | Mr.wang</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Mr.wang">
-<meta property="og:url" content="http://lucas0625.github.io/categories/编程/index.html">
+    <meta name="description" content="简要介绍python中虚拟环境的使用">
+<meta name="keywords" content="基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 虚拟环境的使用">
+<meta property="og:url" content="http://lucas0625.github.io/2019/04/28/Python 虚拟环境的使用/index.html">
 <meta property="og:site_name" content="Mr.wang">
+<meta property="og:description" content="简要介绍python中虚拟环境的使用">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-28T07:14:06.892Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mr.wang">
+<meta name="twitter:title" content="Python 虚拟环境的使用">
+<meta name="twitter:description" content="简要介绍python中虚拟环境的使用">
     
 
     
@@ -182,25 +187,21 @@
 </aside>
 
             
-            <section id="main">
-<div class="timeline timeline-wrap">
-    <div class="timeline-row timeline-row-major">
-        <span class="node"><i class="fas fa-folder"></i></span>
-        <h1 class="title">编程</h1>
-    </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-Python 虚拟环境的使用" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2019/04/28/Python 虚拟环境的使用/">Python 虚拟环境的使用</a>
+        <h1 class="article-title" itemprop="name">
+            Python 虚拟环境的使用
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fas fa-calendar-alt"></i>
         <a href="/2019/04/28/Python 虚拟环境的使用/">
@@ -209,131 +210,141 @@
     </div>
 
 
-                    
+                        
     <div class="article-category">
     	<i class="fas fa-folder"></i>
         <a class="article-category-link" href="/categories/编程/">编程</a>
     </div>
 
-                    
+                        
     <div class="article-tag">
         <i class="fas fa-tag"></i>
         <a class="tag-link" href="/tags/基础/">基础</a>
     </div>
 
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+                    </div>
                 
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/10/09/Python 编码规范/">Python 编码规范</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fas fa-calendar-alt"></i>
-        <a href="/2018/10/09/Python 编码规范/">
-            <time datetime="2018-10-08T16:00:00.000Z" itemprop="datePublished">2018-10-09</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/categories/编程/">编程</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/经验/">经验</a>
-    </div>
-
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Python-虚拟环境的使用"><span class="toc-number">1.</span> <span class="toc-text">Python 虚拟环境的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装virtualenv"><span class="toc-number">1.1.</span> <span class="toc-text">安装virtualenv</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建虚拟环境"><span class="toc-number">1.2.</span> <span class="toc-text">创建虚拟环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用虚拟环境"><span class="toc-number">1.3.</span> <span class="toc-text">使用虚拟环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#退出虚拟环境"><span class="toc-number">1.4.</span> <span class="toc-text">退出虚拟环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在虚拟环境中安装包"><span class="toc-number">1.5.</span> <span class="toc-text">在虚拟环境中安装包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#将虚拟环境中的依赖库打包"><span class="toc-number">1.6.</span> <span class="toc-text">将虚拟环境中的依赖库打包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除虚拟环境"><span class="toc-number">1.7.</span> <span class="toc-text">删除虚拟环境</span></a></li></ol></li></ol>
                 </div>
-            </div>
+            
+            <p>简要介绍python中虚拟环境的使用</p>
+<a id="more"></a>
+<h1 id="Python-虚拟环境的使用"><a href="#Python-虚拟环境的使用" class="headerlink" title="Python 虚拟环境的使用"></a>Python 虚拟环境的使用</h1><h2 id="安装virtualenv"><a href="#安装virtualenv" class="headerlink" title="安装virtualenv"></a>安装virtualenv</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip  install virtualenv</span><br></pre></td></tr></table></figure>
+<h2 id="创建虚拟环境"><a href="#创建虚拟环境" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h2><p>在当前目录中创建一个文件夹，实际上就是将python环境克隆了一份，包括python解释器，setuptools， pip， wheel， 以及python标准库<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">virtualenv venv</span><br></pre></td></tr></table></figure></p>
+<h2 id="使用虚拟环境"><a href="#使用虚拟环境" class="headerlink" title="使用虚拟环境"></a>使用虚拟环境</h2><p>激活后，系统提示符左侧会显示虚拟环境的名字，(venv)<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source venv/bin/activate</span><br></pre></td></tr></table></figure></p>
+<h2 id="退出虚拟环境"><a href="#退出虚拟环境" class="headerlink" title="退出虚拟环境"></a>退出虚拟环境</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
+<h2 id="在虚拟环境中安装包"><a href="#在虚拟环境中安装包" class="headerlink" title="在虚拟环境中安装包"></a>在虚拟环境中安装包</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<h2 id="将虚拟环境中的依赖库打包"><a href="#将虚拟环境中的依赖库打包" class="headerlink" title="将虚拟环境中的依赖库打包"></a>将虚拟环境中的依赖库打包</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip freeze &gt; requirements.txt</span><br></pre></td></tr></table></figure>
+<h2 id="删除虚拟环境"><a href="#删除虚拟环境" class="headerlink" title="删除虚拟环境"></a>删除虚拟环境</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf venv</span><br></pre></td></tr></table></figure>
+
+        
         </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/10/08/深入理解Python package/">深入理解 Python package</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fas fa-calendar-alt"></i>
-        <a href="/2018/10/08/深入理解Python package/">
-            <time datetime="2018-10-07T16:00:00.000Z" itemprop="datePublished">2018-10-08</time>
-        </a>
-    </div>
+        <footer class="article-footer">
+            <div class="share-container">
 
 
-                    
-    <div class="article-category">
-    	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/categories/编程/">编程</a>
-    </div>
 
-                    
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/基础/">基础</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/09/16/json/">python 格式化显示字符串</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fas fa-calendar-alt"></i>
-        <a href="/2018/09/16/json/">
-            <time datetime="2018-09-16T08:30:18.409Z" itemprop="datePublished">2018-09-16</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/categories/编程/">编程</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/技巧/">技巧</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
 </div>
+
+    <a data-url="http://lucas0625.github.io/2019/04/28/Python 虚拟环境的使用/" data-id="cjv0lltuy000fci2u97abemx2" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fab fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fab fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fab fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fab fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2019/04/25/Glove/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Glove 原理与实现</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
 </section>
             
                 
