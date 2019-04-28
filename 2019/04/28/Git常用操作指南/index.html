@@ -9,11 +9,11 @@
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git 常用操作指南">
-<meta property="og:url" content="http://lucas0625.github.io/2019/04/24/Git常用操作指南/index.html">
+<meta property="og:url" content="http://lucas0625.github.io/2019/04/28/Git常用操作指南/index.html">
 <meta property="og:site_name" content="Mr.wang">
 <meta property="og:description" content="本文介绍自己平时工作中常用的一些Git操作">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-25T12:08:17.553Z">
+<meta property="og:updated_time" content="2019-04-28T08:09:59.019Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git 常用操作指南">
 <meta name="twitter:description" content="本文介绍自己平时工作中常用的一些Git操作">
@@ -204,8 +204,8 @@
                         
     <div class="article-date">
         <i class="fas fa-calendar-alt"></i>
-        <a href="/2019/04/24/Git常用操作指南/">
-            <time datetime="2019-04-24T09:34:03.140Z" itemprop="datePublished">2019-04-24</time>
+        <a href="/2019/04/28/Git常用操作指南/">
+            <time datetime="2019-04-28T08:09:59.019Z" itemprop="datePublished">2019-04-28</time>
         </a>
     </div>
 
@@ -232,7 +232,7 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">文章目录</strong>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Git-常用操作指南"><span class="toc-number">1.</span> <span class="toc-text">Git 常用操作指南</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#gitignore规范"><span class="toc-number">1.1.</span> <span class="toc-text">.gitignore规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看文件之间的差别"><span class="toc-number">1.2.</span> <span class="toc-text">查看文件之间的差别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提交文件"><span class="toc-number">1.3.</span> <span class="toc-text">提交文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除文件"><span class="toc-number">1.4.</span> <span class="toc-text">删除文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改文件名"><span class="toc-number">1.5.</span> <span class="toc-text">修改文件名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看提交历史"><span class="toc-number">1.6.</span> <span class="toc-text">查看提交历史</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#撤销操作"><span class="toc-number">1.7.</span> <span class="toc-text">撤销操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#管理远程仓库"><span class="toc-number">1.8.</span> <span class="toc-text">管理远程仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分支操作"><span class="toc-number">1.9.</span> <span class="toc-text">分支操作</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Git-常用操作指南"><span class="toc-number">1.</span> <span class="toc-text">Git 常用操作指南</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#gitignore规范"><span class="toc-number">1.1.</span> <span class="toc-text">.gitignore规范</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看文件之间的差别"><span class="toc-number">1.2.</span> <span class="toc-text">查看文件之间的差别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#提交文件"><span class="toc-number">1.3.</span> <span class="toc-text">提交文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#删除文件"><span class="toc-number">1.4.</span> <span class="toc-text">删除文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改文件名"><span class="toc-number">1.5.</span> <span class="toc-text">修改文件名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查看提交历史"><span class="toc-number">1.6.</span> <span class="toc-text">查看提交历史</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#撤销操作"><span class="toc-number">1.7.</span> <span class="toc-text">撤销操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#管理远程仓库"><span class="toc-number">1.8.</span> <span class="toc-text">管理远程仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分支操作"><span class="toc-number">1.9.</span> <span class="toc-text">分支操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#储藏-stashing-操作"><span class="toc-number">1.10.</span> <span class="toc-text">储藏(stashing)操作</span></a></li></ol></li></ol>
                 </div>
             
             <p>本文介绍自己平时工作中常用的一些Git操作</p>
@@ -313,6 +313,15 @@
 <li>git rebase –onto master server client 取出 client 分支，找出 client 分支和 server 分支的共同祖先之后的变化，然后把它在 master 上重演一遍</li>
 <li>git rebase master server 取出特性分支 server，然后在主分支 master 上重演</li>
 </ol>
+<h2 id="储藏-stashing-操作"><a href="#储藏-stashing-操作" class="headerlink" title="储藏(stashing)操作"></a>储藏(stashing)操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">“‘储藏”“可以获取你工作目录的中间状态——也就是你修改过的被追踪的文件和暂存的变更——并将它保存到一个未完结变更的堆栈中，随时可以重新应用。</span><br></pre></td></tr></table></figure>
+<ol>
+<li>git stash 往堆栈推送一个新的储藏，</li>
+<li>git stash list 查看现有的储藏</li>
+<li>git stash apply 恢复最近一次储藏，但是不从堆栈中删除该储藏</li>
+<li>git stash apply stash@{2} 恢复指定储藏，但是不从堆栈中删除该储藏</li>
+<li>git stash pop 恢复最新一次储藏，并从堆栈中删除它</li>
+<li>git stash drop stash@{2} 删除指定储藏</li>
+</ol>
 
         
         </div>
@@ -323,7 +332,7 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/2019/04/24/Git常用操作指南/" data-id="cjv0lnbja000dd92unrwj22jw" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/2019/04/28/Git常用操作指南/" data-id="cjv0nlm0a000cq32u2vp2lcqy" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -398,19 +407,10 @@
         
 <nav id="article-nav">
     
-        <a href="/2019/04/25/NNLM/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    NNLM 原理与实现
-                
-            </div>
-        </a>
     
-    
-        <a href="/2019/02/05/多项式回归/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2019/04/28/Python 虚拟环境的使用/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">2.2 多项式回归</div>
+            <div class="article-nav-title">Python 虚拟环境的使用</div>
         </a>
     
 </nav>
@@ -433,6 +433,25 @@
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/04/28/Git常用操作指南/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/工具/">工具</a></p>
+                            <p class="item-title"><a href="/2019/04/28/Git常用操作指南/" class="title">Git 常用操作指南</a></p>
+                            <p class="item-date"><time datetime="2019-04-28T08:09:59.019Z" itemprop="datePublished">2019-04-28</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -507,25 +526,6 @@
                             <p class="item-category"><a class="article-category-link" href="/categories/自然语言处理/">自然语言处理</a></p>
                             <p class="item-title"><a href="/2019/04/25/FastText/" class="title">FastText 原理与实现</a></p>
                             <p class="item-date"><time datetime="2019-04-25T02:30:15.713Z" itemprop="datePublished">2019-04-25</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2019/04/25/Word2Vec/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/自然语言处理/">自然语言处理</a></p>
-                            <p class="item-title"><a href="/2019/04/25/Word2Vec/" class="title">Word2Vec 原理与实现</a></p>
-                            <p class="item-date"><time datetime="2019-04-25T02:30:06.908Z" itemprop="datePublished">2019-04-25</time></p>
                         </div>
                     </li>
                 
