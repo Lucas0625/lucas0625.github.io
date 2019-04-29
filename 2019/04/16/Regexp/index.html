@@ -3,20 +3,22 @@
 <head>
     <meta charset="utf-8">
     
-    <title>python 格式化显示字符串 | Mr.wang</title>
+    <title>正则表达式 简要手册 | Mr.wang</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="12import jsonjson.dumps(dict, indent=4)">
-<meta name="keywords" content="技巧">
+    <meta name="description" content="正则表达式的简单梳理">
+<meta name="keywords" content="re">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python 格式化显示字符串">
-<meta property="og:url" content="http://lucas0625.github.io/2018/09/16/json/index.html">
+<meta property="og:title" content="正则表达式 简要手册">
+<meta property="og:url" content="http://lucas0625.github.io/2019/04/16/Regexp/index.html">
 <meta property="og:site_name" content="Mr.wang">
-<meta property="og:description" content="12import jsonjson.dumps(dict, indent=4)">
+<meta property="og:description" content="正则表达式的简单梳理">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-09T13:42:33.245Z">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-04-29-Xnip2019-04-29_11-02-15.jpg">
+<meta property="og:updated_time" content="2019-04-29T03:20:38.664Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python 格式化显示字符串">
-<meta name="twitter:description" content="12import jsonjson.dumps(dict, indent=4)">
+<meta name="twitter:title" content="正则表达式 简要手册">
+<meta name="twitter:description" content="正则表达式的简单梳理">
+<meta name="twitter:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-04-29-Xnip2019-04-29_11-02-15.jpg">
     
 
     
@@ -187,7 +189,7 @@
 </aside>
 
             
-            <section id="main"><article id="post-json" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-Regexp" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -195,7 +197,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            python 格式化显示字符串
+            正则表达式 简要手册
         </h1>
     
 
@@ -204,8 +206,8 @@
                         
     <div class="article-date">
         <i class="fas fa-calendar-alt"></i>
-        <a href="/2018/09/16/json/">
-            <time datetime="2018-09-16T08:30:18.409Z" itemprop="datePublished">2018-09-16</time>
+        <a href="/2019/04/16/Regexp/">
+            <time datetime="2019-04-16T09:51:42.682Z" itemprop="datePublished">2019-04-16</time>
         </a>
     </div>
 
@@ -213,13 +215,13 @@
                         
     <div class="article-category">
     	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/categories/编程/">编程</a>
+        <a class="article-category-link" href="/categories/工具/">工具</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/技巧/">技巧</a>
+        <a class="tag-link" href="/tags/re/">re</a>
     </div>
 
                     </div>
@@ -232,10 +234,103 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">文章目录</strong>
-                    
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#正则表达式基本语法"><span class="toc-number">1.</span> <span class="toc-text">正则表达式基本语法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#python中使用正则表达式"><span class="toc-number">2.</span> <span class="toc-text">python中使用正则表达式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#正则表达式练习题"><span class="toc-number">3.</span> <span class="toc-text">正则表达式练习题</span></a></li></ol>
                 </div>
             
-            <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line">json.dumps(dict, indent=<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+            <p>正则表达式的简单梳理</p>
+<a id="more"></a>
+<h1 id="正则表达式基本语法"><a href="#正则表达式基本语法" class="headerlink" title="正则表达式基本语法"></a>正则表达式基本语法</h1><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-04-29-Xnip2019-04-29_11-02-15.jpg" alt=""></p>
+<h1 id="python中使用正则表达式"><a href="#python中使用正则表达式" class="headerlink" title="python中使用正则表达式"></a>python中使用正则表达式</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br></pre></td></tr></table></figure>
+<ol>
+<li>pattern = re.compile(expression) 编译匹配模式</li>
+<li>re.match(pattern, str) 从字符串开头开始匹配，返回match对象，使用group(0)取出匹配到的字符</li>
+<li>re.search(pattern, str) 搜索字符串，返回第一个匹配到的match对象，使用group(0)取出匹配到的字符</li>
+<li>re.findall(pattern, str) 以列表的形式返回所有匹配到的字符</li>
+<li>re.finditer(pattern, str) 以迭代器的形式返回所有匹配到的字符</li>
+<li>re.sub(pattern, repl_str, str) 将str中匹配到的字符替换成repl_str</li>
+</ol>
+<h1 id="正则表达式练习题"><a href="#正则表达式练习题" class="headerlink" title="正则表达式练习题"></a>正则表达式练习题</h1><p>正则表达式在线练习网址: <a href="https://www.hackerrank.com/domains/regex?filters%5Bstatus%5D%5B%5D=unsolved" target="_blank" rel="noopener">https://www.hackerrank.com/domains/regex?filters%5Bstatus%5D%5B%5D=unsolved</a></p>
+<ol>
+<li><p>s1 = “get-element-by-id”; 给定这样一个连字符串，写一个function转换为驼峰命名法形式的字符串 getElementById</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">a =  <span class="string">'get-element-by-id'</span></span><br><span class="line">pattern = re.compile(<span class="string">'-[a-z]'</span>)</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> re.findall(pattern, a):</span><br><span class="line">    a = a.replace(item, item[<span class="number">-1</span>].upper())</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+<pre><code>getElementById
+</code></pre></li>
+<li><p>判断字符串是否包含数字</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">pattern = re.compile(<span class="string">'\d'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="string">'asdfdsf'</span>, <span class="string">'asdfdsfs43'</span>, <span class="string">'343'</span>]:</span><br><span class="line">    print(<span class="keyword">True</span> <span class="keyword">if</span> re.search(pattern, i) <span class="keyword">else</span> <span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>False
+True
+True
+</code></pre></li>
+<li><p>判断电话号码</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">pattern = re.compile(<span class="string">'^1[34578]\d&#123;9&#125;$'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="string">'1233456'</span>, <span class="string">'13366789980'</span>, <span class="string">'18678900875'</span>]:</span><br><span class="line">    print(<span class="keyword">True</span> <span class="keyword">if</span> re.search(pattern, i) <span class="keyword">else</span> <span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>False
+True
+True
+</code></pre></li>
+<li><p>判断是否符合指定格式，给定字符串str，检查其是否符合如下格式</p>
+<ul>
+<li>XXX-XXX-XXXX</li>
+<li><p>其中X为Number类型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">pattern = re.compile(<span class="string">'^(\d&#123;3&#125;-)&#123;2&#125;\d&#123;4&#125;$'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="string">'XXX-XXX-XXXX'</span>, <span class="string">'123-456-6889'</span>, <span class="string">'1232-434-1314'</span>]:</span><br><span class="line">    print(<span class="keyword">True</span> <span class="keyword">if</span> re.search(pattern, i) <span class="keyword">else</span> <span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<p>  False<br>  True<br>  False</p>
+</li>
+</ul>
+</li>
+<li><p>判断是否符合USD格式，给定字符串 str，检查其是否符合美元书写格式</p>
+<ul>
+<li>以 $ 开始</li>
+<li>整数部分，从个位起，满 3 个数字用 , 分隔</li>
+<li>如果为小数，则小数部分长度为 2</li>
+<li><p>正确的格式如：<strong>$1,023,032.03</strong> 或者 <strong>$2.03</strong>，错误的格式如：<strong>$3,432,12.12</strong> 或者 <strong>$34,344.3</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">pattern = re.compile(<span class="string">'^\$\d&#123;1,3&#125;(,\d&#123;3&#125;)*(\.\d&#123;2&#125;)?$'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="string">'$1,023,032.03'</span>, <span class="string">'$2.03'</span>, <span class="string">'$3,432,12.12'</span>, <span class="string">'$34,344.3'</span>]:</span><br><span class="line">    print(<span class="keyword">True</span> <span class="keyword">if</span> re.search(pattern, i) <span class="keyword">else</span> <span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<p>  True<br>  True<br>  False<br>  False</p>
+</li>
+</ul>
+</li>
+<li><p>JS实现千位分隔符</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">formatNum</span><span class="params">(num)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> isinstance(num, int):</span><br><span class="line">        num = str(num)</span><br><span class="line">    pattern = re.compile(<span class="string">r'(\d+)(\d&#123;3&#125;)((,\d&#123;3&#125;)*)'</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        num, count = re.subn(pattern, <span class="string">r'\1,\2\3'</span>, num)</span><br><span class="line">        <span class="keyword">if</span> count == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> num</span><br><span class="line">print(formatNum(<span class="number">43532412245353</span>))</span><br></pre></td></tr></table></figure>
+<pre><code>43,532,412,245,353
+</code></pre></li>
+<li><p>验证邮箱</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">pattern = re.compile(<span class="string">'^[a-zA-Z0-9_\-]+@[a-zA-Z0-9_\-]+\.[a-zA-Z0-9_\-]+$'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="string">'12@163.com'</span>, <span class="string">'244@qq.com'</span>, <span class="string">'dsf@dsf'</span>]:</span><br><span class="line">    print(<span class="keyword">True</span> <span class="keyword">if</span> re.search(pattern, i) <span class="keyword">else</span> <span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>True
+True
+False
+</code></pre></li>
+<li><p>验证身份证号码, 身份证号码可能为15位或18位，15位为全数字，18位中前17位为数字，最后一位为数字或者X</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">pattern = re.compile(<span class="string">'^\d&#123;15&#125;$|^\d&#123;17&#125;[0-9Xx]$'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="string">'34345345'</span>, <span class="string">'123456789012345'</span>, <span class="string">'12345678901234567X'</span>]:</span><br><span class="line">    print(<span class="keyword">True</span> <span class="keyword">if</span> re.search(pattern, i) <span class="keyword">else</span> <span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>False
+True
+True
+</code></pre></li>
+<li><p>匹配汉字</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">pattern = re.compile(<span class="string">'^[\u4E00-\u9FA5]*$'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="string">'34sd'</span>, <span class="string">''</span>, <span class="string">'我们'</span>]:</span><br><span class="line">    print(<span class="keyword">True</span> <span class="keyword">if</span> re.search(pattern, i) <span class="keyword">else</span> <span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>False
+True
+True
+</code></pre></li>
+<li><p>去除首尾的’/‘</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="string">'/sdf/'</span></span><br><span class="line">a.strip(<span class="string">'/'</span>)</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
+<pre><code>sdf
+</code></pre></li>
+<li><p>判断日期格式是否符合 ‘2017-05-11’的形式，简单判断，只判断格式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">pattern = re.compile(<span class="string">'^\d&#123;4&#125;\-\d&#123;1,2&#125;\-\d&#123;1,2&#125;$'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="12">
+<li><p>十六进制颜色正则</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">pattern = re.compile(<span class="string">'^#?([a-fA-F0-9]&#123;6&#125;|[a-fA-F0-9]&#123;3&#125;)$'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>车牌号正则</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">pattern = re.compile(<span class="string">'^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]&#123;1&#125;[A-Z]&#123;1&#125;[A-Z0-9]&#123;4&#125;[A-Z0-9挂学警港澳]&#123;1&#125;$'</span>)</span><br><span class="line">re.search(pattern , str)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>密码强度正则，最少6位，包括至少1个大写字母，1个小写字母，1个数字，1个特殊字符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">pattern = re.compile(<span class="string">'^.*(?=.&#123;6,&#125;)(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&amp;*? ]).*$'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>匹配浮点数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">pattern = re.compile(<span class="string">'^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 
         
         </div>
@@ -246,7 +341,7 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/2018/09/16/json/" data-id="cjv1stpxp001g9t2uwz8fus2z" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/2019/04/16/Regexp/" data-id="cjv1stpxi000u9t2uesqe0uj8" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -321,19 +416,19 @@
         
 <nav id="article-nav">
     
-        <a href="/2018/10/08/深入理解Python package/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2019/04/25/NNLM/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">上一篇</strong>
             <div class="article-nav-title">
                 
-                    深入理解 Python package
+                    NNLM 原理与实现
                 
             </div>
         </a>
     
     
-        <a href="/2018/09/11/Algorithms and Data Structures/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2019/02/05/线性模型/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">算法和数据结构</div>
+            <div class="article-nav-title">2.1 线性模型</div>
         </a>
     
 </nav>
