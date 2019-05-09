@@ -14,7 +14,7 @@
 <meta property="og:description" content="正则表达式的简单梳理">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-04-29-Xnip2019-04-29_11-02-15.jpg">
-<meta property="og:updated_time" content="2019-04-29T03:32:40.876Z">
+<meta property="og:updated_time" content="2019-05-09T09:52:51.447Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式 简要手册">
 <meta name="twitter:description" content="正则表达式的简单梳理">
@@ -249,7 +249,7 @@
 <li>re.finditer(pattern, str) 以迭代器的形式返回所有匹配到的字符</li>
 <li>re.sub(pattern, repl_str, str) 将str中匹配到的字符替换成repl_str</li>
 </ol>
-<h1 id="正则表达式练习题"><a href="#正则表达式练习题" class="headerlink" title="正则表达式练习题"></a>正则表达式练习题</h1><p>正则表达式在线练习网址: <a href="https://www.hackerrank.com/domains/regex?filters%5Bstatus%5D%5B%5D=unsolved" target="_blank" rel="noopener">https://www.hackerrank.com/domains/regex?filters%5Bstatus%5D%5B%5D=unsolved</a></p>
+<h1 id="正则表达式练习题"><a href="#正则表达式练习题" class="headerlink" title="正则表达式练习题"></a>正则表达式练习题</h1><p>正则表达式在线练习网址: <a href="https://www.hackerrank.com/domains/regex?filters%5Bstatus%5D%5B%5D=unsolved" target="_blank" rel="noopener">HackerRank</a> <a href="https://alf.nu/RegexGolf" target="_blank" rel="noopener">Regex Golf</a></p>
 <ol>
 <li><p>s1 = “get-element-by-id”; 给定这样一个连字符串，写一个function转换为驼峰命名法形式的字符串 getElementById</p>
  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">a =  <span class="string">'get-element-by-id'</span></span><br><span class="line">pattern = re.compile(<span class="string">'-[a-z]'</span>)</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> re.findall(pattern, a):</span><br><span class="line">    a = a.replace(item, item[<span class="number">-1</span>].upper())</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
@@ -341,7 +341,7 @@ True
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/2019/04/29/regex/" data-id="cjvgfxklf001ntr2uy98c5ehx" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/2019/04/29/regex/" data-id="cjvgh4cw9001m4s2ufrd0npo6" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
