@@ -236,7 +236,7 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/2019/04/25/Word2Vec/" data-id="cjvhsafdx00148e2un38q69ip" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/2019/04/25/Word2Vec/" data-id="cjvhsauky00188z2u6ubhlf1v" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -365,7 +365,7 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/2019/04/25/BERT/" data-id="cjvhsafd800048e2uaafbne1z" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/2019/04/25/BERT/" data-id="cjvhsaujx00018z2u98g4qpy7" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -494,7 +494,7 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/2019/04/25/Transformer/" data-id="cjvhsafdv000z8e2ugepqfvmq" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/2019/04/25/Transformer/" data-id="cjvhsaukw00158z2utrfz8akf" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -623,7 +623,7 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/2019/04/25/Bi-LSTM/" data-id="cjvhsafcy00008e2ur8aoz5pk" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/2019/04/25/Bi-LSTM/" data-id="cjvhsauk500058z2upbt78nm6" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -752,7 +752,7 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/2019/04/25/TextLSTM/" data-id="cjvhsafdt000w8e2unp6yxdwd" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/2019/04/25/TextLSTM/" data-id="cjvhsauks000x8z2up2cpofup" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -881,7 +881,7 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/2019/04/25/TextCNN/" data-id="cjvhsafdr000s8e2u9rlal0mw" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/2019/04/25/TextCNN/" data-id="cjvhsaukp000t8z2uhfyitxyj" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1010,138 +1010,7 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/2019/04/25/NNLM/" data-id="cjvhsafdh000h8e2ufrxx3oag" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fab fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fab fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fab fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fab fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-基本概念" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2019/02/05/基本概念/">1. Pytorch 基本概念</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fas fa-calendar-alt"></i>
-        <a href="/2019/02/05/基本概念/">
-            <time datetime="2019-02-04T16:00:00.000Z" itemprop="datePublished">2019-02-05</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/categories/深度学习/">深度学习</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/tags/Pytorch/">Pytorch</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            <p><p>本文介绍Pytorch的基本概念。</p></p>
-            <p class="article-more-link">
-                <a href="/2019/02/05/基本概念/#more">查看更多</a>
-            </p>
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://lucas0625.github.io/2019/02/05/基本概念/" data-id="cjvhsafea001q8e2uqqt5d7yw" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/2019/04/25/NNLM/" data-id="cjvhsauki000i8z2ubkhdkske" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1272,7 +1141,138 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/2019/02/05/Logistic回归/" data-id="cjvhsafdf000c8e2u91r5mc0r" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/2019/02/05/Logistic回归/" data-id="cjvhsaukf000d8z2ucdr7ngzm" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fab fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fab fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fab fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fab fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-基本概念" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2019/02/05/基本概念/">1. Pytorch 基本概念</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fas fa-calendar-alt"></i>
+        <a href="/2019/02/05/基本概念/">
+            <time datetime="2019-02-04T16:00:00.000Z" itemprop="datePublished">2019-02-05</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fas fa-folder"></i>
+        <a class="article-category-link" href="/categories/深度学习/">深度学习</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/Pytorch/">Pytorch</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            <p><p>本文介绍Pytorch的基本概念。</p></p>
+            <p class="article-more-link">
+                <a href="/2019/02/05/基本概念/#more">查看更多</a>
+            </p>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://lucas0625.github.io/2019/02/05/基本概念/" data-id="cjvhsaul9001r8z2uhx3jri4v" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1403,7 +1403,7 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/2019/02/04/爬虫基础/" data-id="cjvhsafj0002q8e2ugrzryjp2" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/2019/02/04/爬虫基础/" data-id="cjvhsauoz002q8z2u5uqug1si" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
