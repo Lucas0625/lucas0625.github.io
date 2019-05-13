@@ -3,25 +3,32 @@
 <head>
     <meta charset="utf-8">
     
-    <title>2.3 Logistic 回归 | Mr.wang</title>
+    <title>Logistic 回归 | Mr.wang</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="本文介绍Pytorch的基本概念。">
+    <meta name="description" content="Logistic 回归理论与实战">
 <meta name="keywords" content="Pytorch">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2.3 Logistic 回归">
+<meta property="og:title" content="Logistic 回归">
 <meta property="og:url" content="http://lucas0625.github.io/2019/02/05/Logistic回归/index.html">
 <meta property="og:site_name" content="Mr.wang">
-<meta property="og:description" content="本文介绍Pytorch的基本概念。">
+<meta property="og:description" content="Logistic 回归理论与实战">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-10%20%E4%B8%8B%E5%8D%882.46.10.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-10%20%E4%B8%8B%E5%8D%882.46.45.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-10%20%E4%B8%8B%E5%8D%882.48.09.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-10%20%E4%B8%8B%E5%8D%882.49.08.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-10%20%E4%B8%8B%E5%8D%882.49.51.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-09%20%E4%B8%8B%E5%8D%886.54.35.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-09%20%E4%B8%8B%E5%8D%886.55.55.png">
 <meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-02-05-output_4_1.png">
 <meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-02-05-output_8_1-1.png">
 <meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-02-05-output_11_1-1.png">
 <meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-02-05-output_18_1.png">
-<meta property="og:updated_time" content="2019-02-05T08:07:07.502Z">
+<meta property="og:updated_time" content="2019-05-13T05:52:30.635Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2.3 Logistic 回归">
-<meta name="twitter:description" content="本文介绍Pytorch的基本概念。">
-<meta name="twitter:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-02-05-output_4_1.png">
+<meta name="twitter:title" content="Logistic 回归">
+<meta name="twitter:description" content="Logistic 回归理论与实战">
+<meta name="twitter:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-10%20%E4%B8%8B%E5%8D%882.46.10.png">
     
 
     
@@ -200,7 +207,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            2.3 Logistic 回归
+            Logistic 回归
         </h1>
     
 
@@ -237,12 +244,21 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">文章目录</strong>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#多层全连接神经网络"><span class="toc-number">1.</span> <span class="toc-text">多层全连接神经网络</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-3-Logistic回归"><span class="toc-number">2.</span> <span class="toc-text">2.3 Logistic回归</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Logistic-回归模型"><span class="toc-number">1.</span> <span class="toc-text">Logistic 回归模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sigmoid-函数"><span class="toc-number">1.1.</span> <span class="toc-text">Sigmoid 函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#损失函数"><span class="toc-number">1.2.</span> <span class="toc-text">损失函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#模型"><span class="toc-number">1.3.</span> <span class="toc-text">模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码"><span class="toc-number">1.4.</span> <span class="toc-text">代码</span></a></li></ol></li></ol>
                 </div>
             
-            <p>本文介绍Pytorch的基本概念。</p>
+            <p>Logistic 回归理论与实战</p>
 <a id="more"></a>
-<h1 id="多层全连接神经网络"><a href="#多层全连接神经网络" class="headerlink" title="多层全连接神经网络"></a>多层全连接神经网络</h1><h1 id="2-3-Logistic回归"><a href="#2-3-Logistic回归" class="headerlink" title="2.3 Logistic回归"></a>2.3 Logistic回归</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
+<h1 id="Logistic-回归模型"><a href="#Logistic-回归模型" class="headerlink" title="Logistic 回归模型"></a>Logistic 回归模型</h1><h2 id="Sigmoid-函数"><a href="#Sigmoid-函数" class="headerlink" title="Sigmoid 函数"></a>Sigmoid 函数</h2><p>Sigmoid 函数，公示如下:<br>$$f(x)=\frac{1}{1+e^{-x}}$$</p>
+<p>图像如下:<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-10%20%E4%B8%8B%E5%8D%882.46.10.png" alt=""><br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-10%20%E4%B8%8B%E5%8D%882.46.45.png" alt=""></p>
+<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-10%20%E4%B8%8B%E5%8D%882.48.09.png" alt=""></p>
+<p>$$\operatorname{loss} =-(y <em> \log (\hat{y})+(1-y) </em> \log (1-\hat{y}))$$</p>
+<p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-10%20%E4%B8%8B%E5%8D%882.49.08.png" alt=""></p>
+<p>$$\operatorname{loss}=-(\log (1-\hat{y}))$$</p>
+<p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-10%20%E4%B8%8B%E5%8D%882.49.51.png" alt=""></p>
+<p>$$\operatorname{loss}=-(\log (\hat{y}))$$</p>
+<h2 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h2><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-09%20%E4%B8%8B%E5%8D%886.54.35.png" alt=""><br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-09%20%E4%B8%8B%E5%8D%886.55.55.png" alt=""></p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设定随机种子</span></span><br><span class="line">torch.manual_seed(<span class="number">2017</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>&lt;torch._C.Generator at 0x10d916550&gt;
 </code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从 data.txt 中读入点</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'./Logistic_data.txt'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data_list = [i.split(<span class="string">'\n'</span>)[<span class="number">0</span>].split(<span class="string">','</span>) <span class="keyword">for</span> i <span class="keyword">in</span> f.readlines()]</span><br><span class="line">    data = [(float(i[<span class="number">0</span>]), float(i[<span class="number">1</span>]), float(i[<span class="number">2</span>])) <span class="keyword">for</span> i <span class="keyword">in</span> data_list]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 标准化</span></span><br><span class="line">x0_max = max([i[<span class="number">0</span>] <span class="keyword">for</span> i <span class="keyword">in</span> data])</span><br><span class="line">x1_max = max([i[<span class="number">1</span>] <span class="keyword">for</span> i <span class="keyword">in</span> data])</span><br><span class="line">data = [(i[<span class="number">0</span>]/x0_max, i[<span class="number">1</span>]/x1_max, i[<span class="number">2</span>]) <span class="keyword">for</span> i <span class="keyword">in</span> data]</span><br><span class="line"></span><br><span class="line">x0 = list(filter(<span class="keyword">lambda</span> x: x[<span class="number">-1</span>] == <span class="number">0.0</span>, data)) <span class="comment"># 选择第一类的点</span></span><br><span class="line">x1 = list(filter(<span class="keyword">lambda</span> x: x[<span class="number">-1</span>] == <span class="number">1.0</span>, data)) <span class="comment"># 选择第二类的点</span></span><br><span class="line"></span><br><span class="line">plot_x0 = [i[<span class="number">0</span>] <span class="keyword">for</span> i <span class="keyword">in</span> x0]</span><br><span class="line">plot_y0 = [i[<span class="number">1</span>] <span class="keyword">for</span> i <span class="keyword">in</span> x0]</span><br><span class="line">plot_x1 = [i[<span class="number">0</span>] <span class="keyword">for</span> i <span class="keyword">in</span> x1]</span><br><span class="line">plot_y1 = [i[<span class="number">1</span>] <span class="keyword">for</span> i <span class="keyword">in</span> x1]</span><br><span class="line"></span><br><span class="line">plt.plot(plot_x0, plot_y0, <span class="string">'ro'</span>, label=<span class="string">'x_0'</span>)</span><br><span class="line">plt.plot(plot_x1, plot_y1, <span class="string">'bo'</span>, label=<span class="string">'x_1'</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'best'</span>)</span><br></pre></td></tr></table></figure>
@@ -303,7 +319,7 @@ During Time: 0.202 s
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/2019/02/05/Logistic回归/" data-id="cjvhsaukf000d8z2ucdr7ngzm" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/2019/02/05/Logistic回归/" data-id="cjvlythjw002a7v2ut9747th0" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -378,19 +394,19 @@ During Time: 0.202 s
         
 <nav id="article-nav">
     
-        <a href="/2019/04/25/NNLM/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2019/02/05/基本概念/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">上一篇</strong>
             <div class="article-nav-title">
                 
-                    NNLM 原理与实现
+                    1. Pytorch 基本概念
                 
             </div>
         </a>
     
     
-        <a href="/2019/02/05/基本概念/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2019/02/04/爬虫基础/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">1. Pytorch 基本概念</div>
+            <div class="article-nav-title">爬虫基础</div>
         </a>
     
 </nav>
