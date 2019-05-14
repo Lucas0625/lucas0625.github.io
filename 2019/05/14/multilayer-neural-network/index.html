@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>多层神经网络 | Mr.wang</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="PyTorch 实现多层神经网络">
+<meta name="keywords" content="PyTorch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多层神经网络">
+<meta property="og:url" content="http://lucas0625.github.io/2019/05/14/multilayer-neural-network/index.html">
+<meta property="og:site_name" content="Mr.wang">
+<meta property="og:description" content="PyTorch 实现多层神经网络">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-14-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-14%20%E4%B8%8B%E5%8D%882.22.54.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-14-output_6_1.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-14-output_10_1.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-14-output_15_1.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-14-output_25_1.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-14-output_44_1.png">
+<meta property="og:updated_time" content="2019-05-14T06:25:56.239Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="多层神经网络">
+<meta name="twitter:description" content="PyTorch 实现多层神经网络">
+<meta name="twitter:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-14-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-14%20%E4%B8%8B%E5%8D%882.22.54.png">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome5/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/libs/font-awesome5/css/fa-brands.min.css">
+    <link rel="stylesheet" href="/libs/font-awesome5/css/fa-solid.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Mr.wang</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/.">Home</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fas fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fas fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile" class="">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">琛</h2>
+            <h3 id="title">学习记录</h3>
+            <span id="location"><i class="fas fa-map-marker-alt" style="padding-right: 5px"></i>Harbin, China</span>
+            <a id="follow" target="_blank" href="https://github.com/Lucas0625/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                26
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                12
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/Lucas0625" target="_blank" title="github" class=tooltip>
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-multilayer-neural-network" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            多层神经网络
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fas fa-calendar-alt"></i>
+        <a href="/2019/05/14/multilayer-neural-network/">
+            <time datetime="2019-05-14T06:20:23.740Z" itemprop="datePublished">2019-05-14</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fas fa-folder"></i>
+        <a class="article-category-link" href="/categories/深度学习/">深度学习</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/PyTorch/">PyTorch</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#多层神经网络概念"><span class="toc-number">1.</span> <span class="toc-text">多层神经网络概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#多层神经网络实现"><span class="toc-number">2.</span> <span class="toc-text">多层神经网络实现</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#手动构建模型"><span class="toc-number">2.1.</span> <span class="toc-text">手动构建模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自动构建一个完整的-PyTorch-模型"><span class="toc-number">2.2.</span> <span class="toc-text">自动构建一个完整的 PyTorch 模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-Sequential-构建模型"><span class="toc-number">2.2.1.</span> <span class="toc-text">使用 Sequential 构建模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-Module-构建模型"><span class="toc-number">2.2.2.</span> <span class="toc-text">使用 Module 构建模型</span></a></li></ol></li></ol></li></ol>
+                </div>
+            
+            <p>PyTorch 实现多层神经网络</p>
+<a id="more"></a>
+<h1 id="多层神经网络概念"><a href="#多层神经网络概念" class="headerlink" title="多层神经网络概念"></a>多层神经网络概念</h1><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-14-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-14%20%E4%B8%8B%E5%8D%882.22.54.png" alt=""></p>
+<h1 id="多层神经网络实现"><a href="#多层神经网络实现" class="headerlink" title="多层神经网络实现"></a>多层神经网络实现</h1><h2 id="手动构建模型"><a href="#手动构建模型" class="headerlink" title="手动构建模型"></a>手动构建模型</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_decision_boundary</span><span class="params">(model, x, y)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Set min and max values and give it some padding </span></span><br><span class="line">    x_min, x_max = x[:, <span class="number">0</span>].min() - <span class="number">1</span>, x[:, <span class="number">0</span>].max() + <span class="number">1</span> </span><br><span class="line">    y_min, y_max = x[:, <span class="number">1</span>].min() - <span class="number">1</span>, x[:, <span class="number">1</span>].max() + <span class="number">1</span> </span><br><span class="line">    h = <span class="number">0.01</span> <span class="comment"># Generate a grid of points with distance h between them </span></span><br><span class="line">    xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h)) </span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Predict the function value for the whole grid </span></span><br><span class="line">    Z = model(np.c_[xx.ravel(), yy.ravel()]) </span><br><span class="line">    Z = Z.reshape(xx.shape) </span><br><span class="line">    </span><br><span class="line">    <span class="comment"># Plot the contour and training examples </span></span><br><span class="line">    plt.contourf(xx, yy, Z, cmap=plt.cm.Spectral) </span><br><span class="line">    plt.ylabel(<span class="string">'x2'</span>) </span><br><span class="line">    plt.xlabel(<span class="string">'x1'</span>) </span><br><span class="line">    plt.scatter(x[:, <span class="number">0</span>], x[:, <span class="number">1</span>], c=y.reshape(<span class="number">-1</span>), s=<span class="number">40</span>, cmap=plt.cm.Spectral)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 这次仍处理二分类问题，但是比之前的logistic回归更加复杂</span></span><br><span class="line">np.random.seed(<span class="number">1</span>)</span><br><span class="line">m = <span class="number">400</span> <span class="comment"># 样本数量</span></span><br><span class="line">N = int(m/<span class="number">2</span>) <span class="comment"># 每一类的点的个数</span></span><br><span class="line">D = <span class="number">2</span> <span class="comment"># 纬度</span></span><br><span class="line">x = np.zeros((m, D))</span><br><span class="line">y = np.zeros((m, <span class="number">1</span>), dtype=<span class="string">'uint8'</span>) <span class="comment"># label 向量， 0 表示红色， 1 表示蓝色</span></span><br><span class="line">a = <span class="number">4</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">2</span>):</span><br><span class="line">    ix = range(N*j,N*(j+<span class="number">1</span>)) </span><br><span class="line">    t = np.linspace(j*<span class="number">3.12</span>,(j+<span class="number">1</span>)*<span class="number">3.12</span>,N) + np.random.randn(N)*<span class="number">0.2</span> <span class="comment"># theta </span></span><br><span class="line">    r = a*np.sin(<span class="number">4</span>*t) + np.random.randn(N)*<span class="number">0.2</span> <span class="comment"># radius </span></span><br><span class="line">    x[ix] = np.c_[r*np.sin(t), r*np.cos(t)] </span><br><span class="line">    y[ix] = j</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.scatter(x[:, <span class="number">0</span>], x[:, <span class="number">1</span>], c=y.reshape(<span class="number">-1</span>), s=<span class="number">40</span>, cmap=plt.cm.Spectral)</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;matplotlib.collections.PathCollection at 0x120b352b0&gt;
+</code></pre><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-14-output_6_1.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先尝试使用 logistic 回归解决这个问题</span></span><br><span class="line">x = torch.from_numpy(x).float()</span><br><span class="line">y = torch.from_numpy(y).float()</span><br><span class="line"></span><br><span class="line">w = nn.Parameter(torch.randn(<span class="number">2</span>, <span class="number">1</span>))</span><br><span class="line">b = nn.Parameter(torch.zeros(<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">optimizer = torch.optim.SGD([w, b], <span class="number">1e-1</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">logistic_regression</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> torch.mm(x, w) + b</span><br><span class="line"></span><br><span class="line">criterion = nn.BCEWithLogitsLoss()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> e <span class="keyword">in</span> range(<span class="number">100</span>):</span><br><span class="line">    out = logistic_regression(Variable(x))</span><br><span class="line">    loss = criterion(out, Variable(y))</span><br><span class="line">    optimizer.zero_grad()</span><br><span class="line">    loss.backward()</span><br><span class="line">    optimizer.step()</span><br><span class="line">    <span class="keyword">if</span> (e + <span class="number">1</span>) % <span class="number">20</span> == <span class="number">0</span>:</span><br><span class="line">        print(<span class="string">'epoch: &#123;&#125;, loss: &#123;&#125;'</span>.format(e+<span class="number">1</span>, loss.item()))</span><br></pre></td></tr></table></figure>
+<pre><code>epoch: 20, loss: 0.7704809308052063
+epoch: 40, loss: 0.6776716113090515
+epoch: 60, loss: 0.6732792854309082
+epoch: 80, loss: 0.6731553673744202
+epoch: 100, loss: 0.6731488108634949
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_logistic</span><span class="params">(x)</span>:</span></span><br><span class="line">    x = Variable(torch.from_numpy(x).float()) </span><br><span class="line">    out = torch.sigmoid(logistic_regression(x)) </span><br><span class="line">    out = (out &gt; <span class="number">0.5</span>) * <span class="number">1</span> </span><br><span class="line">    <span class="keyword">return</span> out.data.numpy()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plot_decision_boundary(<span class="keyword">lambda</span> x: plot_logistic(x), x.numpy(), y.numpy())</span><br><span class="line">plt.title(<span class="string">'logistic regression'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Text(0.5,1,&apos;logistic regression&apos;)
+</code></pre><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-14-output_10_1.png" alt=""></p>
+<p>可以看到 logistic 并不能很好的区分开，因为 logistic 是线性分类器， 现在采用 神经网络模型</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义两层神经网络</span></span><br><span class="line">w1 = nn.Parameter(torch.randn(<span class="number">2</span>, <span class="number">4</span>) * <span class="number">0.01</span>) <span class="comment"># 隐藏神经元个数 2</span></span><br><span class="line">b1 = nn.Parameter(torch.zeros(<span class="number">4</span>))</span><br><span class="line"></span><br><span class="line">w2 = nn.Parameter(torch.randn(<span class="number">4</span>, <span class="number">1</span>) * <span class="number">0.01</span>)</span><br><span class="line">b2 = nn.Parameter(torch.zeros(<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义模型</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">two_netword</span><span class="params">(x)</span>:</span></span><br><span class="line">    x1 = torch.mm(x, w1) + b1 </span><br><span class="line">    x1 = torch.tanh(x1) <span class="comment"># 使用 PyTorch 自带的 tanh 激活函数</span></span><br><span class="line">    x2 = torch.mm(x1, w2) + b2</span><br><span class="line">    <span class="keyword">return</span> x2</span><br><span class="line"></span><br><span class="line">optimizer = torch.optim.SGD([w1, w2, b1, b2], <span class="number">1.</span>)</span><br><span class="line"></span><br><span class="line">criterion = nn.BCEWithLogitsLoss()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 训练 10000 次</span></span><br><span class="line"><span class="keyword">for</span> e <span class="keyword">in</span> range(<span class="number">10000</span>):</span><br><span class="line">    out = two_netword(Variable(x))</span><br><span class="line">    loss = criterion(out, Variable(y))</span><br><span class="line">    optimizer.zero_grad()</span><br><span class="line">    loss.backward()</span><br><span class="line">    optimizer.step()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (e + <span class="number">1</span>) % <span class="number">1000</span> == <span class="number">0</span>:</span><br><span class="line">        print(<span class="string">'epoch: &#123;&#125;, loss: &#123;&#125;'</span>.format(e+<span class="number">1</span>, loss.item()))</span><br></pre></td></tr></table></figure>
+<pre><code>epoch: 1000, loss: 0.2847880423069
+epoch: 2000, loss: 0.27225854992866516
+epoch: 3000, loss: 0.26519426703453064
+epoch: 4000, loss: 0.2597326934337616
+epoch: 5000, loss: 0.23362228274345398
+epoch: 6000, loss: 0.2255781590938568
+epoch: 7000, loss: 0.22193390130996704
+epoch: 8000, loss: 0.21951931715011597
+epoch: 9000, loss: 0.2176773101091385
+epoch: 10000, loss: 0.21617043018341064
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_network</span><span class="params">(x)</span>:</span></span><br><span class="line">    x = Variable(torch.from_numpy(x).float()) </span><br><span class="line">    x1 = torch.mm(x, w1) + b1 </span><br><span class="line">    x1 = torch.tanh(x1) </span><br><span class="line">    x2 = torch.mm(x1, w2) + b2 </span><br><span class="line">    out = torch.sigmoid(x2) </span><br><span class="line">    out = (out &gt; <span class="number">0.5</span>) * <span class="number">1</span> </span><br><span class="line">    <span class="keyword">return</span> out.data.numpy()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plot_decision_boundary(<span class="keyword">lambda</span> x: plot_network(x), x.numpy(), y.numpy())</span><br><span class="line">plt.title(<span class="string">'2 layer network'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Text(0.5,1,&apos;2 layer network&apos;)
+</code></pre><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-14-output_15_1.png" alt=""></p>
+<p>可以看到， 神经网络能很好的分类这个复杂的数据， 和前面的logistic回归相比，神经网络因为有了激活函数的存在，成了一个非线性分类器，所以神经网络分类的边界更加复杂</p>
+<h2 id="自动构建一个完整的-PyTorch-模型"><a href="#自动构建一个完整的-PyTorch-模型" class="headerlink" title="自动构建一个完整的 PyTorch 模型"></a>自动构建一个完整的 PyTorch 模型</h2><p>手动构建模型对于比较小的模型是可行的，但是对于大模型，比如 100 层的神经网络，这个时候手动定义模型就会非常麻烦，接下来使用 PyTorch 提供的模块来构建模型</p>
+<h3 id="使用-Sequential-构建模型"><a href="#使用-Sequential-构建模型" class="headerlink" title="使用 Sequential 构建模型"></a>使用 Sequential 构建模型</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Sequential</span></span><br><span class="line">seq_net = nn.Sequential(</span><br><span class="line">    nn.Linear(<span class="number">2</span>, <span class="number">4</span>), <span class="comment"># PyTorch 中的线性层， wx + b</span></span><br><span class="line">    nn.Tanh(),</span><br><span class="line">    nn.Linear(<span class="number">4</span>, <span class="number">1</span>)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 序列模块可以通过索引访问每一层</span></span><br><span class="line">seq_net[<span class="number">0</span>] <span class="comment"># 第一层</span></span><br></pre></td></tr></table></figure>
+<pre><code>Linear(in_features=2, out_features=4, bias=True)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打印出第一层的权重</span></span><br><span class="line">w0 = seq_net[<span class="number">0</span>].weight</span><br><span class="line">print(w0)</span><br></pre></td></tr></table></figure>
+<pre><code>Parameter containing:
+tensor([[-0.5508,  0.2882],
+        [ 0.0028, -0.5731],
+        [-0.1803,  0.5680],
+        [-0.5479,  0.0248]], requires_grad=True)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 通过 parameters 可以取得模型的参数</span></span><br><span class="line">param = seq_net.parameters()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义优化器</span></span><br><span class="line">optim = torch.optim.SGD(param, <span class="number">1.</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 我们训练 10000 次</span></span><br><span class="line"><span class="keyword">for</span> e <span class="keyword">in</span> range(<span class="number">10000</span>):</span><br><span class="line">    out = seq_net(Variable(x)) </span><br><span class="line">    loss = criterion(out, Variable(y)) </span><br><span class="line">    optim.zero_grad() </span><br><span class="line">    loss.backward() </span><br><span class="line">    optim.step() </span><br><span class="line">    <span class="keyword">if</span> (e + <span class="number">1</span>) % <span class="number">1000</span> == <span class="number">0</span>:</span><br><span class="line">        print(<span class="string">'epoch: &#123;&#125;, loss: &#123;&#125;'</span>.format(e+<span class="number">1</span>, loss.item()))</span><br></pre></td></tr></table></figure>
+<pre><code>epoch: 1000, loss: 0.28492191433906555
+epoch: 2000, loss: 0.27243772149086
+epoch: 3000, loss: 0.2653190791606903
+epoch: 4000, loss: 0.25978708267211914
+epoch: 5000, loss: 0.2339320182800293
+epoch: 6000, loss: 0.22560137510299683
+epoch: 7000, loss: 0.22195379436016083
+epoch: 8000, loss: 0.21954353153705597
+epoch: 9000, loss: 0.2177024632692337
+epoch: 10000, loss: 0.2161943018436432
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_seq</span><span class="params">(x)</span>:</span></span><br><span class="line">    out = torch.sigmoid(seq_net(Variable(torch.from_numpy(x).float()))).data.numpy() </span><br><span class="line">    out = (out &gt; <span class="number">0.5</span>) * <span class="number">1</span> </span><br><span class="line">    <span class="keyword">return</span> out</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plot_decision_boundary(<span class="keyword">lambda</span> x: plot_seq(x), x.numpy(), y.numpy()) </span><br><span class="line">plt.title(<span class="string">'sequential'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Text(0.5,1,&apos;sequential&apos;)
+</code></pre><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-14-output_25_1.png" alt=""></p>
+<p>模型保存的两种方式：</p>
+<ol>
+<li>将模型结构和参数都保存在一起</li>
+<li>只将参数保存下来</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一种保存方式，将模型和参数保存在一起</span></span><br><span class="line">torch.save(seq_net, <span class="string">'save_seq_net.model'</span>) <span class="comment"># 要保存的模型，保存路径</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 读取保存的模型</span></span><br><span class="line">seq_net1 = torch.load(<span class="string">'save_seq_net.model'</span>)</span><br><span class="line">seq_net1</span><br></pre></td></tr></table></figure>
+<pre><code>Sequential(
+  (0): Linear(in_features=2, out_features=4, bias=True)
+  (1): Tanh()
+  (2): Linear(in_features=4, out_features=1, bias=True)
+)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第二种保存方式，只保存参数</span></span><br><span class="line">torch.save(seq_net.state_dict(), <span class="string">'save_seq_net_params.pth'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 模型的读取, 需要先重新定义一次模型</span></span><br><span class="line">seq_net2 = nn.Sequential(</span><br><span class="line">    nn.Linear(<span class="number">2</span>, <span class="number">4</span>),</span><br><span class="line">    nn.Tanh(),</span><br><span class="line">    nn.Linear(<span class="number">4</span>, <span class="number">1</span>)</span><br><span class="line">)</span><br><span class="line">seq_net2.load_state_dict(torch.load(<span class="string">'save_seq_net_params.pth'</span>))</span><br><span class="line">seq_net2</span><br></pre></td></tr></table></figure>
+<pre><code>Sequential(
+  (0): Linear(in_features=2, out_features=4, bias=True)
+  (1): Tanh()
+  (2): Linear(in_features=4, out_features=1, bias=True)
+)
+</code></pre><p>第二种模型保存方式相比较第一种可移植性更强</p>
+<h3 id="使用-Module-构建模型"><a href="#使用-Module-构建模型" class="headerlink" title="使用 Module 构建模型"></a>使用 Module 构建模型</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 Module 的模版 ， 中文的地方是需要自己定义的，任何复杂的操作都可以在 forward 中定义</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> 网络名字<span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, 一些定义的参数)</span>:</span></span><br><span class="line">        super(网络名字， self).__init__()</span><br><span class="line">        self.layer1 = nn.Linear(num_input, num_hidden)</span><br><span class="line">        self.layer2 = nn.Sequential(...)</span><br><span class="line">        ...</span><br><span class="line">        </span><br><span class="line">        定义需要的网络层</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span> <span class="comment"># 定义前向传播</span></span><br><span class="line">        x1 = self.layer(x)</span><br><span class="line">        x2 = self.layer(x)</span><br><span class="line">        x = x1 + x2</span><br><span class="line">        </span><br><span class="line">        ...</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 利用上述模版实现前面的神经网络</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">module_net</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, num_input, num_hidden, num_output)</span>:</span></span><br><span class="line">        super(module_net, self).__init__()</span><br><span class="line">        self.layer1 = nn.Linear(num_input, num_hidden)</span><br><span class="line">        self.layer2 = nn.Tanh()</span><br><span class="line">        self.layer3 = nn.Linear(num_hidden, num_output)</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        x = self.layer1(x)</span><br><span class="line">        x = self.layer2(x)</span><br><span class="line">        x = self.layer3(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mo_net = module_net(<span class="number">2</span>, <span class="number">4</span>, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 访问模型中的某层可以直接通过名字</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 第一层</span></span><br><span class="line">l1 = mo_net.layer1</span><br><span class="line">print(l1)</span><br></pre></td></tr></table></figure>
+<pre><code>Linear(in_features=2, out_features=4, bias=True)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打印第一层的权重</span></span><br><span class="line">print(l1.weight)</span><br></pre></td></tr></table></figure>
+<pre><code>Parameter containing:
+tensor([[ 0.5183,  0.2359],
+        [ 0.3867,  0.6806],
+        [ 0.4755, -0.4971],
+        [-0.4460, -0.6820]], requires_grad=True)
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义优化器</span></span><br><span class="line">optim = torch.optim.SGD(mo_net.parameters(), <span class="number">1.</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 训练 10000 次</span></span><br><span class="line"><span class="keyword">for</span> e <span class="keyword">in</span> range(<span class="number">10000</span>):</span><br><span class="line">    out = mo_net(Variable(x)) </span><br><span class="line">    loss = criterion(out, Variable(y)) </span><br><span class="line">    optim.zero_grad() </span><br><span class="line">    loss.backward() </span><br><span class="line">    optim.step() </span><br><span class="line">    <span class="keyword">if</span> (e + <span class="number">1</span>) % <span class="number">1000</span> == <span class="number">0</span>:</span><br><span class="line">        print(<span class="string">'epoch: &#123;&#125;, loss: &#123;&#125;'</span>.format(e+<span class="number">1</span>, loss.item()))</span><br></pre></td></tr></table></figure>
+<pre><code>epoch: 1000, loss: 0.283423513174057
+epoch: 2000, loss: 0.2715207040309906
+epoch: 3000, loss: 0.26463547348976135
+epoch: 4000, loss: 0.2599412798881531
+epoch: 5000, loss: 0.25658532977104187
+epoch: 6000, loss: 0.2540966272354126
+epoch: 7000, loss: 0.25219157338142395
+epoch: 8000, loss: 0.2506936192512512
+epoch: 9000, loss: 0.2494892179965973
+epoch: 10000, loss: 0.2485022097826004
+</code></pre><p>可以看到得到了相同的结果，这种使用梯度下降来优化参数的方法，在深度学习中叫做反向传播算法</p>
+<p>接下来，定义一个5层的神经网络</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">module_net</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, num_input, num_hidden1, num_hidden2, num_hidden3, num_hidden4, num_output)</span>:</span></span><br><span class="line">        super(module_net, self).__init__()</span><br><span class="line">        self.layer_activation = nn.Tanh()</span><br><span class="line">        self.layer_input = nn.Linear(num_input, num_hidden1)</span><br><span class="line">        self.layer_hidden1 = nn.Linear(num_hidden1, num_hidden2)</span><br><span class="line">        self.layer_hidden2 = nn.Linear(num_hidden2, num_hidden3)</span><br><span class="line">        self.layer_hidden3 = nn.Linear(num_hidden3, num_hidden4)</span><br><span class="line">        self.layer_output = nn.Linear(num_hidden4, num_output)</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        x = self.layer_input(x)</span><br><span class="line">        x = self.layer_activation(x)</span><br><span class="line">        x = self.layer_hidden1(x)</span><br><span class="line">        x = self.layer_activation(x)</span><br><span class="line">        x = self.layer_hidden2(x)</span><br><span class="line">        x = self.layer_activation(x)</span><br><span class="line">        x = self.layer_hidden3(x)</span><br><span class="line">        x = self.layer_activation(x)</span><br><span class="line">        x = self.layer_output(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line">mo_net5 = module_net(<span class="number">2</span>, <span class="number">10</span>, <span class="number">10</span>, <span class="number">10</span>, <span class="number">10</span>, <span class="number">1</span>)</span><br><span class="line">optim = torch.optim.SGD(mo_net5.parameters(), <span class="number">0.1</span>)</span><br><span class="line"><span class="comment"># 训练 20000 次</span></span><br><span class="line"><span class="keyword">for</span> e <span class="keyword">in</span> range(<span class="number">20000</span>):</span><br><span class="line">    out = mo_net5(Variable(x)) </span><br><span class="line">    loss = criterion(out, Variable(y)) </span><br><span class="line">    optim.zero_grad() </span><br><span class="line">    loss.backward() </span><br><span class="line">    optim.step() </span><br><span class="line">    <span class="keyword">if</span> (e + <span class="number">1</span>) % <span class="number">1000</span> == <span class="number">0</span>:</span><br><span class="line">        print(<span class="string">'epoch: &#123;&#125;, loss: &#123;&#125;'</span>.format(e+<span class="number">1</span>, loss.item()))</span><br></pre></td></tr></table></figure>
+<pre><code>epoch: 1000, loss: 0.2958005964756012
+epoch: 2000, loss: 0.219310462474823
+epoch: 3000, loss: 0.19828572869300842
+epoch: 4000, loss: 0.18876363337039948
+epoch: 5000, loss: 0.18029095232486725
+epoch: 6000, loss: 0.16922634840011597
+epoch: 7000, loss: 0.16025283932685852
+epoch: 8000, loss: 0.1556335687637329
+epoch: 9000, loss: 0.15196143090724945
+epoch: 10000, loss: 0.14857107400894165
+epoch: 11000, loss: 0.1452614665031433
+epoch: 12000, loss: 0.13823415338993073
+epoch: 13000, loss: 0.13576728105545044
+epoch: 14000, loss: 0.13504637777805328
+epoch: 15000, loss: 0.13344115018844604
+epoch: 16000, loss: 0.13231371343135834
+epoch: 17000, loss: 0.1298571079969406
+epoch: 18000, loss: 0.1285153031349182
+epoch: 19000, loss: 0.12435487657785416
+epoch: 20000, loss: 0.1194448247551918
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_net5</span><span class="params">(x)</span>:</span></span><br><span class="line">    out = torch.sigmoid(mo_net5(Variable(torch.from_numpy(x).float()))).data.numpy() </span><br><span class="line">    out = (out &gt; <span class="number">0.5</span>) * <span class="number">1</span> </span><br><span class="line">    <span class="keyword">return</span> out</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">plot_decision_boundary(<span class="keyword">lambda</span> x: plot_net5(x), x.numpy(), y.numpy()) </span><br><span class="line">plt.title(<span class="string">'sequential'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>Text(0.5,1,&apos;sequential&apos;)
+</code></pre><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-14-output_44_1.png" alt=""></p>
+<p>可以看出多层神经网络拟合效果会更好</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://lucas0625.github.io/2019/05/14/multilayer-neural-network/" data-id="cjvnexo96002h452unrselo2t" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fab fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fab fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fab fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fab fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2019/05/09/deeplearning-base/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">深度学习基础知识</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/05/14/multilayer-neural-network/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/深度学习/">深度学习</a></p>
+                            <p class="item-title"><a href="/2019/05/14/multilayer-neural-network/" class="title">多层神经网络</a></p>
+                            <p class="item-date"><time datetime="2019-05-14T06:20:23.740Z" itemprop="datePublished">2019-05-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/05/09/deeplearning-base/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/深度学习/">深度学习</a></p>
+                            <p class="item-title"><a href="/2019/05/09/deeplearning-base/" class="title">深度学习基础知识</a></p>
+                            <p class="item-date"><time datetime="2019-05-09T05:52:55.739Z" itemprop="datePublished">2019-05-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/05/05/interviewCode/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/求职面试/">求职面试</a></p>
+                            <p class="item-title"><a href="/2019/05/05/interviewCode/" class="title">算法面试编程试题集锦</a></p>
+                            <p class="item-date"><time datetime="2019-05-05T08:34:34.929Z" itemprop="datePublished">2019-05-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/05/05/interviewTheory/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/求职面试/">求职面试</a></p>
+                            <p class="item-title"><a href="/2019/05/05/interviewTheory/" class="title">算法面试理论试题集锦</a></p>
+                            <p class="item-date"><time datetime="2019-05-05T08:31:43.372Z" itemprop="datePublished">2019-05-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/04/29/ElasticSearch/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/数据库/">数据库</a></p>
+                            <p class="item-title"><a href="/2019/04/29/ElasticSearch/" class="title">ElasticSearch</a></p>
+                            <p class="item-date"><time datetime="2019-04-29T07:18:55.059Z" itemprop="datePublished">2019-04-29</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/求职面试/">求职面试</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/爬虫/">爬虫</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/算法/">算法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/自然语言处理/">自然语言处理</a><span class="category-list-count">10</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">二月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">十月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PyTorch/">PyTorch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/">Pytorch</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es/">es</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/re/">re</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/基础/">基础</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/基础概念/">基础概念</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/基础知识/">基础知识</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技巧/">技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/经验/">经验</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/PyTorch/" style="font-size: 10px;">PyTorch</a> <a href="/tags/Pytorch/" style="font-size: 15px;">Pytorch</a> <a href="/tags/es/" style="font-size: 10px;">es</a> <a href="/tags/re/" style="font-size: 10px;">re</a> <a href="/tags/基础/" style="font-size: 15px;">基础</a> <a href="/tags/基础概念/" style="font-size: 10px;">基础概念</a> <a href="/tags/基础知识/" style="font-size: 10px;">基础知识</a> <a href="/tags/技巧/" style="font-size: 10px;">技巧</a> <a href="/tags/算法/" style="font-size: 20px;">算法</a> <a href="/tags/经验/" style="font-size: 10px;">经验</a> <a href="/tags/面试/" style="font-size: 15px;">面试</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fas fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2019 琛<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
