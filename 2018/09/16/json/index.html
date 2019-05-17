@@ -3,20 +3,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>python 格式化显示字符串 | Mr.wang</title>
+    <title>python 常用技巧 | Mr.wang</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="12import jsonjson.dumps(dict, indent=4)">
+    <meta name="description" content="记录自己常用的一些代码技巧">
 <meta name="keywords" content="技巧">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python 格式化显示字符串">
+<meta property="og:title" content="python 常用技巧">
 <meta property="og:url" content="http://lucas0625.github.io/blog/2018/09/16/json/index.html">
 <meta property="og:site_name" content="Mr.wang">
-<meta property="og:description" content="12import jsonjson.dumps(dict, indent=4)">
+<meta property="og:description" content="记录自己常用的一些代码技巧">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-09T13:42:33.245Z">
+<meta property="og:updated_time" content="2019-05-17T10:53:19.043Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python 格式化显示字符串">
-<meta name="twitter:description" content="12import jsonjson.dumps(dict, indent=4)">
+<meta name="twitter:title" content="python 常用技巧">
+<meta name="twitter:description" content="记录自己常用的一些代码技巧">
     
 
     
@@ -159,11 +159,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                29
+                30
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                12
+                13
                 <span>标签</span>
             </div>
         </div>
@@ -195,7 +195,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            python 格式化显示字符串
+            python 常用技巧
         </h1>
     
 
@@ -232,10 +232,17 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">文章目录</strong>
-                    
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#格式化显示字符串"><span class="toc-number">1.</span> <span class="toc-text">格式化显示字符串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#and-or-的特殊用法"><span class="toc-number">2.</span> <span class="toc-text">and, or 的特殊用法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#删除特殊字符"><span class="toc-number">3.</span> <span class="toc-text">删除特殊字符</span></a></li></ol>
                 </div>
             
-            <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line">json.dumps(dict, indent=<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+            <p>记录自己常用的一些代码技巧</p>
+<a id="more"></a>
+<h1 id="格式化显示字符串"><a href="#格式化显示字符串" class="headerlink" title="格式化显示字符串"></a>格式化显示字符串</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line">json.dumps(dict, indent=<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="and-or-的特殊用法"><a href="#and-or-的特殊用法" class="headerlink" title="and, or 的特殊用法"></a>and, or 的特殊用法</h1><ol>
+<li>a and b and c 返回第一个False 对象, 反之返回 c</li>
+<li>a or b or c 返回第一个True 对象, 反之返回 c</li>
+</ol>
+<h1 id="删除特殊字符"><a href="#删除特殊字符" class="headerlink" title="删除特殊字符"></a>删除特殊字符<200b></200b></h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str.replace(<span class="string">u'\u200b'</span>, <span class="string">''</span>)</span><br></pre></td></tr></table></figure>
 
         
         </div>
@@ -246,7 +253,7 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/blog/2018/09/16/json/" data-id="cjvri41ej001gas2uk5ajo1bf" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/blog/2018/09/16/json/" data-id="cjvrz084j001dpj2u8z3jq89a" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -360,6 +367,25 @@
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/lucas0625.github.io/2019/05/17/kinds/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/lucas0625.github.io/categories/其他/">其他</a></p>
+                            <p class="item-title"><a href="/lucas0625.github.io/2019/05/17/kinds/" class="title">百宝箱</a></p>
+                            <p class="item-date"><time datetime="2019-05-17T10:55:02.081Z" itemprop="datePublished">2019-05-17</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/lucas0625.github.io/2019/05/17/linux/" class="thumbnail">
     
     
@@ -433,25 +459,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/lucas0625.github.io/2019/05/09/deeplearning-base/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/lucas0625.github.io/categories/深度学习/">深度学习</a></p>
-                            <p class="item-title"><a href="/lucas0625.github.io/2019/05/09/deeplearning-base/" class="title">深度学习基础知识</a></p>
-                            <p class="item-date"><time datetime="2019-05-09T05:52:55.739Z" itemprop="datePublished">2019-05-09</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -461,7 +468,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/工具/">工具</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/求职面试/">求职面试</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/深度学习/">深度学习</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/爬虫/">爬虫</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/算法/">算法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/编程/">编程</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/自然语言处理/">自然语言处理</a><span class="category-list-count">10</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/其他/">其他</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/工具/">工具</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/求职面试/">求职面试</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/深度学习/">深度学习</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/爬虫/">爬虫</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/算法/">算法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/编程/">编程</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/自然语言处理/">自然语言处理</a><span class="category-list-count">10</span></li></ul>
         </div>
     </div>
 
@@ -470,7 +477,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2019/05/">五月 2019</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2019/04/">四月 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2019/02/">二月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2018/10/">十月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2018/09/">九月 2018</a><span class="archive-list-count">2</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2019/05/">五月 2019</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2019/04/">四月 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2019/02/">二月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2018/10/">十月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2018/09/">九月 2018</a><span class="archive-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -479,7 +486,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/PyTorch/">PyTorch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/Pytorch/">Pytorch</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/es/">es</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/re/">re</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/基础/">基础</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/基础概念/">基础概念</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/基础知识/">基础知识</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/技巧/">技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/算法/">算法</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/经验/">经验</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/面试/">面试</a><span class="tag-list-count">2</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/PyTorch/">PyTorch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/Pytorch/">Pytorch</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/es/">es</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/re/">re</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/其他/">其他</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/基础/">基础</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/基础概念/">基础概念</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/基础知识/">基础知识</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/技巧/">技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/算法/">算法</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/经验/">经验</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/面试/">面试</a><span class="tag-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -488,7 +495,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/lucas0625.github.io/tags/Git/" style="font-size: 10px;">Git</a> <a href="/lucas0625.github.io/tags/PyTorch/" style="font-size: 10px;">PyTorch</a> <a href="/lucas0625.github.io/tags/Pytorch/" style="font-size: 15px;">Pytorch</a> <a href="/lucas0625.github.io/tags/es/" style="font-size: 10px;">es</a> <a href="/lucas0625.github.io/tags/re/" style="font-size: 10px;">re</a> <a href="/lucas0625.github.io/tags/基础/" style="font-size: 17.5px;">基础</a> <a href="/lucas0625.github.io/tags/基础概念/" style="font-size: 10px;">基础概念</a> <a href="/lucas0625.github.io/tags/基础知识/" style="font-size: 10px;">基础知识</a> <a href="/lucas0625.github.io/tags/技巧/" style="font-size: 10px;">技巧</a> <a href="/lucas0625.github.io/tags/算法/" style="font-size: 20px;">算法</a> <a href="/lucas0625.github.io/tags/经验/" style="font-size: 10px;">经验</a> <a href="/lucas0625.github.io/tags/面试/" style="font-size: 12.5px;">面试</a>
+            <a href="/lucas0625.github.io/tags/Git/" style="font-size: 10px;">Git</a> <a href="/lucas0625.github.io/tags/PyTorch/" style="font-size: 10px;">PyTorch</a> <a href="/lucas0625.github.io/tags/Pytorch/" style="font-size: 15px;">Pytorch</a> <a href="/lucas0625.github.io/tags/es/" style="font-size: 10px;">es</a> <a href="/lucas0625.github.io/tags/re/" style="font-size: 10px;">re</a> <a href="/lucas0625.github.io/tags/其他/" style="font-size: 10px;">其他</a> <a href="/lucas0625.github.io/tags/基础/" style="font-size: 17.5px;">基础</a> <a href="/lucas0625.github.io/tags/基础概念/" style="font-size: 10px;">基础概念</a> <a href="/lucas0625.github.io/tags/基础知识/" style="font-size: 10px;">基础知识</a> <a href="/lucas0625.github.io/tags/技巧/" style="font-size: 10px;">技巧</a> <a href="/lucas0625.github.io/tags/算法/" style="font-size: 20px;">算法</a> <a href="/lucas0625.github.io/tags/经验/" style="font-size: 10px;">经验</a> <a href="/lucas0625.github.io/tags/面试/" style="font-size: 12.5px;">面试</a>
         </div>
     </div>
 
