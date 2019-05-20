@@ -14,7 +14,12 @@
 <meta property="og:description" content="本文介绍了CNN基础。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-20-Xnip2019-05-20_14-26-52.jpg">
-<meta property="og:updated_time" content="2019-05-20T06:27:41.943Z">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-20-output_4_1-1.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-20-output_9_1-1.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-20-output_10_1-1.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-20-output_15_1.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-20-output_16_2-1.png">
+<meta property="og:updated_time" content="2019-05-20T07:58:23.684Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CNN 基础">
 <meta name="twitter:description" content="本文介绍了CNN基础。">
@@ -234,12 +239,83 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">文章目录</strong>
-                    
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#卷积概念"><span class="toc-number">1.</span> <span class="toc-text">卷积概念</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#卷积模块"><span class="toc-number">2.</span> <span class="toc-text">卷积模块</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#卷积"><span class="toc-number">2.1.</span> <span class="toc-text">卷积</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#池化模块"><span class="toc-number">3.</span> <span class="toc-text">池化模块</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#池化"><span class="toc-number">3.1.</span> <span class="toc-text">池化</span></a></li></ol></li></ol>
                 </div>
             
             <p>本文介绍了CNN基础。</p>
 <a id="more"></a>
-<p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-20-Xnip2019-05-20_14-26-52.jpg" alt=""></p>
+<h1 id="卷积概念"><a href="#卷积概念" class="headerlink" title="卷积概念"></a>卷积概念</h1><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-20-Xnip2019-05-20_14-26-52.jpg" alt=""></p>
+<h1 id="卷积模块"><a href="#卷积模块" class="headerlink" title="卷积模块"></a>卷积模块</h1><h2 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h2><p>卷积在 PyTorch 中有两种方式， 一种是<code>torch.nn.Conv2d()</code>, 一种是<code>torch.nn.functional.conv2d()</code>， 这两种形式本质上都是使用一个卷积操作。这两种形式的卷积对于输入要求是一样的，都是输入<code>torch.autograd.Variable()</code>，大小是(batch, channel, H, W), 其中</p>
+<ul>
+<li>batch 表示输入的一批数据的数目</li>
+<li>channel 表示输入的通道数，一般一张彩色图片的通道数为3，灰度图是1</li>
+<li>H 表示输入图片的高度</li>
+<li>W 表示输入图片的宽度</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 实际操作</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np </span><br><span class="line"><span class="keyword">import</span> torch </span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn </span><br><span class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable </span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F </span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image </span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt </span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">im = Image.open(<span class="string">'./cat.png'</span>).convert(<span class="string">'L'</span>) <span class="comment"># 读入一张灰度图的图片</span></span><br><span class="line">im = np.array(im, dtype=<span class="string">'float32'</span>) <span class="comment"># 将其转换为一个矩阵</span></span><br><span class="line">im</span><br></pre></td></tr></table></figure>
+<pre><code>array([[122., 122., 121., ...,  93.,  90.,  88.],
+       [124., 124., 123., ...,  96.,  93.,  91.],
+       [126., 126., 125., ..., 100.,  97.,  95.],
+       ...,
+       [161., 161., 161., ...,   0.,   0.,   0.],
+       [160., 160., 161., ...,   0.,   0.,   0.],
+       [160., 160., 160., ...,   0.,   0.,   0.]], dtype=float32)
+</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 可视化图片</span></span><br><span class="line">plt.imshow(im.astype(<span class="string">'uint8'</span>), cmap=<span class="string">'gray'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;matplotlib.image.AxesImage at 0x1183e2518&gt;
+</code></pre><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-20-output_4_1-1.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">im.shape</span><br></pre></td></tr></table></figure>
+<pre><code>(224, 224)
+</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 将图片矩阵转化为 pytorh tensor， 并适配卷积输入的要求</span></span><br><span class="line">im = torch.from_numpy(im.reshape((<span class="number">1</span>, <span class="number">1</span>, im.shape[<span class="number">0</span>], im.shape[<span class="number">1</span>])))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">im</span><br></pre></td></tr></table></figure>
+<pre><code>tensor([[[[122., 122., 121.,  ...,  93.,  90.,  88.],
+          [124., 124., 123.,  ...,  96.,  93.,  91.],
+          [126., 126., 125.,  ..., 100.,  97.,  95.],
+          ...,
+          [161., 161., 161.,  ...,   0.,   0.,   0.],
+          [160., 160., 161.,  ...,   0.,   0.,   0.],
+          [160., 160., 160.,  ...,   0.,   0.,   0.]]]])
+</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义一个算子，对其进行轮廓检测</span></span><br><span class="line"><span class="comment"># 使用 nn.Conv2d</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">torch.nn.Conv2d(in_channels, out_channels, kernel_size, stride=1, padding=0, dilation=1, groups=1, </span></span><br><span class="line"><span class="string">                    bias=True, padding_mode='zeros')</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">conv1 = nn.Conv2d(<span class="number">1</span>, <span class="number">1</span>, <span class="number">3</span>, bias=<span class="keyword">True</span>) <span class="comment"># 定义卷积</span></span><br><span class="line">sobel_kernel = np.array([[<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>], [<span class="number">-1</span>, <span class="number">8</span>, <span class="number">-1</span>], [<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>]], dtype=<span class="string">'float32'</span>) <span class="comment"># 定义轮廓检测算子</span></span><br><span class="line">sobel_kernel = sobel_kernel.reshape((<span class="number">1</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">3</span>)) <span class="comment"># 适配卷积的输入输出</span></span><br><span class="line">conv1.weight.data = torch.from_numpy(sobel_kernel) <span class="comment"># 给卷积的 kernel 赋值</span></span><br><span class="line"></span><br><span class="line">edge1 = conv1(Variable(im)) <span class="comment"># 作用在图片上</span></span><br><span class="line">edge1 = edge1.data.squeeze().numpy() <span class="comment"># 将输出转换为图片的格式</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 可视化边缘检测之后的结果</span></span><br><span class="line">plt.imshow(edge1, cmap=<span class="string">'gray'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;matplotlib.image.AxesImage at 0x119dce9e8&gt;
+</code></pre><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-20-output_9_1-1.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用 F.conv2d</span></span><br><span class="line">sobel_kernek = np.array([[<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>], [<span class="number">-1</span>, <span class="number">8</span>, <span class="number">-1</span>], [<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>]], dtype=<span class="string">'float32'</span>) <span class="comment"># 定义轮廓检测算子</span></span><br><span class="line">sobel_kernel = sobel_kernel.reshape((<span class="number">1</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">3</span>)) <span class="comment"># 适配卷积的输入输出</span></span><br><span class="line">weight = Variable(torch.from_numpy(sobel_kernel))</span><br><span class="line"></span><br><span class="line">edge2 = F.conv2d(Variable(im), weight) <span class="comment"># 作用在图片上</span></span><br><span class="line">edge2 = edge2.data.squeeze().numpy() <span class="comment"># 将输出转化为图片的格式</span></span><br><span class="line">plt.imshow(edge2, cmap=<span class="string">'gray'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;matplotlib.image.AxesImage at 0x119c46da0&gt;
+</code></pre><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-20-output_10_1-1.png" alt=""></p>
+<p>两种卷积方式的区别</p>
+<ol>
+<li><code>nn.Conv2d()</code> 相当于直接定义了一层卷积网络结构, 默认定义一个随机初始化的 weight, 需要修改的话，取出其中的值对其修改</li>
+<li><code>torch.nn.functional.conv2d()</code> 相当于定义了一个卷积的操作，需要再额外定义一个 weight ，weight 也必须是一个 Varibale</li>
+</ol>
+<p>实际使用中，基本都使用 <code>nn.Conv2d()</code></p>
+<h1 id="池化模块"><a href="#池化模块" class="headerlink" title="池化模块"></a>池化模块</h1><h2 id="池化"><a href="#池化" class="headerlink" title="池化"></a>池化</h2><p>池化层 可以降低矩阵的大小，非常好地提升计算效率，池化层没有参数，池化的方式有很多种。</p>
+<ol>
+<li>最大值池化</li>
+<li>均值池化</li>
+</ol>
+<p>在卷积网络中一般使用最大值池化。<br>PyTorch 中两种池化方式，</p>
+<ol>
+<li><code>nn.MaxPool2d()</code></li>
+<li><code>torch.nn.functional.max_pool2d()</code></li>
+</ol>
+<p>参数和卷积参数一致</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用 nn.MaxPool2d</span></span><br><span class="line">pool1 = nn.MaxPool2d(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">print(<span class="string">'before max pool, image shape: &#123;&#125; x &#123;&#125;'</span>.format(im.shape[<span class="number">2</span>], im.shape[<span class="number">3</span>]))</span><br><span class="line">small_im1 = pool1(Variable(im))</span><br><span class="line">small_im1 = small_im1.data.squeeze().numpy()</span><br><span class="line">print(<span class="string">'after max pool, image shape: &#123;&#125; x &#123;&#125; '</span>.format(small_im1.shape[<span class="number">0</span>], small_im1.shape[<span class="number">1</span>]))</span><br></pre></td></tr></table></figure>
+<pre><code>before max pool, image shape: 224 x 224
+after max pool, image shape: 112 x 112 
+</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 图片大小减少了一般，看一下图像的表现</span></span><br><span class="line">plt.imshow(small_im1, cmap=<span class="string">'gray'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>&lt;matplotlib.image.AxesImage at 0x119e82780&gt;
+</code></pre><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-20-output_15_1.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 第二种方式 F.max_pool2d</span></span><br><span class="line">print(<span class="string">'before max pool, image shape: &#123;&#125; x &#123;&#125;'</span>.format(im.shape[<span class="number">2</span>], im.shape[<span class="number">3</span>]))</span><br><span class="line">small_im2 = F.max_pool2d(Variable(im), <span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">small_im2 = small_im2.data.squeeze().numpy()</span><br><span class="line">print(<span class="string">'after max pool, image shape: &#123;&#125; x &#123;&#125; '</span>.format(small_im1.shape[<span class="number">0</span>], small_im1.shape[<span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line">plt.imshow(small_im2, cmap=<span class="string">'gray'</span>)</span><br></pre></td></tr></table></figure>
+<pre><code>before max pool, image shape: 224 x 224
+after max pool, image shape: 112 x 112 
+
+
+
+
+
+&lt;matplotlib.image.AxesImage at 0x11a074898&gt;
+</code></pre><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-20-output_16_2-1.png" alt=""></p>
+<p>两种方式结果一样，一般使用 <code>nn.MaxPool2d()</code></p>
 
         
         </div>
@@ -250,7 +326,7 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/blog/2019/05/16/CNN-base/" data-id="cjvvzz4x00007j92ufrkc2tin" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/blog/2019/05/16/CNN-base/" data-id="cjvw2vrrf0000492ueup12s8n" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
