@@ -3,15 +3,22 @@
 <head>
     <meta charset="utf-8">
     
-    <title>归档: 2019 | Mr.wang</title>
+    <title>经典卷积神经网络-VGGNet | Mr.wang</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Mr.wang">
-<meta property="og:url" content="http://lucas0625.github.io/blog/archives/2019/page/2/index.html">
+    <meta name="description" content="经典卷积网络 VGGNet 结构与实现">
+<meta name="keywords" content="PyTorch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="经典卷积神经网络-VGGNet">
+<meta property="og:url" content="http://lucas0625.github.io/blog/2019/05/21/classic-VGGNet/index.html">
 <meta property="og:site_name" content="Mr.wang">
+<meta property="og:description" content="经典卷积网络 VGGNet 结构与实现">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-21-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-21%20%E4%B8%8A%E5%8D%8810.17.27.png">
+<meta property="og:updated_time" content="2019-05-21T08:14:14.978Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mr.wang">
+<meta name="twitter:title" content="经典卷积神经网络-VGGNet">
+<meta name="twitter:description" content="经典卷积网络 VGGNet 结构与实现">
+<meta name="twitter:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-21-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-21%20%E4%B8%8A%E5%8D%8810.17.27.png">
     
 
     
@@ -182,378 +189,212 @@
 </aside>
 
             
-            <section id="main"><div class="timeline timeline-wrap">
-    
-            <div class="timeline-row timeline-row-major">
-                <span class="node"><i class="fas fa-calendar-alt"></i></span>
-                <h1 class="title">2019</h1>
-            </div>
+            <section id="main"><article id="post-classic-VGGNet" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/lucas0625.github.io/2019/04/29/regex/">正则表达式 简要手册</a>
+        <h1 class="article-title" itemprop="name">
+            经典卷积神经网络-VGGNet
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fas fa-calendar-alt"></i>
-        <a href="/lucas0625.github.io/2019/04/29/regex/">
-            <time datetime="2019-04-29T03:32:03.363Z" itemprop="datePublished">2019-04-29</time>
+        <a href="/lucas0625.github.io/2019/05/21/classic-VGGNet/">
+            <time datetime="2019-05-21T08:12:43.468Z" itemprop="datePublished">2019-05-21</time>
         </a>
     </div>
 
 
-                    
+                        
     <div class="article-category">
     	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/lucas0625.github.io/categories/工具/">工具</a>
+        <a class="article-category-link" href="/lucas0625.github.io/categories/深度学习/">深度学习</a>
     </div>
 
-                    
+                        
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/lucas0625.github.io/tags/re/">re</a>
+        <a class="tag-link" href="/lucas0625.github.io/tags/PyTorch/">PyTorch</a>
     </div>
 
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+                    </div>
                 
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/lucas0625.github.io/2019/04/28/Git常用操作指南/">Git 常用操作指南</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fas fa-calendar-alt"></i>
-        <a href="/lucas0625.github.io/2019/04/28/Git常用操作指南/">
-            <time datetime="2019-04-28T08:11:53.115Z" itemprop="datePublished">2019-04-28</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/lucas0625.github.io/categories/工具/">工具</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/lucas0625.github.io/tags/Git/">Git</a>
-    </div>
-
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#VGGNet"><span class="toc-number">1.</span> <span class="toc-text">VGGNet</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#网络结构"><span class="toc-number">1.1.</span> <span class="toc-text">网络结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-number">1.2.</span> <span class="toc-text">代码实现</span></a></li></ol></li></ol>
                 </div>
-            </div>
+            
+            <p>经典卷积网络 VGGNet 结构与实现</p>
+<a id="more"></a>
+<h1 id="VGGNet"><a href="#VGGNet" class="headerlink" title="VGGNet"></a>VGGNet</h1><h2 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h2><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-21-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-21%20%E4%B8%8A%E5%8D%8810.17.27.png" alt=""></p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</span><br><span class="line"><span class="keyword">from</span> torchvision.datasets <span class="keyword">import</span> CIFAR10</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># VGG 使用了很多层 3*3 的卷积 然后再使用一个最大池化层，这个模块被使用了很多次，定义一个 vgg 的 block 来实现这个结构</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">vgg_block</span><span class="params">(num_convs, in_channels, out_channels)</span>:</span></span><br><span class="line">    <span class="comment"># 定义第一层</span></span><br><span class="line">    net = [nn.Conv2d(in_channels, out_channels, kernel_size=<span class="number">3</span>, padding=<span class="number">1</span>), nn.ReLU(<span class="keyword">True</span>)]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 定义后面很多层</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_convs - <span class="number">1</span>):</span><br><span class="line">        net.append(nn.Conv2d(out_channels, out_channels, kernel_size=<span class="number">3</span>, padding=<span class="number">1</span>))</span><br><span class="line">        net.append(nn.ReLU(<span class="keyword">True</span>))</span><br><span class="line">    </span><br><span class="line">    net.append(nn.MaxPool2d(<span class="number">2</span>, <span class="number">2</span>)) <span class="comment"># 定义池化层</span></span><br><span class="line">    <span class="keyword">return</span> nn.Sequential(*net)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 打印模型，查看结构</span></span><br><span class="line">block_demo = vgg_block(<span class="number">3</span>, <span class="number">64</span>, <span class="number">128</span>)</span><br><span class="line">block_demo</span><br></pre></td></tr></table></figure>
+<pre><code>Sequential(
+  (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (1): ReLU(inplace)
+  (2): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (3): ReLU(inplace)
+  (4): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+  (5): ReLU(inplace)
+  (6): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+)
+</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义输入为 (1， 64， 300， 300)</span></span><br><span class="line">input_demo = Variable(torch.zeros(<span class="number">1</span>, <span class="number">64</span>, <span class="number">300</span>, <span class="number">300</span>))</span><br><span class="line">output_demo = block_demo(input_demo)</span><br><span class="line">print(output_demo.shape)</span><br></pre></td></tr></table></figure>
+<pre><code>torch.Size([1, 128, 150, 150])
+</code></pre><p>可以看到输出变成了(1, 128, 150, 150)， 可以看到经过这个vgg block， 输入大小减半， 通道数变成了128</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义一个函数对这个 vgg block 进行堆叠</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">vgg_stack</span><span class="params">(nums_convs, channels)</span>:</span></span><br><span class="line">    net = []</span><br><span class="line">    <span class="keyword">for</span> n, c <span class="keyword">in</span> zip(nums_convs, channels):</span><br><span class="line">        in_c = c[<span class="number">0</span>]</span><br><span class="line">        out_c = c[<span class="number">1</span>]</span><br><span class="line">        net.append(vgg_block(n, in_c, out_c))</span><br><span class="line">    <span class="keyword">return</span> nn.Sequential(*net)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义一个简单的 VGG 结构</span></span><br><span class="line">vgg_net = vgg_stack((<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>), ((<span class="number">3</span>, <span class="number">64</span>), (<span class="number">64</span>, <span class="number">128</span>), (<span class="number">128</span>, <span class="number">256</span>), (<span class="number">256</span>, <span class="number">512</span>), (<span class="number">512</span>, <span class="number">512</span>)))</span><br><span class="line">vgg_net</span><br></pre></td></tr></table></figure>
+<pre><code>Sequential(
+  (0): Sequential(
+    (0): Conv2d(3, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU(inplace)
+    (2): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  )
+  (1): Sequential(
+    (0): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU(inplace)
+    (2): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  )
+  (2): Sequential(
+    (0): Conv2d(128, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU(inplace)
+    (2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU(inplace)
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  )
+  (3): Sequential(
+    (0): Conv2d(256, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU(inplace)
+    (2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU(inplace)
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  )
+  (4): Sequential(
+    (0): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (1): ReLU(inplace)
+    (2): Conv2d(512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (3): ReLU(inplace)
+    (4): MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False)
+  )
+)
+</code></pre><p>上诉网络结构中有 5 个最大值池化，说明图片大小会减少 5 倍， 验证如下</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">test_x = Variable(torch.zeros(<span class="number">1</span>, <span class="number">3</span>, <span class="number">256</span>, <span class="number">256</span>))</span><br><span class="line">test_y = vgg_net(test_x)</span><br><span class="line">print(test_y.shape)</span><br></pre></td></tr></table></figure>
+<pre><code>torch.Size([1, 512, 8, 8])
+</code></pre><p>可以看到图片大小减少了  $2^{5}$ 倍, 最后再加上几层全连接， 就能够得到我们想要的分类输出</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义 VGGNet 模型</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">VGGNet</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        super(vgg, self).__init__()</span><br><span class="line">        self.feature = vgg_net</span><br><span class="line">        self.fc = nn.Sequential(</span><br><span class="line">            nn.Linear(<span class="number">512</span>, <span class="number">100</span>),</span><br><span class="line">            nn.ReLU(<span class="keyword">True</span>),</span><br><span class="line">            nn.Linear(<span class="number">100</span>, <span class="number">10</span>)</span><br><span class="line">        )</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        x = self.feature(x)</span><br><span class="line">        x = x.view(x.shape[<span class="number">0</span>], <span class="number">-1</span>)</span><br><span class="line">        x = self.fc(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+
+        
         </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/lucas0625.github.io/2019/04/28/Python 虚拟环境的使用/">Python 虚拟环境的使用</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fas fa-calendar-alt"></i>
-        <a href="/lucas0625.github.io/2019/04/28/Python 虚拟环境的使用/">
-            <time datetime="2019-04-28T07:14:06.892Z" itemprop="datePublished">2019-04-28</time>
-        </a>
-    </div>
+        <footer class="article-footer">
+            <div class="share-container">
 
 
-                    
-    <div class="article-category">
-    	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/lucas0625.github.io/categories/编程/">编程</a>
-    </div>
 
-                    
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/lucas0625.github.io/tags/基础/">基础</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/lucas0625.github.io/2019/04/25/Glove/">Glove 原理与实现</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fas fa-calendar-alt"></i>
-        <a href="/lucas0625.github.io/2019/04/25/Glove/">
-            <time datetime="2019-04-25T12:15:37.175Z" itemprop="datePublished">2019-04-25</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/lucas0625.github.io/categories/自然语言处理/">自然语言处理</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/lucas0625.github.io/tags/算法/">算法</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/lucas0625.github.io/2019/04/25/TextRNN/">TextRNN 原理与实现</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fas fa-calendar-alt"></i>
-        <a href="/lucas0625.github.io/2019/04/25/TextRNN/">
-            <time datetime="2019-04-25T06:22:25.197Z" itemprop="datePublished">2019-04-25</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/lucas0625.github.io/categories/自然语言处理/">自然语言处理</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/lucas0625.github.io/tags/算法/">算法</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/lucas0625.github.io/2019/04/25/FastText/">FastText 原理与实现</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fas fa-calendar-alt"></i>
-        <a href="/lucas0625.github.io/2019/04/25/FastText/">
-            <time datetime="2019-04-25T02:30:15.713Z" itemprop="datePublished">2019-04-25</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/lucas0625.github.io/categories/自然语言处理/">自然语言处理</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/lucas0625.github.io/tags/算法/">算法</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/lucas0625.github.io/2019/04/25/Word2Vec/">Word2Vec 原理与实现</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fas fa-calendar-alt"></i>
-        <a href="/lucas0625.github.io/2019/04/25/Word2Vec/">
-            <time datetime="2019-04-25T02:30:06.908Z" itemprop="datePublished">2019-04-25</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/lucas0625.github.io/categories/自然语言处理/">自然语言处理</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/lucas0625.github.io/tags/算法/">算法</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/lucas0625.github.io/2019/04/25/BERT/">BERT 原理与实现</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fas fa-calendar-alt"></i>
-        <a href="/lucas0625.github.io/2019/04/25/BERT/">
-            <time datetime="2019-04-25T02:29:55.578Z" itemprop="datePublished">2019-04-25</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/lucas0625.github.io/categories/自然语言处理/">自然语言处理</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/lucas0625.github.io/tags/算法/">算法</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/lucas0625.github.io/2019/04/25/Transformer/">Transformer 原理与实现</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fas fa-calendar-alt"></i>
-        <a href="/lucas0625.github.io/2019/04/25/Transformer/">
-            <time datetime="2019-04-25T02:29:27.661Z" itemprop="datePublished">2019-04-25</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/lucas0625.github.io/categories/自然语言处理/">自然语言处理</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/lucas0625.github.io/tags/算法/">算法</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/lucas0625.github.io/2019/04/25/Bi-LSTM/">Bi-LSTM 原理与实现</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fas fa-calendar-alt"></i>
-        <a href="/lucas0625.github.io/2019/04/25/Bi-LSTM/">
-            <time datetime="2019-04-25T02:28:40.370Z" itemprop="datePublished">2019-04-25</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/lucas0625.github.io/categories/自然语言处理/">自然语言处理</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/lucas0625.github.io/tags/算法/">算法</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
 </div>
 
-    <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/lucas0625.github.io/archives/2019/">&laquo; 上一页</a><a class="page-number" href="/lucas0625.github.io/archives/2019/">1</a><span class="page-number current">2</span><a class="page-number" href="/lucas0625.github.io/archives/2019/page/3/">3</a><a class="extend next" rel="next" href="/lucas0625.github.io/archives/2019/page/3/">下一页 &raquo;</a>
-    </nav>
+    <a data-url="http://lucas0625.github.io/blog/2019/05/21/classic-VGGNet/" data-id="cjvxiznrj001d5a2u5crnm5p5" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fab fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fab fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fab fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fab fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/lucas0625.github.io/2019/05/17/kinds/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">百宝箱</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
 </section>
             
                 
