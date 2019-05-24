@@ -15,7 +15,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-21-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-21%20%E4%B8%8B%E5%8D%884.43.19-1.png">
 <meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-21-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-21%20%E4%B8%8B%E5%8D%884.43.44-1.png">
-<meta property="og:updated_time" content="2019-05-24T07:22:37.941Z">
+<meta property="og:updated_time" content="2019-05-24T11:22:12.426Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="经典卷积神经网络-GoogleNet">
 <meta name="twitter:description" content="经典卷积神经网络 GoogleNet 结构与实现">
@@ -243,13 +243,13 @@
 <h1 id="GoogleNet"><a href="#GoogleNet" class="headerlink" title="GoogleNet"></a>GoogleNet</h1><h2 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h2><p>采用了非常有效的 <code>inception</code> 模块， 得到了比 VGG 更深的网络结构， 但是却比 VGG 的参数少，因为去掉了后面的全连接层，参数大大减少，提高了计算效率<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-21-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-21%20%E4%B8%8B%E5%8D%884.43.19-1.png" alt=""></p>
 <p><strong>Inception</strong> 模块<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-21-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-21%20%E4%B8%8B%E5%8D%884.43.44-1.png" alt=""><br>一个 Inception 模块有四条并行线路。</p>
 <ol>
-<li><p>一个 $1\times1$ 的卷积，一个小的感受野进行卷积特征提取。</p>
+<li><p>一个 1x1 的卷积，一个小的感受野进行卷积特征提取。</p>
 </li>
-<li><p>一个 $1\times1$ 的卷积，加上一个 $3\times3$ 的卷积， $1\times1$ 的卷积降低输入的特征通道，减少参数计算量，然后接一个 $3\times3$ 的卷积做一个较大感受野的卷积。</p>
+<li><p>一个 1x1 的卷积，加上一个 3x3 的卷积， 1x1 的卷积降低输入的特征通道，减少参数计算量，然后接一个 3x3 的卷积做一个较大感受野的卷积。</p>
 </li>
-<li><p>一个 $1\times1$ 的卷积加上一个 $5\times5$ 的卷积， 作用和第二个通道一样。</p>
+<li><p>一个 1x1 的卷积加上一个 5x5 的卷积， 作用和第二个通道一样。</p>
 </li>
-<li><p>一个 $3\times3$ 的最大值池化，加上 $1\times1$ 的卷积，最大值池化改变输入的特征排列， $1\times1$ 的卷积进行特征提取。<br>最后将四个并行线路得到的特征在通道这个纬度上拼接在一起</p>
+<li><p>一个 3x3 的最大值池化，加上 1x1 的卷积，最大值池化改变输入的特征排列， 1x1 的卷积进行特征提取。<br>最后将四个并行线路得到的特征在通道这个纬度上拼接在一起</p>
 </li>
 </ol>
 <h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</span><br><span class="line"><span class="keyword">from</span> torchvision.datasets <span class="keyword">import</span> CIFAR10</span><br></pre></td></tr></table></figure>
@@ -278,7 +278,7 @@ output: torch.Size([1, 10])
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/blog/2019/05/24/classic-GoogleNet/" data-id="cjw1rdh7r001icn2uzy3pt0ur" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/blog/2019/05/24/classic-GoogleNet/" data-id="cjw1zwygv001gva2uj70cttky" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
