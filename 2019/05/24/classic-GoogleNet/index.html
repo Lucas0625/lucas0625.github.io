@@ -3,17 +3,23 @@
 <head>
     <meta charset="utf-8">
     
-    <title>FastText 原理与实现 | Mr.wang</title>
+    <title>经典卷积神经网络-GoogleNet | Mr.wang</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="keywords" content="算法">
+    <meta name="description" content="经典卷积神经网络 GoogleNet 结构与实现">
+<meta name="keywords" content="PyTorch">
 <meta property="og:type" content="article">
-<meta property="og:title" content="FastText 原理与实现">
-<meta property="og:url" content="http://lucas0625.github.io/blog/2019/04/25/FastText/index.html">
+<meta property="og:title" content="经典卷积神经网络-GoogleNet">
+<meta property="og:url" content="http://lucas0625.github.io/blog/2019/05/24/classic-GoogleNet/index.html">
 <meta property="og:site_name" content="Mr.wang">
+<meta property="og:description" content="经典卷积神经网络 GoogleNet 结构与实现">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-25T02:30:15.713Z">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-21-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-21%20%E4%B8%8B%E5%8D%884.43.19-1.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-21-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-21%20%E4%B8%8B%E5%8D%884.43.44-1.png">
+<meta property="og:updated_time" content="2019-05-24T07:22:37.941Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FastText 原理与实现">
+<meta name="twitter:title" content="经典卷积神经网络-GoogleNet">
+<meta name="twitter:description" content="经典卷积神经网络 GoogleNet 结构与实现">
+<meta name="twitter:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-21-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-21%20%E4%B8%8B%E5%8D%884.43.19-1.png">
     
 
     
@@ -184,7 +190,7 @@
 </aside>
 
             
-            <section id="main"><article id="post-FastText" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-classic-GoogleNet" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -192,7 +198,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            FastText 原理与实现
+            经典卷积神经网络-GoogleNet
         </h1>
     
 
@@ -201,8 +207,8 @@
                         
     <div class="article-date">
         <i class="fas fa-calendar-alt"></i>
-        <a href="/lucas0625.github.io/2019/04/25/FastText/">
-            <time datetime="2019-04-25T02:30:15.713Z" itemprop="datePublished">2019-04-25</time>
+        <a href="/lucas0625.github.io/2019/05/24/classic-GoogleNet/">
+            <time datetime="2019-05-24T07:21:10.833Z" itemprop="datePublished">2019-05-24</time>
         </a>
     </div>
 
@@ -210,13 +216,13 @@
                         
     <div class="article-category">
     	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/lucas0625.github.io/categories/自然语言处理/">自然语言处理</a>
+        <a class="article-category-link" href="/lucas0625.github.io/categories/深度学习/">深度学习</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/lucas0625.github.io/tags/算法/">算法</a>
+        <a class="tag-link" href="/lucas0625.github.io/tags/PyTorch/">PyTorch</a>
     </div>
 
                     </div>
@@ -229,10 +235,40 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">文章目录</strong>
-                    
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#GoogleNet"><span class="toc-number">1.</span> <span class="toc-text">GoogleNet</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#网络结构"><span class="toc-number">1.1.</span> <span class="toc-text">网络结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#代码实现"><span class="toc-number">1.2.</span> <span class="toc-text">代码实现</span></a></li></ol></li></ol>
                 </div>
             
-            
+            <p>经典卷积神经网络 GoogleNet 结构与实现</p>
+<a id="more"></a>
+<h1 id="GoogleNet"><a href="#GoogleNet" class="headerlink" title="GoogleNet"></a>GoogleNet</h1><h2 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h2><p>采用了非常有效的 <code>inception</code> 模块， 得到了比 VGG 更深的网络结构， 但是却比 VGG 的参数少，因为去掉了后面的全连接层，参数大大减少，提高了计算效率<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-21-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-21%20%E4%B8%8B%E5%8D%884.43.19-1.png" alt=""></p>
+<p><strong>Inception</strong> 模块<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-21-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-21%20%E4%B8%8B%E5%8D%884.43.44-1.png" alt=""><br>一个 Inception 模块有四条并行线路。</p>
+<ol>
+<li><p>一个 $1\times1$ 的卷积，一个小的感受野进行卷积特征提取。</p>
+</li>
+<li><p>一个 $1\times1$ 的卷积，加上一个 $3\times3$ 的卷积， $1\times1$ 的卷积降低输入的特征通道，减少参数计算量，然后接一个 $3\times3$ 的卷积做一个较大感受野的卷积。</p>
+</li>
+<li><p>一个 $1\times1$ 的卷积加上一个 $5\times5$ 的卷积， 作用和第二个通道一样。</p>
+</li>
+<li><p>一个 $3\times3$ 的最大值池化，加上 $1\times1$ 的卷积，最大值池化改变输入的特征排列， $1\times1$ 的卷积进行特征提取。<br>最后将四个并行线路得到的特征在通道这个纬度上拼接在一起</p>
+</li>
+</ol>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</span><br><span class="line"><span class="keyword">from</span> torchvision.datasets <span class="keyword">import</span> CIFAR10</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义一个卷积加一个 relu 激活函数和一个 batchnorm 作为一个基本的层结构</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conv_relu</span><span class="params">(in_channel, out_channel, kernel, stride=<span class="number">1</span>, padding=<span class="number">0</span>)</span>:</span></span><br><span class="line">    layer = nn.Sequential(</span><br><span class="line">        nn.Conv2d(in_channel, out_channel, kernel, stride, padding),</span><br><span class="line">        nn.BatchNorm2d(out_channel, eps=<span class="number">1e-3</span>),</span><br><span class="line">        nn.ReLU(<span class="keyword">True</span>)</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">return</span> layer</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义 inception 机构</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">inception</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, in_channel, out1_1, out2_1, out2_3, out3_1, out3_5, out4_1)</span>:</span></span><br><span class="line">        super(inception, self).__init__()</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 定义第一条线路</span></span><br><span class="line">        self.branch1x1 = conv_relu(in_channel, out1_1, <span class="number">1</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 定义第二条线路</span></span><br><span class="line">        self.branch3x3 = nn.Sequential(</span><br><span class="line">            conv_relu(in_channel, out2_1, <span class="number">1</span>),</span><br><span class="line">            conv_relu(out2_1, out2_3, <span class="number">3</span>, padding=<span class="number">1</span>)</span><br><span class="line">        )</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 定义第三条线路</span></span><br><span class="line">        self.branch5x5 = nn.Sequential(</span><br><span class="line">            conv_relu(in_channel, out3_1, <span class="number">1</span>),</span><br><span class="line">            conv_relu(out3_1, out3_5, <span class="number">5</span>, padding=<span class="number">2</span>)</span><br><span class="line">        )</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 定义第四条线路</span></span><br><span class="line">        self.branch_pool = nn.Sequential(</span><br><span class="line">            nn.MaxPool2d(<span class="number">3</span>, stride=<span class="number">1</span>, padding=<span class="number">1</span>),</span><br><span class="line">            conv_relu(in_channel, out4_1, <span class="number">1</span>)</span><br><span class="line">        )</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        f1 = self.branch1x1(x)</span><br><span class="line">        f2 = self.branch3x3(x)</span><br><span class="line">        f3 = self.branch5x5(x)</span><br><span class="line">        f4 = self.branch_pool(x)</span><br><span class="line">        output = torch.cat((f1, f2, f3, f4),dim=<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> output</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 测试 inception 模块</span></span><br><span class="line">test_net = inception(<span class="number">3</span>, <span class="number">64</span>, <span class="number">48</span>, <span class="number">64</span>, <span class="number">64</span>, <span class="number">96</span>, <span class="number">32</span>)</span><br><span class="line">test_x = Variable(torch.zeros(<span class="number">1</span>, <span class="number">3</span>, <span class="number">96</span>, <span class="number">96</span>))</span><br><span class="line">print(<span class="string">'input shape: &#123;&#125; x &#123;&#125; x &#123;&#125;'</span>.format(test_x.shape[<span class="number">1</span>], test_x.shape[<span class="number">2</span>], test_x.shape[<span class="number">3</span>]))</span><br><span class="line">test_y = test_net(test_x) </span><br><span class="line">print(<span class="string">'output shape: &#123;&#125; x &#123;&#125; x &#123;&#125;'</span>.format(test_y.shape[<span class="number">1</span>], test_y.shape[<span class="number">2</span>], test_y.shape[<span class="number">3</span>]))</span><br></pre></td></tr></table></figure>
+<pre><code>input shape: 3 x 96 x 96
+output shape: 256 x 96 x 96
+</code></pre><p>可以看到，输入经过 inception 模块之后， 大小没有变化，通道的纬度变多了， 下面定义 GoogleNet， GoogleNet相当于多个 inception 模块的串联, 原论文中使用多个输出来解决梯度消失的问题， 这里我们只定义一个简单版本的 GoogleNet，简化为一个输出</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">GoogleNet</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, in_channel, num_classes, verbose=False)</span>:</span></span><br><span class="line">        super(GoogleNet, self).__init__()</span><br><span class="line">        self.verbose = verbose</span><br><span class="line">        </span><br><span class="line">        self.block1 = nn.Sequential(</span><br><span class="line">            conv_relu(in_channel, out_channel=<span class="number">64</span>, kernel=<span class="number">7</span>, stride=<span class="number">2</span>, padding=<span class="number">3</span>),</span><br><span class="line">            nn.MaxPool2d(<span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">        )</span><br><span class="line">        </span><br><span class="line">        self.block2 = nn.Sequential(</span><br><span class="line">            conv_relu(<span class="number">64</span>, <span class="number">64</span>, kernel=<span class="number">1</span>),</span><br><span class="line">            conv_relu(<span class="number">64</span>, <span class="number">192</span>, kernel=<span class="number">3</span>, padding=<span class="number">1</span>),</span><br><span class="line">            nn.MaxPool2d(<span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">        )</span><br><span class="line">        </span><br><span class="line">        self.block3 = nn.Sequential(</span><br><span class="line">            inception(<span class="number">192</span>, <span class="number">64</span>, <span class="number">96</span>, <span class="number">128</span>, <span class="number">16</span>, <span class="number">32</span>, <span class="number">32</span>),</span><br><span class="line">            inception(<span class="number">256</span>, <span class="number">128</span>, <span class="number">128</span>, <span class="number">192</span>, <span class="number">32</span>, <span class="number">96</span>, <span class="number">64</span>),</span><br><span class="line">            nn.MaxPool2d(<span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">        )</span><br><span class="line">        </span><br><span class="line">        self.block4 = nn.Sequential(</span><br><span class="line">            inception(<span class="number">480</span>, <span class="number">192</span>, <span class="number">96</span>, <span class="number">208</span>, <span class="number">16</span>, <span class="number">48</span>, <span class="number">64</span>),</span><br><span class="line">            inception(<span class="number">512</span>, <span class="number">160</span>, <span class="number">112</span>, <span class="number">224</span>, <span class="number">24</span>, <span class="number">64</span>, <span class="number">64</span>),</span><br><span class="line">            inception(<span class="number">512</span>, <span class="number">128</span>, <span class="number">128</span>, <span class="number">256</span>, <span class="number">24</span>, <span class="number">64</span>, <span class="number">64</span>),</span><br><span class="line">            inception(<span class="number">512</span>, <span class="number">112</span>, <span class="number">144</span>, <span class="number">288</span>, <span class="number">32</span>, <span class="number">64</span>, <span class="number">64</span>),</span><br><span class="line">            inception(<span class="number">528</span>, <span class="number">256</span>, <span class="number">160</span>, <span class="number">320</span>, <span class="number">32</span>, <span class="number">128</span>, <span class="number">128</span>),</span><br><span class="line">            nn.MaxPool2d(<span class="number">3</span>, <span class="number">2</span>)</span><br><span class="line">        )</span><br><span class="line">        </span><br><span class="line">        self.block5 = nn.Sequential(</span><br><span class="line">            inception(<span class="number">832</span>, <span class="number">256</span>, <span class="number">160</span>, <span class="number">320</span>, <span class="number">32</span>, <span class="number">128</span>, <span class="number">128</span>),</span><br><span class="line">            inception(<span class="number">832</span>, <span class="number">384</span>, <span class="number">182</span>, <span class="number">384</span>, <span class="number">48</span>, <span class="number">128</span>, <span class="number">128</span>),</span><br><span class="line">            nn.AvgPool2d(<span class="number">2</span>)</span><br><span class="line">        )</span><br><span class="line">        </span><br><span class="line">        self.classifer = nn.Linear(<span class="number">1024</span>, num_classes)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        x = self.block1(x)</span><br><span class="line">        <span class="keyword">if</span> self.verbose:</span><br><span class="line">            print(<span class="string">'block 1 output: &#123;&#125;'</span>.format(x.shape))</span><br><span class="line">        x = self.block2(x)</span><br><span class="line">        <span class="keyword">if</span> self.verbose:</span><br><span class="line">            print(<span class="string">'block 2 output: &#123;&#125;'</span>.format(x.shape))</span><br><span class="line">        x = self.block3(x)</span><br><span class="line">        <span class="keyword">if</span> self.verbose:</span><br><span class="line">            print(<span class="string">'block 3 output: &#123;&#125;'</span>.format(x.shape))</span><br><span class="line">        x = self.block4(x)</span><br><span class="line">        <span class="keyword">if</span> self.verbose:</span><br><span class="line">            print(<span class="string">'block 4 output: &#123;&#125;'</span>.format(x.shape))</span><br><span class="line">        x = self.block5(x)</span><br><span class="line">        <span class="keyword">if</span> self.verbose:</span><br><span class="line">            print(<span class="string">'block 5 output: &#123;&#125;'</span>.format(x.shape))</span><br><span class="line">        x = x.view(x.shape[<span class="number">0</span>], <span class="number">-1</span>)</span><br><span class="line">        x = self.classifer(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 验证 GoogleNet</span></span><br><span class="line">test_net = GoogleNet(<span class="number">3</span>, <span class="number">10</span>, <span class="keyword">True</span>) </span><br><span class="line">test_x = Variable(torch.zeros(<span class="number">1</span>, <span class="number">3</span>, <span class="number">96</span>, <span class="number">96</span>)) </span><br><span class="line">test_y = test_net(test_x) </span><br><span class="line">print(<span class="string">'output: &#123;&#125;'</span>.format(test_y.shape))</span><br></pre></td></tr></table></figure>
+<pre><code>block 1 output: torch.Size([1, 64, 23, 23])
+block 2 output: torch.Size([1, 192, 11, 11])
+block 3 output: torch.Size([1, 480, 5, 5])
+block 4 output: torch.Size([1, 832, 2, 2])
+block 5 output: torch.Size([1, 1024, 1, 1])
+output: torch.Size([1, 10])
+</code></pre><p>可以看到输出的尺寸不断减小， 通道纬度不断增加, 实现了简易版的 GoogleNet </p>
+
         
         </div>
         <footer class="article-footer">
@@ -242,7 +278,7 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/blog/2019/04/25/FastText/" data-id="cjw1rd8oj0009c52ugno0vr6m" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/blog/2019/05/24/classic-GoogleNet/" data-id="cjw1rd8p3001ac52uiu8a6ptx" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -317,19 +353,10 @@
         
 <nav id="article-nav">
     
-        <a href="/lucas0625.github.io/2019/04/25/TextRNN/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    TextRNN 原理与实现
-                
-            </div>
-        </a>
     
-    
-        <a href="/lucas0625.github.io/2019/04/25/Word2Vec/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/lucas0625.github.io/2019/05/21/classic-VGGNet/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">Word2Vec 原理与实现</div>
+            <div class="article-nav-title">经典卷积神经网络-VGGNet</div>
         </a>
     
 </nav>
