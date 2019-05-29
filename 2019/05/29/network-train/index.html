@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <meta charset="utf-8">
+    
+    <title>神经网络训练技巧 | Mr.wang</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="神经网络训练过程中的一些技巧">
+<meta name="keywords" content="PyTorch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="神经网络训练技巧">
+<meta property="og:url" content="http://lucas0625.github.io/blog/2019/05/29/network-train/index.html">
+<meta property="og:site_name" content="Mr.wang">
+<meta property="og:description" content="神经网络训练过程中的一些技巧">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-29-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-29%20%E4%B8%8A%E5%8D%8810.32.15.png">
+<meta property="og:updated_time" content="2019-05-29T07:00:48.903Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="神经网络训练技巧">
+<meta name="twitter:description" content="神经网络训练过程中的一些技巧">
+<meta name="twitter:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-29-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-29%20%E4%B8%8A%E5%8D%8810.32.15.png">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/lucas0625.github.io/libs/font-awesome5/css/fontawesome.min.css">
+    <link rel="stylesheet" href="/lucas0625.github.io/libs/font-awesome5/css/fa-brands.min.css">
+    <link rel="stylesheet" href="/lucas0625.github.io/libs/font-awesome5/css/fa-solid.min.css">
+    <link rel="stylesheet" href="/lucas0625.github.io/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/lucas0625.github.io/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/lucas0625.github.io/css/style.css">
+
+    <script src="/lucas0625.github.io/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/lucas0625.github.io/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/lucas0625.github.io/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/lucas0625.github.io/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Mr.wang</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/lucas0625.github.io/.">Home</a>
+                
+                    <a class="main-nav-link" href="/lucas0625.github.io/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/lucas0625.github.io/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/lucas0625.github.io/tags">Tags</a>
+                
+                    <a class="main-nav-link" href="/lucas0625.github.io/about">About</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/lucas0625.github.io/css/images/avatar.png" />
+                            <i class="fas fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fas fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/lucas0625.github.io/',
+        CONTENT_URL: '/lucas0625.github.io/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/lucas0625.github.io/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/lucas0625.github.io/.">Home</a></td>
+                
+                    <td><a class="main-nav-link" href="/lucas0625.github.io/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/lucas0625.github.io/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/lucas0625.github.io/tags">Tags</a></td>
+                
+                    <td><a class="main-nav-link" href="/lucas0625.github.io/about">About</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile" class="">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/lucas0625.github.io/css/images/avatar.png" />
+            <h2 id="name">琛</h2>
+            <h3 id="title">学习记录</h3>
+            <span id="location"><i class="fas fa-map-marker-alt" style="padding-right: 5px"></i>Beijing, China</span>
+            <a id="follow" target="_blank" href="https://github.com/Lucas0625/">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                36
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                13
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/Lucas0625" target="_blank" title="github" class=tooltip>
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-network-train" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            神经网络训练技巧
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fas fa-calendar-alt"></i>
+        <a href="/lucas0625.github.io/2019/05/29/network-train/">
+            <time datetime="2019-05-29T06:59:17.774Z" itemprop="datePublished">2019-05-29</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fas fa-folder"></i>
+        <a class="article-category-link" href="/lucas0625.github.io/categories/深度学习/">深度学习</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/lucas0625.github.io/tags/PyTorch/">PyTorch</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#卷积神经网络训练技巧"><span class="toc-number">1.</span> <span class="toc-text">卷积神经网络训练技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据增强"><span class="toc-number">1.1.</span> <span class="toc-text">数据增强</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据读取"><span class="toc-number">1.2.</span> <span class="toc-text">数据读取</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dataset"><span class="toc-number">1.2.1.</span> <span class="toc-text">Dataset</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DataLoader"><span class="toc-number">1.2.2.</span> <span class="toc-text">DataLoader</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#学习率衰减"><span class="toc-number">1.3.</span> <span class="toc-text">学习率衰减</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#批标准化"><span class="toc-number">1.4.</span> <span class="toc-text">批标准化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正则化"><span class="toc-number">1.5.</span> <span class="toc-text">正则化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TensorBoard-可视化"><span class="toc-number">1.6.</span> <span class="toc-text">TensorBoard 可视化</span></a></li></ol></li></ol>
+                </div>
+            
+            <p>神经网络训练过程中的一些技巧</p>
+<a id="more"></a>
+<h1 id="卷积神经网络训练技巧"><a href="#卷积神经网络训练技巧" class="headerlink" title="卷积神经网络训练技巧"></a>卷积神经网络训练技巧</h1><h2 id="数据增强"><a href="#数据增强" class="headerlink" title="数据增强"></a>数据增强</h2><p>回译法</p>
+<h2 id="数据读取"><a href="#数据读取" class="headerlink" title="数据读取"></a>数据读取</h2><h3 id="Dataset"><a href="#Dataset" class="headerlink" title="Dataset"></a>Dataset</h3><p>灵活的数据读入，用到 <code>torch.utils.data.Dataset()</code>。可以先看看 <code>Dataset</code> 的<a href="http://pytorch.org/docs/0.3.0/data.html?highlight=dataset#torch.utils.data.Dataset" target="_blank" rel="noopener">文档</a></p>
+<p>如果我们希望定义自己的数据读入函数，我们只需要定义一个子类继承于 <code>Dataset</code>，然后重新定义 <code>__getitem__()</code> 和 <code>__len__()</code> 这两个函数就可以了，<code>__getitem__()</code> 表示按照下标取出其中一个数据，<code>__len__</code> 表示所有数据的总数/</p>
+<p>数据格式如下：<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-29-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-29%20%E4%B8%8A%E5%8D%8810.32.15.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> torch.utils.data <span class="keyword">import</span> Dataset</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义一个子类叫 custom_dataset，继承于 Dataset</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Custom_dataset</span><span class="params">(Dataset)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, txt_path, transform=None)</span>:</span></span><br><span class="line">        self.transform = transform <span class="comment"># 传入数据预处理</span></span><br><span class="line">        <span class="keyword">with</span> open(txt_path, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            lines = f.readlines()</span><br><span class="line">            </span><br><span class="line">        self.img_list = [i.split()[<span class="number">0</span>] <span class="keyword">for</span> i <span class="keyword">in</span> lines] <span class="comment"># 得到所有的图像名字</span></span><br><span class="line">        self.label_list = [i.split()[<span class="number">1</span>] <span class="keyword">for</span> i <span class="keyword">in</span> lines] <span class="comment"># 得到所有的label</span></span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span><span class="params">(self, idx)</span>:</span> <span class="comment"># 根据 idx 取出一个</span></span><br><span class="line">        img = self.img_list[idx]</span><br><span class="line">        label = self.label_list[idx]</span><br><span class="line">        <span class="keyword">if</span> self.transform <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">None</span>:</span><br><span class="line">            img = self.transform(img)</span><br><span class="line">        <span class="keyword">return</span> img, label</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__len__</span><span class="params">(self)</span>:</span> <span class="comment"># 总数据是多少</span></span><br><span class="line">        <span class="keyword">return</span> len(self.label_list)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 测试读取函数</span></span><br><span class="line">txt_dataset = Custom_dataset(<span class="string">'./train.txt'</span>) <span class="comment"># 读入 txt 文件</span></span><br><span class="line"><span class="comment"># 取得其中一个数据</span></span><br><span class="line">data, label = txt_dataset[<span class="number">0</span>]</span><br><span class="line">print(data)</span><br><span class="line">print(label)</span><br></pre></td></tr></table></figure>
+<pre><code>1009_2.png
+YOU
+</code></pre><p>通过上诉方式我们也能够非常方便的定义一个数据读入，同时也能够方便的定义数据预处理</p>
+<h3 id="DataLoader"><a href="#DataLoader" class="headerlink" title="DataLoader"></a>DataLoader</h3><p>实现了一个 batch 的处理数据，DataLoader 是一个多线程迭代器，能够帮助我们一个 batch 的读入模型，同时使用多线程速度更快。<br>DataLoader 的<a href="http://pytorch.org/docs/0.3.0/data.html?highlight=dataset#torch.utils.data.DataLoader" target="_blank" rel="noopener">文档</a></p>
+<p>DataLoader 中有几个使用最多的参数，第一个是 <code>dataset</code>，就是我们前面定义的数据读入，可以使用 ImageFolder，可以使用自己定义的数据读入子类，第二个是 <code>batch_size</code>，这就是一批多少个数据，第三个是 <code>shuffle</code>，表示是否打乱数据，第四个是 <code>num_workers</code>，表示使用几个线程，默认使用主线程，第五个是 <code>drop_last</code>，表示是否扔掉最后无法构成一个批次的数据。</p>
+<p>除了这些参数之外，还有一个参数叫 <code>collate_fn</code> , 能够方便的处理一个 batch 中的数据。这个是在 DataLoader 中已经有默认定义了，可以看<a href="https://github.com/pytorch/pytorch/blob/master/torch/utils/data/dataloader.py#L100" target="_blank" rel="noopener">源码</a><br>如果希望将 batch 输出的 label 补成相同的长度，短的 label 用 0 填充，这其实是在机器翻译中的一个需求，这个时候我们就需要使用 <code>collate_fn</code> 来自定义我们 batch 的处理方式，</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> torch.utils.data <span class="keyword">import</span> DataLoader</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">train_data1 = DataLoader(txt_dataset, batch_size=<span class="number">100</span>, shuffle=<span class="keyword">True</span>) <span class="comment"># 将 2 个数据作为一个batch</span></span><br><span class="line"><span class="keyword">for</span> im, label <span class="keyword">in</span> train_data1:</span><br><span class="line">    print(label)</span><br><span class="line">    <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<pre><code>(&apos;JOHN&apos;, &apos;2009&apos;, &apos;7&apos;, &apos;WRIGHT&apos;, &apos;NELSON&apos;, &apos;IS&apos;, &apos;HOUSE&apos;, &apos;TOM&apos;, &apos;8275&apos;, &apos;MAID&apos;, &apos;AH&apos;, &apos;RESIST&apos;, &apos;SALESDCMOBILEADSCOM&apos;, &apos;ONGC&apos;, &apos;AUR&apos;, &apos;BIG&apos;, &apos;THE&apos;, &apos;OF&apos;, &apos;YOU&apos;, &apos;UP&apos;, &apos;BUTTE&apos;, &apos;YOU&apos;, &apos;CROFT&apos;, &apos;SHIPPING&apos;, &apos;PINE&apos;, &apos;ENEMIES&apos;, &apos;816527&apos;, &apos;18&apos;, &apos;ASSOCIATE&apos;, &apos;DEPOSITPHOTOS&apos;, &apos;KANTOR&apos;, &apos;IS&apos;, &apos;2008&apos;, &apos;APPLE&apos;, &apos;GEBRUIK&apos;, &apos;SWAYAMVARA&apos;, &apos;IN&apos;, &apos;SHORT&apos;, &apos;COFFEE&apos;, &apos;2010&apos;, &apos;55&apos;, &apos;ROGEN&apos;, &apos;TOO&apos;, &apos;RENTON&apos;, &apos;SHORT&apos;, &apos;IS&apos;, &apos;FINAL&apos;, &apos;AWARD&apos;, &apos;AND&apos;, &apos;KURT&apos;, &apos;VS&apos;, &apos;HUDGENS&apos;, &apos;CROFT&apos;, &apos;DAY&apos;, &apos;22&apos;, &apos;SWAN&apos;, &apos;WE&apos;, &apos;SEPTEMBER&apos;, &apos;COM&apos;, &apos;YOUR&apos;, &apos;EN&apos;, &apos;STRATEGIC&apos;, &apos;TOTAL&apos;, &apos;SPOTLIGHT&apos;, &apos;GUILDHALL&apos;, &apos;PERFORMANCE&apos;, &apos;FREE&apos;, &apos;CARL&apos;, &apos;FAST&apos;, &apos;103&apos;, &apos;OPENING&apos;, &apos;BANKS&apos;, &apos;150&apos;, &apos;MEDIA&apos;, &apos;ZAPORIZHIA&apos;, &apos;AC&apos;, &apos;VAL&apos;, &apos;STATE&apos;, &apos;SHOAH&apos;, &apos;SRI&apos;, &apos;GREAT&apos;, &apos;CLEARANCE&apos;, &apos;ONE&apos;, &apos;THE&apos;, &apos;HOSTING&apos;, &apos;REWARDS&apos;, &apos;LIFE&apos;, &apos;SBI&apos;, &apos;SCALES&apos;, &apos;SPACE&apos;, &apos;YOU&apos;, &apos;THERE&apos;, &apos;THE&apos;, &apos;FOUND&apos;, &apos;70304&apos;, &apos;SO&apos;, &apos;HELT&apos;, &apos;7749&apos;, &apos;PRICES&apos;, &apos;UFO&apos;)
+</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">collate_fn</span><span class="params">(batch)</span>:</span></span><br><span class="line">    batch.sort(key=<span class="keyword">lambda</span> x: len(x[<span class="number">1</span>]), reverse=<span class="keyword">True</span>) <span class="comment"># 将数据集按照 label 的长度从大到小排序</span></span><br><span class="line">    img, label = zip(*batch) <span class="comment"># 将数据和 label 配对取出</span></span><br><span class="line">    pad_label = []</span><br><span class="line">    lens = []</span><br><span class="line">    max_len = len(label[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(label)):</span><br><span class="line">        temp_label = label[i]</span><br><span class="line">        temp_label += <span class="string">'0'</span> * (max_len - len(label[i]))</span><br><span class="line">        pad_label.append(temp_label)</span><br><span class="line">        lens.append(len(label[i]))</span><br><span class="line">    <span class="keyword">return</span> img, pad_label, lens <span class="comment"># 输出 label 的真实长度</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用自定义的 collate_fn</span></span><br><span class="line">train_data3 = DataLoader(txt_dataset, <span class="number">10</span>, <span class="keyword">True</span>, collate_fn=collate_fn)</span><br><span class="line">im, label, lens = next(iter(train_data3))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">im</span><br></pre></td></tr></table></figure>
+<pre><code>(&apos;2292_1.png&apos;,
+ &apos;857_23.png&apos;,
+ &apos;2433_6.png&apos;,
+ &apos;2539_1.png&apos;,
+ &apos;2314_9.png&apos;,
+ &apos;5142_4.png&apos;,
+ &apos;2497_6.png&apos;,
+ &apos;325_16.png&apos;,
+ &apos;2202_1.png&apos;,
+ &apos;940_1.png&apos;)
+</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">label</span><br></pre></td></tr></table></figure>
+<pre><code>[&apos;HAZELMERR&apos;,
+ &apos;PORTABLE0&apos;,
+ &apos;PRIVATE00&apos;,
+ &apos;827500000&apos;,
+ &apos;HERE00000&apos;,
+ &apos;BALE00000&apos;,
+ &apos;VIEW00000&apos;,
+ &apos;HOW000000&apos;,
+ &apos;FOR000000&apos;,
+ &apos;300000000&apos;]
+</code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">lens</span><br></pre></td></tr></table></figure>
+<pre><code>[9, 8, 7, 4, 4, 4, 4, 3, 3, 2]
+</code></pre><p>可以看到一个 batch 中所有的 label 都从长到短进行排列，同时短的 label 都被补长了，所以使用 collate_fn 能够非常方便的处理一个 batch 中的数据，一般情况下，没有特别的要求，使用 pytorch 中内置的 collate_fn 就可以满足要求了</p>
+<h2 id="学习率衰减"><a href="#学习率衰减" class="headerlink" title="学习率衰减"></a>学习率衰减</h2><p>在 pytorch 中学习率衰减非常方便，使用 <code>torch.optim.lr_scheduler</code>，更多的信息可以直接查看<a href="http://pytorch.org/docs/0.3.0/optim.html#how-to-adjust-learning-rate" target="_blank" rel="noopener">文档</a></p>
+<p>也可以用下面这种方式来做学习率衰减，更加直观</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch <span class="keyword">import</span> nn</span><br><span class="line"><span class="keyword">import</span> torch.nn.functional <span class="keyword">as</span> F</span><br><span class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Net</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self,)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">net = Net()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># optimizer = torch.optim.SGD(net,lr=0.01, weight_decay=1e-4)</span></span><br></pre></td></tr></table></figure>
+<p>可以通过 <code>optimizer.param_groups</code>来得到所有参数组和其对应的属性, 参数组是什么意思呢？就是我们可以将模型的参数分成几个组，每个组定义一个学习率，这里比较复杂，一般来讲如果不做特别修改，就只有一个参数组.<br>这个参数组是一个字典，里面有很多属性，比如学习率，权重衰减等等，我们可以访问以下</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># print('learning rate: &#123;&#125;'.format(optimizer.param_groups[0]['lr']))</span></span><br><span class="line"><span class="comment"># print('weight decay: &#123;&#125;'.format(optimizer.param_groups[0]['weight_decay']))</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># learning rate: 0.01</span></span><br><span class="line"><span class="comment"># weight decay: 0.0001</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 可以通过修改这个属性来改变我们训练过程中的学习率</span></span><br><span class="line"><span class="comment"># optimizer.param_groups[0]['lr'] = 1e-5</span></span><br><span class="line"><span class="comment"># 为了防止有多个参数组，我们可以使用一个循环</span></span><br><span class="line"><span class="comment"># for param_group in optimizer.param_groups:</span></span><br><span class="line">    <span class="comment"># param_group['lr'] = 1e-1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在任意位置改变学习率</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">set_learning_rate</span><span class="params">(optimizer, lr)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> param_group <span class="keyword">in</span> optimizer.param_groups:</span><br><span class="line">        param_group[<span class="string">'lr'</span>] = lr</span><br></pre></td></tr></table></figure>
+<h2 id="批标准化"><a href="#批标准化" class="headerlink" title="批标准化"></a>批标准化</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 实现一维的情况</span></span><br><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">simple_batch_norm_1d</span><span class="params">(x, gamma, beta)</span>:</span></span><br><span class="line">    eps = <span class="number">1e-5</span></span><br><span class="line">    x_mean = torch.mean(x, dim=<span class="number">0</span>, keepdim=<span class="keyword">True</span>) <span class="comment"># 保留纬度进行 broadcast</span></span><br><span class="line">    x_var = torch.mean((x - x_mean) ** <span class="number">2</span>, dim=<span class="number">0</span>, keepdim=<span class="keyword">True</span>)</span><br><span class="line">    x_hat = (x - x_mean) / torch.sqrt(x_var + eps)</span><br><span class="line">    <span class="keyword">return</span> gamma.view_as(x_mean) * x_hat + beta.view_as(x_mean)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 验证对于任何输入会不会被标准化</span></span><br><span class="line">x = torch.arange(<span class="number">15</span>, dtype=torch.float).view(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line">gamma = torch.ones(x.shape[<span class="number">1</span>])</span><br><span class="line">beta = torch.zeros(x.shape[<span class="number">1</span>])</span><br><span class="line">print(<span class="string">'before bn:'</span>)</span><br><span class="line">print(x)</span><br><span class="line">y = simple_batch_norm_1d(x, gamma, beta)</span><br><span class="line">print(<span class="string">'after bn:'</span>)</span><br><span class="line">print(y)</span><br></pre></td></tr></table></figure>
+<pre><code>before bn:
+tensor([[ 0.,  1.,  2.],
+        [ 3.,  4.,  5.],
+        [ 6.,  7.,  8.],
+        [ 9., 10., 11.],
+        [12., 13., 14.]])
+after bn:
+tensor([[-1.4142, -1.4142, -1.4142],
+        [-0.7071, -0.7071, -0.7071],
+        [ 0.0000,  0.0000,  0.0000],
+        [ 0.7071,  0.7071,  0.7071],
+        [ 1.4142,  1.4142,  1.4142]])
+</code></pre><p>可以看到这里一共是 5 个数据点，三个特征，每一列表示一个特征的不同数据点，使用批标准化之后，每一列都变成了标准的正态分布</p>
+<p>这个时候会出现一个问题，就是测试的时候该使用批标准化吗？</p>
+<p>答案是肯定的，因为训练的时候使用了，而测试的时候不使用肯定会导致结果出现偏差，但是测试的时候如果只有一个数据集，那么均值不就是这个值，方差为 0 吗？这显然是随机的，所以测试的时候不能用测试的数据集去算均值和方差，而是用训练的时候算出的移动平均均值和方差去代替</p>
+<p>下面我们实现以下能够区分训练状态和测试状态的批标准化方法</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">batch_norm_1d</span><span class="params">(x, gamma, beta, is_training, moving_mean, moving_var, moving_momentum=<span class="number">0.1</span>)</span>:</span></span><br><span class="line">    eps = <span class="number">1e-5</span></span><br><span class="line">    x_mean = torch.mean(x, dim=<span class="number">0</span>, keepdim=<span class="keyword">True</span>) <span class="comment"># 保留维度进行 broadcast</span></span><br><span class="line">    x_var = torch.mean((x - x_mean) ** <span class="number">2</span>, dim=<span class="number">0</span>, keepdim=<span class="keyword">True</span>)</span><br><span class="line">    <span class="keyword">if</span> is_training:</span><br><span class="line">        x_hat = (x - x_mean) / torch.sqrt(x_var + eps)</span><br><span class="line">        moving_mean[:] = moving_momentum * moving_mean + (<span class="number">1.</span> - moving_momentum) * x_mean</span><br><span class="line">        moving_var[:] = moving_momentum * moving_var + (<span class="number">1.</span> - moving_momentum) * x_var</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        x_hat = (x - moving_mean) / torch.sqrt(moving_var + eps)</span><br><span class="line">    <span class="keyword">return</span> gamma.view_as(x_mean) * x_hat + beta.view_as(x_mean)</span><br></pre></td></tr></table></figure>
+<p>从上面可以看到，我们自己实现了 2 维情况的批标准化，对应于卷积的 4 维情况的标准化是类似的，只需要沿着通道的维度进行均值和方差的计算，但是我们自己实现批标准化是很累的，pytorch 当然也为我们内置了批标准化的函数，一维和二维分别是 <code>torch.nn.BatchNorm1d()</code> 和 <code>torch.nn.BatchNorm2d()</code>，不同于我们的实现，pytorch 不仅将 $\gamma$ 和 $\beta$ 作为训练的参数，也将 <code>moving_mean</code> 和 <code>moving_var</code> 也作为参数进行训练</p>
+<h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><p>使用正则化之后，更新参数变为：<br>$$p_j \rightarrow p_j - \eta (\frac{\partial loss}{\partial p_j} + 2 \lambda p_j) = p_j - \eta \frac{\partial loss}{\partial p_j} - 2 \eta \lambda p_j$$<br>如果想在随机梯度下降法中使用正则项，或者说权重衰减，<code>torch.optim.SGD(net.parameters(), lr=0.1, weight_decay=1e-4)</code> 就可以了，这个 <code>weight_decay</code> 系数就是上面公式中的 $\lambda$，非常方便</p>
+<h2 id="TensorBoard-可视化"><a href="#TensorBoard-可视化" class="headerlink" title="TensorBoard 可视化"></a>TensorBoard 可视化</h2><p>tensorboard 是 tensorflow 中非常好用的可视化工具，使用这个工具<a href="https://github.com/lanpa/tensorboard-pytorch" target="_blank" rel="noopener">github</a> 可以在 pytorch 中实现可视化.</p>
+<p>需要安装以下模块</p>
+<p><code>pip install tensorflow</code></p>
+<p><code>pip install tensorboradX</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> tensorboardX <span class="keyword">import</span> SummaryWriter</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">writer = SummaryWriter()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># ================ ֵ使用 tensorboard =============== </span></span><br><span class="line"><span class="comment"># writer.add_scalars('Loss', &#123;'train': train_loss / len(train_data), 'valid': valid_loss / len(valid_data)&#125;, epoch) </span></span><br><span class="line"><span class="comment"># writer.add_scalars('Acc', &#123;'train': train_acc / len(train_data), 'valid': valid_acc / len(valid_data)&#125;, epoch) </span></span><br><span class="line"><span class="comment"># =================================================</span></span><br></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://lucas0625.github.io/blog/2019/05/29/network-train/" data-id="cjw8zkfkc00370t2u9hfieokb" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fab fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fab fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fab fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fab fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/lucas0625.github.io/2019/05/28/classic-DenseNet/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">经典卷积神经网络-DenseNet</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/lucas0625.github.io/2019/05/29/network-train/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/lucas0625.github.io/categories/深度学习/">深度学习</a></p>
+                            <p class="item-title"><a href="/lucas0625.github.io/2019/05/29/network-train/" class="title">神经网络训练技巧</a></p>
+                            <p class="item-date"><time datetime="2019-05-29T06:59:17.774Z" itemprop="datePublished">2019-05-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/lucas0625.github.io/2019/05/28/classic-DenseNet/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/lucas0625.github.io/categories/深度学习/">深度学习</a></p>
+                            <p class="item-title"><a href="/lucas0625.github.io/2019/05/28/classic-DenseNet/" class="title">经典卷积神经网络-DenseNet</a></p>
+                            <p class="item-date"><time datetime="2019-05-28T07:16:17.093Z" itemprop="datePublished">2019-05-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/lucas0625.github.io/2019/05/27/classic-ResNet/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/lucas0625.github.io/categories/深度学习/">深度学习</a></p>
+                            <p class="item-title"><a href="/lucas0625.github.io/2019/05/27/classic-ResNet/" class="title">经典卷积神经网络-ResNet</a></p>
+                            <p class="item-date"><time datetime="2019-05-27T08:23:35.439Z" itemprop="datePublished">2019-05-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/lucas0625.github.io/2019/05/24/classic-GoogleNet/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/lucas0625.github.io/categories/深度学习/">深度学习</a></p>
+                            <p class="item-title"><a href="/lucas0625.github.io/2019/05/24/classic-GoogleNet/" class="title">经典卷积神经网络-GoogleNet</a></p>
+                            <p class="item-date"><time datetime="2019-05-24T07:21:10.833Z" itemprop="datePublished">2019-05-24</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/lucas0625.github.io/2019/05/21/classic-VGGNet/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/lucas0625.github.io/categories/深度学习/">深度学习</a></p>
+                            <p class="item-title"><a href="/lucas0625.github.io/2019/05/21/classic-VGGNet/" class="title">经典卷积神经网络-VGGNet</a></p>
+                            <p class="item-date"><time datetime="2019-05-21T08:12:43.468Z" itemprop="datePublished">2019-05-21</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/其他/">其他</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/工具/">工具</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/求职面试/">求职面试</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/深度学习/">深度学习</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/爬虫/">爬虫</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/算法/">算法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/编程/">编程</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/自然语言处理/">自然语言处理</a><span class="category-list-count">10</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2019/05/">五月 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2019/04/">四月 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2019/02/">二月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2018/10/">十月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2018/09/">九月 2018</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/PyTorch/">PyTorch</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/Pytorch/">Pytorch</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/es/">es</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/re/">re</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/其他/">其他</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/基础/">基础</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/基础概念/">基础概念</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/基础知识/">基础知识</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/技巧/">技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/算法/">算法</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/经验/">经验</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/面试/">面试</a><span class="tag-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/lucas0625.github.io/tags/Git/" style="font-size: 10px;">Git</a> <a href="/lucas0625.github.io/tags/PyTorch/" style="font-size: 18px;">PyTorch</a> <a href="/lucas0625.github.io/tags/Pytorch/" style="font-size: 14px;">Pytorch</a> <a href="/lucas0625.github.io/tags/es/" style="font-size: 10px;">es</a> <a href="/lucas0625.github.io/tags/re/" style="font-size: 10px;">re</a> <a href="/lucas0625.github.io/tags/其他/" style="font-size: 10px;">其他</a> <a href="/lucas0625.github.io/tags/基础/" style="font-size: 16px;">基础</a> <a href="/lucas0625.github.io/tags/基础概念/" style="font-size: 10px;">基础概念</a> <a href="/lucas0625.github.io/tags/基础知识/" style="font-size: 10px;">基础知识</a> <a href="/lucas0625.github.io/tags/技巧/" style="font-size: 10px;">技巧</a> <a href="/lucas0625.github.io/tags/算法/" style="font-size: 20px;">算法</a> <a href="/lucas0625.github.io/tags/经验/" style="font-size: 10px;">经验</a> <a href="/lucas0625.github.io/tags/面试/" style="font-size: 12px;">面试</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fas fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2019 琛<br>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
+        </div>
+    </div>
+</footer>
+        
+
+
+    
+        <script src="/lucas0625.github.io/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/lucas0625.github.io/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/lucas0625.github.io/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/lucas0625.github.io/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/lucas0625.github.io/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/lucas0625.github.io/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/lucas0625.github.io/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/lucas0625.github.io/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/lucas0625.github.io/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/lucas0625.github.io/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/lucas0625.github.io/js/main.js"></script>
+
+    </div>
+</body>
+</html>

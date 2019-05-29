@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Mr.wang">
 <meta property="og:description" content="记录自己常用的一些代码技巧">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-21T02:39:16.124Z">
+<meta property="og:updated_time" content="2019-05-29T07:45:24.159Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python 常用技巧">
 <meta name="twitter:description" content="记录自己常用的一些代码技巧">
@@ -159,7 +159,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                34
+                36
                 <span>文章</span>
             </div>
             <div class="article-info-block">
@@ -232,7 +232,7 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">文章目录</strong>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#格式化显示字符串"><span class="toc-number">1.</span> <span class="toc-text">格式化显示字符串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#and-or-的特殊用法"><span class="toc-number">2.</span> <span class="toc-text">and, or 的特殊用法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#删除特殊字符"><span class="toc-number">3.</span> <span class="toc-text">删除特殊字符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将列表每个元素作为参数传入函数"><span class="toc-number">4.</span> <span class="toc-text">将列表每个元素作为参数传入函数</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#格式化显示字符串"><span class="toc-number">1.</span> <span class="toc-text">格式化显示字符串</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#and-or-的特殊用法"><span class="toc-number">2.</span> <span class="toc-text">and, or 的特殊用法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#删除特殊字符"><span class="toc-number">3.</span> <span class="toc-text">删除特殊字符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#将列表每个元素作为参数传入函数"><span class="toc-number">4.</span> <span class="toc-text">将列表每个元素作为参数传入函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#以字符分割字符串，长度不超过n的数字作为一个字符"><span class="toc-number">5.</span> <span class="toc-text">以字符分割字符串，长度不超过n的数字作为一个字符</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#判断奇偶"><span class="toc-number">6.</span> <span class="toc-text">判断奇偶</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#不使用第三个变量交换两个数"><span class="toc-number">7.</span> <span class="toc-text">不使用第三个变量交换两个数</span></a></li></ol>
                 </div>
             
             <p>记录自己常用的一些代码技巧</p>
@@ -244,6 +244,10 @@
 </ol>
 <h1 id="删除特殊字符"><a href="#删除特殊字符" class="headerlink" title="删除特殊字符"></a>删除特殊字符<200b></200b></h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">str.replace(<span class="string">u'\u200b'</span>, <span class="string">''</span>)</span><br></pre></td></tr></table></figure>
 <h1 id="将列表每个元素作为参数传入函数"><a href="#将列表每个元素作为参数传入函数" class="headerlink" title="将列表每个元素作为参数传入函数"></a>将列表每个元素作为参数传入函数</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="comment"># 将列表a作为整体传入函数func</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(a)</span>:</span></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将列表每一个元素作为参数传入函数func</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(*a)</span>:</span></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+<h1 id="以字符分割字符串，长度不超过n的数字作为一个字符"><a href="#以字符分割字符串，长度不超过n的数字作为一个字符" class="headerlink" title="以字符分割字符串，长度不超过n的数字作为一个字符"></a>以字符分割字符串，长度不超过n的数字作为一个字符</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">splice_string</span><span class="params">(string: str, nums: int = <span class="number">3</span>)</span> -&gt; str:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    按字符分割字符串，不超过 nums 个的数字不切分</span></span><br><span class="line"><span class="string">    :param string:</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    pattern = re.compile(<span class="string">'((?&lt;!\d)(\d&#123;1,%d&#125;)(?!(\d+))|(\S))'</span> % (nums))</span><br><span class="line">    result = re.sub(pattern, <span class="string">r'\1\t'</span>, string)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">' '</span>.join(result.strip().split())</span><br><span class="line"></span><br><span class="line">res = splice_string(<span class="string">'人一天要睡20-24小时，一天24小时有1小时可以娱乐，一年365天这样做，30000块钱就到手了'</span>)</span><br><span class="line">print(res)</span><br></pre></td></tr></table></figure>
+<pre><code>&apos;人 一 天 要 睡 20 - 24 小 时 ， 一 天 24 小 时 有 1 小 时 可 以 娱 乐 ， 一 年 365 天 这 样 做 ， 3 0 0 0 0 块 钱 就 到 手 了&apos;
+</code></pre><h1 id="判断奇偶"><a href="#判断奇偶" class="headerlink" title="判断奇偶"></a>判断奇偶</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 方法一</span></span><br><span class="line"><span class="keyword">if</span> nums % <span class="number">2</span> == <span class="number">1</span>:</span><br><span class="line">    <span class="comment"># 奇数</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="comment"># 偶数</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法二</span></span><br><span class="line"><span class="keyword">if</span> nums &amp; <span class="number">1</span> == <span class="number">1</span>:</span><br><span class="line">    <span class="comment"># 奇数</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="comment"># 偶数</span></span><br></pre></td></tr></table></figure>
+<h1 id="不使用第三个变量交换两个数"><a href="#不使用第三个变量交换两个数" class="headerlink" title="不使用第三个变量交换两个数"></a>不使用第三个变量交换两个数</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 方法一</span></span><br><span class="line"><span class="comment"># n ^ n = 0, n ^ 0 = n</span></span><br><span class="line">x = x ^ y</span><br><span class="line">y = x ^ y</span><br><span class="line">x = x ^ y</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法二</span></span><br><span class="line"><span class="comment"># 采用四则运算</span></span><br><span class="line">a = a + b</span><br><span class="line">b = a - b</span><br><span class="line">a = a - b</span><br></pre></td></tr></table></figure>
 
         
         </div>
@@ -254,7 +258,7 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/blog/2018/09/16/json/" data-id="cjw63woj9001vlr2ud0zg7di4" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/blog/2018/09/16/json/" data-id="cjw8zkfil001y0t2uibubnvyz" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -368,6 +372,44 @@
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/lucas0625.github.io/2019/05/29/network-train/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/lucas0625.github.io/categories/深度学习/">深度学习</a></p>
+                            <p class="item-title"><a href="/lucas0625.github.io/2019/05/29/network-train/" class="title">神经网络训练技巧</a></p>
+                            <p class="item-date"><time datetime="2019-05-29T06:59:17.774Z" itemprop="datePublished">2019-05-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/lucas0625.github.io/2019/05/28/classic-DenseNet/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/lucas0625.github.io/categories/深度学习/">深度学习</a></p>
+                            <p class="item-title"><a href="/lucas0625.github.io/2019/05/28/classic-DenseNet/" class="title">经典卷积神经网络-DenseNet</a></p>
+                            <p class="item-date"><time datetime="2019-05-28T07:16:17.093Z" itemprop="datePublished">2019-05-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/lucas0625.github.io/2019/05/27/classic-ResNet/" class="thumbnail">
     
     
@@ -422,44 +464,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/lucas0625.github.io/2019/05/20/classic-AlexNet/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/lucas0625.github.io/categories/深度学习/">深度学习</a></p>
-                            <p class="item-title"><a href="/lucas0625.github.io/2019/05/20/classic-AlexNet/" class="title">经典卷积神经网络-AlexNet</a></p>
-                            <p class="item-date"><time datetime="2019-05-20T08:02:07.825Z" itemprop="datePublished">2019-05-20</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/lucas0625.github.io/2019/05/17/kinds/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/lucas0625.github.io/categories/其他/">其他</a></p>
-                            <p class="item-title"><a href="/lucas0625.github.io/2019/05/17/kinds/" class="title">百宝箱</a></p>
-                            <p class="item-date"><time datetime="2019-05-17T10:55:02.081Z" itemprop="datePublished">2019-05-17</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -469,7 +473,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/其他/">其他</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/工具/">工具</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/求职面试/">求职面试</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/深度学习/">深度学习</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/爬虫/">爬虫</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/算法/">算法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/编程/">编程</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/自然语言处理/">自然语言处理</a><span class="category-list-count">10</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/其他/">其他</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/工具/">工具</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/求职面试/">求职面试</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/深度学习/">深度学习</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/爬虫/">爬虫</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/算法/">算法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/编程/">编程</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/自然语言处理/">自然语言处理</a><span class="category-list-count">10</span></li></ul>
         </div>
     </div>
 
@@ -478,7 +482,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2019/05/">五月 2019</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2019/04/">四月 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2019/02/">二月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2018/10/">十月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2018/09/">九月 2018</a><span class="archive-list-count">2</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2019/05/">五月 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2019/04/">四月 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2019/02/">二月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2018/10/">十月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2018/09/">九月 2018</a><span class="archive-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -487,7 +491,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/PyTorch/">PyTorch</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/Pytorch/">Pytorch</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/es/">es</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/re/">re</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/其他/">其他</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/基础/">基础</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/基础概念/">基础概念</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/基础知识/">基础知识</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/技巧/">技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/算法/">算法</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/经验/">经验</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/面试/">面试</a><span class="tag-list-count">2</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/PyTorch/">PyTorch</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/Pytorch/">Pytorch</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/es/">es</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/re/">re</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/其他/">其他</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/基础/">基础</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/基础概念/">基础概念</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/基础知识/">基础知识</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/技巧/">技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/算法/">算法</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/经验/">经验</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/面试/">面试</a><span class="tag-list-count">2</span></li></ul>
         </div>
     </div>
 
