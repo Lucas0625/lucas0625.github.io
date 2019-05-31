@@ -3,14 +3,14 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     
-    <title>循环神经网络基础概念 | Mr.wang</title>
+    <title>循环神经网络基础概念 | Mr.chen</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="循环神经网络概念">
 <meta name="keywords" content="PyTorch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="循环神经网络基础概念">
 <meta property="og:url" content="http://lucas0625.github.io/blog/2019/05/31/RNN-base/index.html">
-<meta property="og:site_name" content="Mr.wang">
+<meta property="og:site_name" content="Mr.chen">
 <meta property="og:description" content="循环神经网络概念">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%882.49.37.png">
@@ -23,7 +23,7 @@
 <meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%883.21.56.png">
 <meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%883.23.33.png">
 <meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%883.28.03.png">
-<meta property="og:updated_time" content="2019-05-31T08:06:41.079Z">
+<meta property="og:updated_time" content="2019-05-31T08:15:19.126Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="循环神经网络基础概念">
 <meta name="twitter:description" content="循环神经网络概念">
@@ -64,7 +64,7 @@
         <div class="outer">
             <a href="/lucas0625.github.io/" id="logo">
                 <i class="logo"></i>
-                <span class="site-title">Mr.wang</span>
+                <span class="site-title">Mr.chen</span>
             </a>
             <nav id="main-nav">
                 
@@ -257,7 +257,7 @@
 <script type="math/tex; mode=display">f_{t}=\sigma\left(W_{f} \cdot\left[h_{t-1}, x_{t}\right]+b_{f}\right)</script><p>首先结合$t-1$时刻的网络输出和$t$时刻的网络输入，通过线性变换和 <strong>sigmoid</strong> 函数得到一个 0-1 之间的值$f_t$，这个值称为衰减系数，表示保留过去信息的多少。<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%883.17.57.png" alt=""></p>
 <script type="math/tex; mode=display">\begin{aligned} i_{t} &=\sigma\left(W_{i} \cdot\left[h_{t-1}, x_{t}\right]+b_{i}\right) \\ \tilde{C}_{t} &=\tanh \left(W_{C} \cdot\left[h_{t-1}, x_{t}\right]+b_{C}\right) \end{aligned}</script><p>然后结合$t-1$时刻的输出和$t$时刻的输入分别计算出另外一个系数$i<em>t$和新接受的信息$\tilde{C}</em>{t}$,其中$i_t$表示保留接受的新信息的多少。<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%883.21.56.png" alt=""></p>
 <script type="math/tex; mode=display">C_{t}=f_{t} * C_{t-1}+i_{t} * \tilde{C}_{t}</script><p>然后将前面得到的两个衰减系数分别乘上过去的信息和现在的新信息来确定$t$时刻真正的记忆状态$C_t$。<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%883.23.33.png" alt=""></p>
-<script type="math/tex; mode=display">\begin{array}{l}{o_{t}=\sigma\left(W_{o}\left[h_{t-1}</script><script type="math/tex; mode=display">x_{t}\right]+b_{o}\right)} \\ {h_{t}=o_{t} * \tanh \left(C_{t}\right)}\end{array}</script><p>最后使用$t-1$时刻的输出和$t$时刻的输入计算一个系数，这个系数表示$t$时刻到底输出多少的记忆状态$C_t$得到真正的模型输出$h_t$</p>
+<script type="math/tex; mode=display">\begin{aligned} o_{t} &=\sigma\left(W_{o}\left[h_{t-1}, x_{t}\right]+b_{o}\right) \\ h_{t} &=o_{t} * \tanh \left(C_{t}\right) \end{aligned}</script><p>最后使用$t-1$时刻的输出和$t$时刻的输入计算一个系数，这个系数表示$t$时刻到底输出多少的记忆状态$C_t$得到真正的模型输出$h_t$</p>
 <h1 id="GRU"><a href="#GRU" class="headerlink" title="GRU"></a>GRU</h1><p>GRU 和 LSTM 最大的不同是， GRU 将遗忘门和输入门合并成了一个更新门，同时网络不再额外给出记忆状态$C_t$，而是将输出结果作为记忆状态不断往后传。<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%883.28.03.png" alt=""></p>
 <script type="math/tex; mode=display">\begin{aligned} z_{t} &=\sigma\left(W_{z} \cdot\left[h_{t-1}, x_{t}\right]\right) \\ r_{t} &=\sigma\left(W_{r} \cdot\left[h_{t-1}, x_{t}\right]\right) \\ \tilde{h}_{t} &=\tanh \left(W \cdot\left[r_{t} * h_{t-1}, x_{t}\right]\right) \\ h_{t} &=\left(1-z_{t}\right) * h_{t-1}+z_{t} * \tilde{h}_{t} \end{aligned}</script>
         
@@ -269,7 +269,7 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/blog/2019/05/31/RNN-base/" data-id="cjwbt0n59000uxn2ujwnic2xg" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/blog/2019/05/31/RNN-base/" data-id="cjwbtgeat000m052uxaafgwkp" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -553,6 +553,11 @@
     
         <script src="/lucas0625.github.io/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
     
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
     
 
 
