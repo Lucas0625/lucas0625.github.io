@@ -254,31 +254,31 @@ YOU
 <p>除了这些参数之外，还有一个参数叫 <code>collate_fn</code> , 能够方便的处理一个 batch 中的数据。这个是在 DataLoader 中已经有默认定义了，可以看<a href="https://github.com/pytorch/pytorch/blob/master/torch/utils/data/dataloader.py#L100" target="_blank" rel="noopener">源码</a><br>如果希望将 batch 输出的 label 补成相同的长度，短的 label 用 0 填充，这其实是在机器翻译中的一个需求，这个时候我们就需要使用 <code>collate_fn</code> 来自定义我们 batch 的处理方式，</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> torch.utils.data <span class="keyword">import</span> DataLoader</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">train_data1 = DataLoader(txt_dataset, batch_size=<span class="number">100</span>, shuffle=<span class="keyword">True</span>) <span class="comment"># 将 2 个数据作为一个batch</span></span><br><span class="line"><span class="keyword">for</span> im, label <span class="keyword">in</span> train_data1:</span><br><span class="line">    print(label)</span><br><span class="line">    <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
-<pre><code>(&apos;JOHN&apos;, &apos;2009&apos;, &apos;7&apos;, &apos;WRIGHT&apos;, &apos;NELSON&apos;, &apos;IS&apos;, &apos;HOUSE&apos;, &apos;TOM&apos;, &apos;8275&apos;, &apos;MAID&apos;, &apos;AH&apos;, &apos;RESIST&apos;, &apos;SALESDCMOBILEADSCOM&apos;, &apos;ONGC&apos;, &apos;AUR&apos;, &apos;BIG&apos;, &apos;THE&apos;, &apos;OF&apos;, &apos;YOU&apos;, &apos;UP&apos;, &apos;BUTTE&apos;, &apos;YOU&apos;, &apos;CROFT&apos;, &apos;SHIPPING&apos;, &apos;PINE&apos;, &apos;ENEMIES&apos;, &apos;816527&apos;, &apos;18&apos;, &apos;ASSOCIATE&apos;, &apos;DEPOSITPHOTOS&apos;, &apos;KANTOR&apos;, &apos;IS&apos;, &apos;2008&apos;, &apos;APPLE&apos;, &apos;GEBRUIK&apos;, &apos;SWAYAMVARA&apos;, &apos;IN&apos;, &apos;SHORT&apos;, &apos;COFFEE&apos;, &apos;2010&apos;, &apos;55&apos;, &apos;ROGEN&apos;, &apos;TOO&apos;, &apos;RENTON&apos;, &apos;SHORT&apos;, &apos;IS&apos;, &apos;FINAL&apos;, &apos;AWARD&apos;, &apos;AND&apos;, &apos;KURT&apos;, &apos;VS&apos;, &apos;HUDGENS&apos;, &apos;CROFT&apos;, &apos;DAY&apos;, &apos;22&apos;, &apos;SWAN&apos;, &apos;WE&apos;, &apos;SEPTEMBER&apos;, &apos;COM&apos;, &apos;YOUR&apos;, &apos;EN&apos;, &apos;STRATEGIC&apos;, &apos;TOTAL&apos;, &apos;SPOTLIGHT&apos;, &apos;GUILDHALL&apos;, &apos;PERFORMANCE&apos;, &apos;FREE&apos;, &apos;CARL&apos;, &apos;FAST&apos;, &apos;103&apos;, &apos;OPENING&apos;, &apos;BANKS&apos;, &apos;150&apos;, &apos;MEDIA&apos;, &apos;ZAPORIZHIA&apos;, &apos;AC&apos;, &apos;VAL&apos;, &apos;STATE&apos;, &apos;SHOAH&apos;, &apos;SRI&apos;, &apos;GREAT&apos;, &apos;CLEARANCE&apos;, &apos;ONE&apos;, &apos;THE&apos;, &apos;HOSTING&apos;, &apos;REWARDS&apos;, &apos;LIFE&apos;, &apos;SBI&apos;, &apos;SCALES&apos;, &apos;SPACE&apos;, &apos;YOU&apos;, &apos;THERE&apos;, &apos;THE&apos;, &apos;FOUND&apos;, &apos;70304&apos;, &apos;SO&apos;, &apos;HELT&apos;, &apos;7749&apos;, &apos;PRICES&apos;, &apos;UFO&apos;)
+<pre><code>(&#39;JOHN&#39;, &#39;2009&#39;, &#39;7&#39;, &#39;WRIGHT&#39;, &#39;NELSON&#39;, &#39;IS&#39;, &#39;HOUSE&#39;, &#39;TOM&#39;, &#39;8275&#39;, &#39;MAID&#39;, &#39;AH&#39;, &#39;RESIST&#39;, &#39;SALESDCMOBILEADSCOM&#39;, &#39;ONGC&#39;, &#39;AUR&#39;, &#39;BIG&#39;, &#39;THE&#39;, &#39;OF&#39;, &#39;YOU&#39;, &#39;UP&#39;, &#39;BUTTE&#39;, &#39;YOU&#39;, &#39;CROFT&#39;, &#39;SHIPPING&#39;, &#39;PINE&#39;, &#39;ENEMIES&#39;, &#39;816527&#39;, &#39;18&#39;, &#39;ASSOCIATE&#39;, &#39;DEPOSITPHOTOS&#39;, &#39;KANTOR&#39;, &#39;IS&#39;, &#39;2008&#39;, &#39;APPLE&#39;, &#39;GEBRUIK&#39;, &#39;SWAYAMVARA&#39;, &#39;IN&#39;, &#39;SHORT&#39;, &#39;COFFEE&#39;, &#39;2010&#39;, &#39;55&#39;, &#39;ROGEN&#39;, &#39;TOO&#39;, &#39;RENTON&#39;, &#39;SHORT&#39;, &#39;IS&#39;, &#39;FINAL&#39;, &#39;AWARD&#39;, &#39;AND&#39;, &#39;KURT&#39;, &#39;VS&#39;, &#39;HUDGENS&#39;, &#39;CROFT&#39;, &#39;DAY&#39;, &#39;22&#39;, &#39;SWAN&#39;, &#39;WE&#39;, &#39;SEPTEMBER&#39;, &#39;COM&#39;, &#39;YOUR&#39;, &#39;EN&#39;, &#39;STRATEGIC&#39;, &#39;TOTAL&#39;, &#39;SPOTLIGHT&#39;, &#39;GUILDHALL&#39;, &#39;PERFORMANCE&#39;, &#39;FREE&#39;, &#39;CARL&#39;, &#39;FAST&#39;, &#39;103&#39;, &#39;OPENING&#39;, &#39;BANKS&#39;, &#39;150&#39;, &#39;MEDIA&#39;, &#39;ZAPORIZHIA&#39;, &#39;AC&#39;, &#39;VAL&#39;, &#39;STATE&#39;, &#39;SHOAH&#39;, &#39;SRI&#39;, &#39;GREAT&#39;, &#39;CLEARANCE&#39;, &#39;ONE&#39;, &#39;THE&#39;, &#39;HOSTING&#39;, &#39;REWARDS&#39;, &#39;LIFE&#39;, &#39;SBI&#39;, &#39;SCALES&#39;, &#39;SPACE&#39;, &#39;YOU&#39;, &#39;THERE&#39;, &#39;THE&#39;, &#39;FOUND&#39;, &#39;70304&#39;, &#39;SO&#39;, &#39;HELT&#39;, &#39;7749&#39;, &#39;PRICES&#39;, &#39;UFO&#39;)
 </code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">collate_fn</span><span class="params">(batch)</span>:</span></span><br><span class="line">    batch.sort(key=<span class="keyword">lambda</span> x: len(x[<span class="number">1</span>]), reverse=<span class="keyword">True</span>) <span class="comment"># 将数据集按照 label 的长度从大到小排序</span></span><br><span class="line">    img, label = zip(*batch) <span class="comment"># 将数据和 label 配对取出</span></span><br><span class="line">    pad_label = []</span><br><span class="line">    lens = []</span><br><span class="line">    max_len = len(label[<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(label)):</span><br><span class="line">        temp_label = label[i]</span><br><span class="line">        temp_label += <span class="string">'0'</span> * (max_len - len(label[i]))</span><br><span class="line">        pad_label.append(temp_label)</span><br><span class="line">        lens.append(len(label[i]))</span><br><span class="line">    <span class="keyword">return</span> img, pad_label, lens <span class="comment"># 输出 label 的真实长度</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用自定义的 collate_fn</span></span><br><span class="line">train_data3 = DataLoader(txt_dataset, <span class="number">10</span>, <span class="keyword">True</span>, collate_fn=collate_fn)</span><br><span class="line">im, label, lens = next(iter(train_data3))</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">im</span><br></pre></td></tr></table></figure>
-<pre><code>(&apos;2292_1.png&apos;,
- &apos;857_23.png&apos;,
- &apos;2433_6.png&apos;,
- &apos;2539_1.png&apos;,
- &apos;2314_9.png&apos;,
- &apos;5142_4.png&apos;,
- &apos;2497_6.png&apos;,
- &apos;325_16.png&apos;,
- &apos;2202_1.png&apos;,
- &apos;940_1.png&apos;)
+<pre><code>(&#39;2292_1.png&#39;,
+ &#39;857_23.png&#39;,
+ &#39;2433_6.png&#39;,
+ &#39;2539_1.png&#39;,
+ &#39;2314_9.png&#39;,
+ &#39;5142_4.png&#39;,
+ &#39;2497_6.png&#39;,
+ &#39;325_16.png&#39;,
+ &#39;2202_1.png&#39;,
+ &#39;940_1.png&#39;)
 </code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">label</span><br></pre></td></tr></table></figure>
-<pre><code>[&apos;HAZELMERR&apos;,
- &apos;PORTABLE0&apos;,
- &apos;PRIVATE00&apos;,
- &apos;827500000&apos;,
- &apos;HERE00000&apos;,
- &apos;BALE00000&apos;,
- &apos;VIEW00000&apos;,
- &apos;HOW000000&apos;,
- &apos;FOR000000&apos;,
- &apos;300000000&apos;]
+<pre><code>[&#39;HAZELMERR&#39;,
+ &#39;PORTABLE0&#39;,
+ &#39;PRIVATE00&#39;,
+ &#39;827500000&#39;,
+ &#39;HERE00000&#39;,
+ &#39;BALE00000&#39;,
+ &#39;VIEW00000&#39;,
+ &#39;HOW000000&#39;,
+ &#39;FOR000000&#39;,
+ &#39;300000000&#39;]
 </code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">lens</span><br></pre></td></tr></table></figure>
 <pre><code>[9, 8, 7, 4, 4, 4, 4, 3, 3, 2]
 </code></pre><p>可以看到一个 batch 中所有的 label 都从长到短进行排列，同时短的 label 都被补长了，所以使用 collate_fn 能够非常方便的处理一个 batch 中的数据，一般情况下，没有特别的要求，使用 pytorch 中内置的 collate_fn 就可以满足要求了</p>
@@ -313,7 +313,8 @@ tensor([[-1.4142, -1.4142, -1.4142],
 <p>下面我们实现以下能够区分训练状态和测试状态的批标准化方法</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">batch_norm_1d</span><span class="params">(x, gamma, beta, is_training, moving_mean, moving_var, moving_momentum=<span class="number">0.1</span>)</span>:</span></span><br><span class="line">    eps = <span class="number">1e-5</span></span><br><span class="line">    x_mean = torch.mean(x, dim=<span class="number">0</span>, keepdim=<span class="keyword">True</span>) <span class="comment"># 保留维度进行 broadcast</span></span><br><span class="line">    x_var = torch.mean((x - x_mean) ** <span class="number">2</span>, dim=<span class="number">0</span>, keepdim=<span class="keyword">True</span>)</span><br><span class="line">    <span class="keyword">if</span> is_training:</span><br><span class="line">        x_hat = (x - x_mean) / torch.sqrt(x_var + eps)</span><br><span class="line">        moving_mean[:] = moving_momentum * moving_mean + (<span class="number">1.</span> - moving_momentum) * x_mean</span><br><span class="line">        moving_var[:] = moving_momentum * moving_var + (<span class="number">1.</span> - moving_momentum) * x_var</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        x_hat = (x - moving_mean) / torch.sqrt(moving_var + eps)</span><br><span class="line">    <span class="keyword">return</span> gamma.view_as(x_mean) * x_hat + beta.view_as(x_mean)</span><br></pre></td></tr></table></figure>
 <p>从上面可以看到，我们自己实现了 2 维情况的批标准化，对应于卷积的 4 维情况的标准化是类似的，只需要沿着通道的维度进行均值和方差的计算，但是我们自己实现批标准化是很累的，pytorch 当然也为我们内置了批标准化的函数，一维和二维分别是 <code>torch.nn.BatchNorm1d()</code> 和 <code>torch.nn.BatchNorm2d()</code>，不同于我们的实现，pytorch 不仅将 $\gamma$ 和 $\beta$ 作为训练的参数，也将 <code>moving_mean</code> 和 <code>moving_var</code> 也作为参数进行训练</p>
-<h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><p>使用正则化之后，更新参数变为：<br>$$p_j \rightarrow p_j - \eta (\frac{\partial loss}{\partial p_j} + 2 \lambda p_j) = p_j - \eta \frac{\partial loss}{\partial p_j} - 2 \eta \lambda p_j$$<br>如果想在随机梯度下降法中使用正则项，或者说权重衰减，<code>torch.optim.SGD(net.parameters(), lr=0.1, weight_decay=1e-4)</code> 就可以了，这个 <code>weight_decay</code> 系数就是上面公式中的 $\lambda$，非常方便</p>
+<h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><p>使用正则化之后，更新参数变为：</p>
+<script type="math/tex; mode=display">p_j \rightarrow p_j - \eta (\frac{\partial loss}{\partial p_j} + 2 \lambda p_j) = p_j - \eta \frac{\partial loss}{\partial p_j} - 2 \eta \lambda p_j</script><p>如果想在随机梯度下降法中使用正则项，或者说权重衰减，<code>torch.optim.SGD(net.parameters(), lr=0.1, weight_decay=1e-4)</code> 就可以了，这个 <code>weight_decay</code> 系数就是上面公式中的 $\lambda$，非常方便</p>
 <h2 id="TensorBoard-可视化"><a href="#TensorBoard-可视化" class="headerlink" title="TensorBoard 可视化"></a>TensorBoard 可视化</h2><p>tensorboard 是 tensorflow 中非常好用的可视化工具，使用这个工具<a href="https://github.com/lanpa/tensorboard-pytorch" target="_blank" rel="noopener">github</a> 可以在 pytorch 中实现可视化.</p>
 <p>需要安装以下模块</p>
 <p><code>pip install tensorflow</code></p>
@@ -331,7 +332,7 @@ tensor([[-1.4142, -1.4142, -1.4142],
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/blog/2019/05/29/network-train/" data-id="cjwbsq3eu003auo2unxm61owt" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/blog/2019/05/29/network-train/" data-id="cjwbsxv660036wc2udq2ur97j" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -631,6 +632,23 @@ tensor([[-1.4142, -1.4142, -1.4142],
 <!-- Custom Scripts -->
 <script src="/lucas0625.github.io/js/main.js"></script>
 
-    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>

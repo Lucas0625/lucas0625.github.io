@@ -253,19 +253,19 @@
 <ol>
 <li><p>s1 = “get-element-by-id”; 给定这样一个连字符串，写一个function转换为驼峰命名法形式的字符串 getElementById</p>
  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">a =  <span class="string">'get-element-by-id'</span></span><br><span class="line">pattern = re.compile(<span class="string">'-[a-z]'</span>)</span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> re.findall(pattern, a):</span><br><span class="line">    a = a.replace(item, item[<span class="number">-1</span>].upper())</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
-<pre><code>getElementById
+<pre><code> getElementById
 </code></pre></li>
 <li><p>判断字符串是否包含数字</p>
  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">pattern = re.compile(<span class="string">'\d'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="string">'asdfdsf'</span>, <span class="string">'asdfdsfs43'</span>, <span class="string">'343'</span>]:</span><br><span class="line">    print(<span class="keyword">True</span> <span class="keyword">if</span> re.search(pattern, i) <span class="keyword">else</span> <span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>False
-True
-True
+<pre><code> False
+ True
+ True
 </code></pre></li>
 <li><p>判断电话号码</p>
  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">pattern = re.compile(<span class="string">'^1[34578]\d&#123;9&#125;$'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="string">'1233456'</span>, <span class="string">'13366789980'</span>, <span class="string">'18678900875'</span>]:</span><br><span class="line">    print(<span class="keyword">True</span> <span class="keyword">if</span> re.search(pattern, i) <span class="keyword">else</span> <span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>False
-True
-True
+<pre><code> False
+ True
+ True
 </code></pre></li>
 <li><p>判断是否符合指定格式，给定字符串str，检查其是否符合如下格式</p>
 <ul>
@@ -289,25 +289,25 @@ True
 </li>
 <li><p>JS实现千位分隔符</p>
  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">formatNum</span><span class="params">(num)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> isinstance(num, int):</span><br><span class="line">        num = str(num)</span><br><span class="line">    pattern = re.compile(<span class="string">r'(\d+)(\d&#123;3&#125;)((,\d&#123;3&#125;)*)'</span>)</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        num, count = re.subn(pattern, <span class="string">r'\1,\2\3'</span>, num)</span><br><span class="line">        <span class="keyword">if</span> count == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">return</span> num</span><br><span class="line">print(formatNum(<span class="number">43532412245353</span>))</span><br></pre></td></tr></table></figure>
-<pre><code>43,532,412,245,353
+<pre><code> 43,532,412,245,353
 </code></pre></li>
 <li><p>验证邮箱</p>
  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">pattern = re.compile(<span class="string">'^[a-zA-Z0-9_\-]+@[a-zA-Z0-9_\-]+\.[a-zA-Z0-9_\-]+$'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="string">'12@163.com'</span>, <span class="string">'244@qq.com'</span>, <span class="string">'dsf@dsf'</span>]:</span><br><span class="line">    print(<span class="keyword">True</span> <span class="keyword">if</span> re.search(pattern, i) <span class="keyword">else</span> <span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>True
-True
-False
+<pre><code> True
+ True
+ False
 </code></pre></li>
 <li><p>验证身份证号码, 身份证号码可能为15位或18位，15位为全数字，18位中前17位为数字，最后一位为数字或者X</p>
  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">pattern = re.compile(<span class="string">'^\d&#123;15&#125;$|^\d&#123;17&#125;[0-9Xx]$'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="string">'34345345'</span>, <span class="string">'123456789012345'</span>, <span class="string">'12345678901234567X'</span>]:</span><br><span class="line">    print(<span class="keyword">True</span> <span class="keyword">if</span> re.search(pattern, i) <span class="keyword">else</span> <span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>False
-True
-True
+<pre><code> False
+ True
+ True
 </code></pre></li>
 <li><p>匹配汉字</p>
  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">pattern = re.compile(<span class="string">'^[\u4E00-\u9FA5]*$'</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> [<span class="string">'34sd'</span>, <span class="string">''</span>, <span class="string">'我们'</span>]:</span><br><span class="line">    print(<span class="keyword">True</span> <span class="keyword">if</span> re.search(pattern, i) <span class="keyword">else</span> <span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>False
-True
-True
+<pre><code> False
+ True
+ True
 </code></pre></li>
 <li><p>去除首尾的’/‘</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="string">'/sdf/'</span></span><br><span class="line">a.strip(<span class="string">'/'</span>)</span><br><span class="line">print(a)</span><br></pre></td></tr></table></figure>
@@ -317,7 +317,7 @@ True
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">pattern = re.compile(<span class="string">'^\d&#123;4&#125;\-\d&#123;1,2&#125;\-\d&#123;1,2&#125;$'</span>)</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<ol start="12">
+<ol>
 <li><p>十六进制颜色正则</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">pattern = re.compile(<span class="string">'^#?([a-fA-F0-9]&#123;6&#125;|[a-fA-F0-9]&#123;3&#125;)$'</span>)</span><br></pre></td></tr></table></figure>
 </li>
@@ -341,7 +341,7 @@ True
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/blog/2019/04/29/regex/" data-id="cjwbsq3e1002buo2uvvr8nvld" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/blog/2019/04/29/regex/" data-id="cjwbsxv540024wc2u3gagxvbc" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -641,6 +641,23 @@ True
 <!-- Custom Scripts -->
 <script src="/lucas0625.github.io/js/main.js"></script>
 
-    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>

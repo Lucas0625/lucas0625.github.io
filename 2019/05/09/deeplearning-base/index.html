@@ -270,14 +270,12 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 在更新参数之前，模型输出结果</span></span><br><span class="line">plt.plot(x_train.data.numpy(), y_train.data.numpy(), <span class="string">'bo'</span>, label=<span class="string">'real'</span>)</span><br><span class="line">plt.plot(x_train.data.numpy(), y_.data.numpy(), <span class="string">'ro'</span>, label=<span class="string">'estimated'</span>)</span><br><span class="line">plt.legend()</span><br></pre></td></tr></table></figure>
 <pre><code>&lt;matplotlib.legend.Legend at 0x11cc6beb8&gt;
 </code></pre><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-09-output_8_1-1.png" alt=""></p>
-<p>计算误差函数：<br>$$\frac{1}{n} \sum_{i=1}^{n}\left(\hat{y}<em>{i}-y</em>{i}\right)^{2}$$</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 计算误差</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_loss</span><span class="params">(y_, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> torch.mean((y_-y) ** <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">loss = get_loss(y_, y_train)</span><br></pre></td></tr></table></figure>
+<p>计算误差函数：</p>
+<script type="math/tex; mode=display">\frac{1}{n} \sum_{i=1}^{n}\left(\hat{y}_{i}-y_{i}\right)^{2}</script><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 计算误差</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_loss</span><span class="params">(y_, y)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> torch.mean((y_-y) ** <span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">loss = get_loss(y_, y_train)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看 loss 的大小</span></span><br><span class="line">loss</span><br></pre></td></tr></table></figure>
 <pre><code>tensor(10.2335, grad_fn=&lt;MeanBackward1&gt;)
 </code></pre><p>计算 w 和 b 的梯度，采用PyTorch的自动求导，不需要手动取计算梯度。w 和 b 的梯度分别是：</p>
-<p>$$\frac{\partial}{\partial w}=\frac{2}{n} \sum_{i=1}^{n} x_{i}\left(w x_{i}+b-y_{i}\right)$$</p>
-<p>$$\frac{\partial}{\partial b}=\frac{2}{n} \sum_{i=1}^{n}\left(w x_{i}+b-y_{i}\right)$$</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 自动求导</span></span><br><span class="line">loss.backward()</span><br></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">\frac{\partial}{\partial w}=\frac{2}{n} \sum_{i=1}^{n} x_{i}\left(w x_{i}+b-y_{i}\right)</script><script type="math/tex; mode=display">\frac{\partial}{\partial b}=\frac{2}{n} \sum_{i=1}^{n}\left(w x_{i}+b-y_{i}\right)</script><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 自动求导</span></span><br><span class="line">loss.backward()</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看 w 和 b 的梯度</span></span><br><span class="line">print(w.grad)</span><br><span class="line">print(b.grad)</span><br></pre></td></tr></table></figure>
 <pre><code>tensor([-41.1289])
 tensor([-6.0890])
@@ -348,21 +346,19 @@ epoch 100, Loss:0.43824
 tensor([0.1931])
 </code></pre><p>可以看到模型迭代100次之后已经非常接近原始数据了</p>
 <h1 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>类比人脑神经元，解释如下<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-13-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-13%20%E4%B8%8B%E5%8D%883.16.14.png" alt=""><br>激活函数在神经网络中非常重要，只有通过激活函数才会进入下一层继续传播，如果不使用激活函数，无论多少层神经网络，最后都会变成单层神经网络，所以每一层必须使用激活函数</p>
-<h2 id="常见的激活函数"><a href="#常见的激活函数" class="headerlink" title="常见的激活函数"></a>常见的激活函数</h2><h3 id="sigmoid-函数"><a href="#sigmoid-函数" class="headerlink" title="sigmoid 函数"></a>sigmoid 函数</h3><p>$$f(z)=\frac{1}{1+\exp (-z)}$$<br>导函数:<br>$$f^{\prime}(z)=f(z)(1-f(z))$$</p>
-<p>图像：<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-13-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-13%20%E4%B8%8B%E5%8D%883.21.35.png" alt=""></p>
-<h3 id="tanh-函数"><a href="#tanh-函数" class="headerlink" title="tanh 函数"></a>tanh 函数</h3><p>$$f(z)=\tanh (z)=\frac{\mathrm{e}^{z}-\mathrm{e}^{-z}}{\mathrm{e}^{z}+\mathrm{e}^{-z}}$$</p>
-<p>导函数：<br>$$f^{\prime}(z)=1-(f(z))^{2}$$</p>
-<p>图像:<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-13-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-13%20%E4%B8%8B%E5%8D%883.22.35.png" alt=""></p>
-<h3 id="ReLU-函数"><a href="#ReLU-函数" class="headerlink" title="ReLU 函数"></a>ReLU 函数</h3><p>$$f(z)=\max (0, z)$$</p>
-<p>导函数:<br>$$f^{\prime}(z)=\left{\begin{array}{l}{1, z&gt;0} \ {0, z \leqslant 0}\end{array}\right.$$</p>
-<p>图像:<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-13-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-13%20%E4%B8%8B%E5%8D%883.23.13.png" alt=""></p>
+<h2 id="常见的激活函数"><a href="#常见的激活函数" class="headerlink" title="常见的激活函数"></a>常见的激活函数</h2><h3 id="sigmoid-函数"><a href="#sigmoid-函数" class="headerlink" title="sigmoid 函数"></a>sigmoid 函数</h3><script type="math/tex; mode=display">f(z)=\frac{1}{1+\exp (-z)}</script><p>导函数:</p>
+<script type="math/tex; mode=display">f^{\prime}(z)=f(z)(1-f(z))</script><p>图像：<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-13-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-13%20%E4%B8%8B%E5%8D%883.21.35.png" alt=""></p>
+<h3 id="tanh-函数"><a href="#tanh-函数" class="headerlink" title="tanh 函数"></a>tanh 函数</h3><script type="math/tex; mode=display">f(z)=\tanh (z)=\frac{\mathrm{e}^{z}-\mathrm{e}^{-z}}{\mathrm{e}^{z}+\mathrm{e}^{-z}}</script><p>导函数：</p>
+<script type="math/tex; mode=display">f^{\prime}(z)=1-(f(z))^{2}</script><p>图像:<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-13-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-13%20%E4%B8%8B%E5%8D%883.22.35.png" alt=""></p>
+<h3 id="ReLU-函数"><a href="#ReLU-函数" class="headerlink" title="ReLU 函数"></a>ReLU 函数</h3><script type="math/tex; mode=display">f(z)=\max (0, z)</script><p>导函数:</p>
+<script type="math/tex; mode=display">f^{\prime}(z)=\left\{\begin{array}{l}{1, z>0} \\ {0, z \leqslant 0}\end{array}\right.</script><p>图像:<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-13-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-13%20%E4%B8%8B%E5%8D%883.23.13.png" alt=""></p>
 <h2 id="激活函数的选择"><a href="#激活函数的选择" class="headerlink" title="激活函数的选择"></a>激活函数的选择</h2><ol>
 <li>现在的神经网络中，90%都使用<strong>ReLU</strong>激活函数，该激活函数能够加快梯度下降的收敛速度，对比其他激活函数计算更加简单。</li>
 <li>Sigmoid和Tanh会导致梯度消失，当z很大时，sigmoid函数的导函数会=趋近于0，造成梯度消失，Tanh相当于Sigmoid函数的平移，原理类似。</li>
 <li>RuLU的优势，以及局限性：<ul>
 <li>优点：计算简单，避免梯度消失，单侧抑制提供了网络的稀疏性表达能力</li>
 <li>局限性：在训练过程中会导致神经元死亡问题，这是由于函数负梯度在经过ReLU单元时被置为0，且之后也不被任何数据激活，即改神经元梯度永远为0，不对任何数据产生效应。在实习训练过程中，如果学习率设置较大，会导致一定比例的神经元不可逆死亡。导致参数梯度无法更新，整个训练过程失败。</li>
-<li>优化：采用Leaky ReLU 表达式 $$f(z)=\left{\begin{array}{cl}{z,} &amp; {z&gt;0} \ {a z,} &amp; {z \leqslant 0}\end{array}\right.$$</li>
+<li>优化：采用Leaky ReLU 表达式 <script type="math/tex">f(z)=\left\{\begin{array}{cl}{z,} & {z>0} \\ {a z,} & {z \leqslant 0}\end{array}\right.</script></li>
 </ul>
 </li>
 </ol>
@@ -376,7 +372,7 @@ tensor([0.1931])
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/blog/2019/05/09/deeplearning-base/" data-id="cjwbsq3es0036uo2utdqjrt11" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/blog/2019/05/09/deeplearning-base/" data-id="cjwbsxv6b0038wc2ux6d78aun" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -676,6 +672,23 @@ tensor([0.1931])
 <!-- Custom Scripts -->
 <script src="/lucas0625.github.io/js/main.js"></script>
 
-    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>

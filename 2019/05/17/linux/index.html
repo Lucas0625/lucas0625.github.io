@@ -237,7 +237,7 @@
             
             <p>记录平时用到的一些linux命令</p>
 <a id="more"></a>
-<h1 id="查看当前目录下文件夹的大小"><a href="#查看当前目录下文件夹的大小" class="headerlink" title="查看当前目录下文件夹的大小"></a>查看当前目录下文件夹的大小</h1><p>du -h –max-depth=1</p>
+<h1 id="查看当前目录下文件夹的大小"><a href="#查看当前目录下文件夹的大小" class="headerlink" title="查看当前目录下文件夹的大小"></a>查看当前目录下文件夹的大小</h1><p>du -h —max-depth=1</p>
 <h1 id="分割，合并文件"><a href="#分割，合并文件" class="headerlink" title="分割，合并文件"></a>分割，合并文件</h1><ol>
 <li>分割: sed -n ‘1, 100p’ file &gt; file_part1</li>
 <li>合并: cat file1 file2 &gt; file</li>
@@ -275,7 +275,7 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/blog/2019/05/17/linux/" data-id="cjwbsq3e10028uo2u9qzkgr1d" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/blog/2019/05/17/linux/" data-id="cjwbsxv5a002jwc2uy3r70pp1" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -575,6 +575,23 @@
 <!-- Custom Scripts -->
 <script src="/lucas0625.github.io/js/main.js"></script>
 
-    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>

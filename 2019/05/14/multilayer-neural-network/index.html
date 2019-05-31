@@ -261,7 +261,7 @@ epoch: 80, loss: 0.6731553673744202
 epoch: 100, loss: 0.6731488108634949
 </code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_logistic</span><span class="params">(x)</span>:</span></span><br><span class="line">    x = Variable(torch.from_numpy(x).float()) </span><br><span class="line">    out = torch.sigmoid(logistic_regression(x)) </span><br><span class="line">    out = (out &gt; <span class="number">0.5</span>) * <span class="number">1</span> </span><br><span class="line">    <span class="keyword">return</span> out.data.numpy()</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plot_decision_boundary(<span class="keyword">lambda</span> x: plot_logistic(x), x.numpy(), y.numpy())</span><br><span class="line">plt.title(<span class="string">'logistic regression'</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>Text(0.5,1,&apos;logistic regression&apos;)
+<pre><code>Text(0.5,1,&#39;logistic regression&#39;)
 </code></pre><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-14-output_10_1.png" alt=""></p>
 <p>可以看到 logistic 并不能很好的区分开，因为 logistic 是线性分类器， 现在采用 神经网络模型</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义两层神经网络</span></span><br><span class="line">w1 = nn.Parameter(torch.randn(<span class="number">2</span>, <span class="number">4</span>) * <span class="number">0.01</span>) <span class="comment"># 隐藏神经元个数 2</span></span><br><span class="line">b1 = nn.Parameter(torch.zeros(<span class="number">4</span>))</span><br><span class="line"></span><br><span class="line">w2 = nn.Parameter(torch.randn(<span class="number">4</span>, <span class="number">1</span>) * <span class="number">0.01</span>)</span><br><span class="line">b2 = nn.Parameter(torch.zeros(<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义模型</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">two_netword</span><span class="params">(x)</span>:</span></span><br><span class="line">    x1 = torch.mm(x, w1) + b1 </span><br><span class="line">    x1 = torch.tanh(x1) <span class="comment"># 使用 PyTorch 自带的 tanh 激活函数</span></span><br><span class="line">    x2 = torch.mm(x1, w2) + b2</span><br><span class="line">    <span class="keyword">return</span> x2</span><br><span class="line"></span><br><span class="line">optimizer = torch.optim.SGD([w1, w2, b1, b2], <span class="number">1.</span>)</span><br><span class="line"></span><br><span class="line">criterion = nn.BCEWithLogitsLoss()</span><br></pre></td></tr></table></figure>
@@ -278,7 +278,7 @@ epoch: 9000, loss: 0.2176773101091385
 epoch: 10000, loss: 0.21617043018341064
 </code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_network</span><span class="params">(x)</span>:</span></span><br><span class="line">    x = Variable(torch.from_numpy(x).float()) </span><br><span class="line">    x1 = torch.mm(x, w1) + b1 </span><br><span class="line">    x1 = torch.tanh(x1) </span><br><span class="line">    x2 = torch.mm(x1, w2) + b2 </span><br><span class="line">    out = torch.sigmoid(x2) </span><br><span class="line">    out = (out &gt; <span class="number">0.5</span>) * <span class="number">1</span> </span><br><span class="line">    <span class="keyword">return</span> out.data.numpy()</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plot_decision_boundary(<span class="keyword">lambda</span> x: plot_network(x), x.numpy(), y.numpy())</span><br><span class="line">plt.title(<span class="string">'2 layer network'</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>Text(0.5,1,&apos;2 layer network&apos;)
+<pre><code>Text(0.5,1,&#39;2 layer network&#39;)
 </code></pre><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-14-output_15_1.png" alt=""></p>
 <p>可以看到， 神经网络能很好的分类这个复杂的数据， 和前面的logistic回归相比，神经网络因为有了激活函数的存在，成了一个非线性分类器，所以神经网络分类的边界更加复杂</p>
 <h2 id="自动构建一个完整的-PyTorch-模型"><a href="#自动构建一个完整的-PyTorch-模型" class="headerlink" title="自动构建一个完整的 PyTorch 模型"></a>自动构建一个完整的 PyTorch 模型</h2><p>手动构建模型对于比较小的模型是可行的，但是对于大模型，比如 100 层的神经网络，这个时候手动定义模型就会非常麻烦，接下来使用 PyTorch 提供的模块来构建模型</p>
@@ -304,7 +304,7 @@ epoch: 9000, loss: 0.2177024632692337
 epoch: 10000, loss: 0.2161943018436432
 </code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_seq</span><span class="params">(x)</span>:</span></span><br><span class="line">    out = torch.sigmoid(seq_net(Variable(torch.from_numpy(x).float()))).data.numpy() </span><br><span class="line">    out = (out &gt; <span class="number">0.5</span>) * <span class="number">1</span> </span><br><span class="line">    <span class="keyword">return</span> out</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plot_decision_boundary(<span class="keyword">lambda</span> x: plot_seq(x), x.numpy(), y.numpy()) </span><br><span class="line">plt.title(<span class="string">'sequential'</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>Text(0.5,1,&apos;sequential&apos;)
+<pre><code>Text(0.5,1,&#39;sequential&#39;)
 </code></pre><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-14-output_25_1.png" alt=""></p>
 <p>模型保存的两种方式：</p>
 <ol>
@@ -374,7 +374,7 @@ epoch: 19000, loss: 0.12435487657785416
 epoch: 20000, loss: 0.1194448247551918
 </code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_net5</span><span class="params">(x)</span>:</span></span><br><span class="line">    out = torch.sigmoid(mo_net5(Variable(torch.from_numpy(x).float()))).data.numpy() </span><br><span class="line">    out = (out &gt; <span class="number">0.5</span>) * <span class="number">1</span> </span><br><span class="line">    <span class="keyword">return</span> out</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plot_decision_boundary(<span class="keyword">lambda</span> x: plot_net5(x), x.numpy(), y.numpy()) </span><br><span class="line">plt.title(<span class="string">'sequential'</span>)</span><br></pre></td></tr></table></figure>
-<pre><code>Text(0.5,1,&apos;sequential&apos;)
+<pre><code>Text(0.5,1,&#39;sequential&#39;)
 </code></pre><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-14-output_44_1.png" alt=""></p>
 <p>可以看出多层神经网络拟合效果会更好</p>
 
@@ -387,7 +387,7 @@ epoch: 20000, loss: 0.1194448247551918
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/blog/2019/05/14/multilayer-neural-network/" data-id="cjwbsq3et0038uo2uky64weqo" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/blog/2019/05/14/multilayer-neural-network/" data-id="cjwbsxv6c003awc2u3qam74ca" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -687,6 +687,23 @@ epoch: 20000, loss: 0.1194448247551918
 <!-- Custom Scripts -->
 <script src="/lucas0625.github.io/js/main.js"></script>
 
-    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>

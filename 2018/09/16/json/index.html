@@ -245,7 +245,7 @@
 <h1 id="删除特殊字符"><a href="#删除特殊字符" class="headerlink" title="删除特殊字符"></a>删除特殊字符<200b></200b></h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">str.replace(<span class="string">u'\u200b'</span>, <span class="string">''</span>)</span><br></pre></td></tr></table></figure>
 <h1 id="将列表每个元素作为参数传入函数"><a href="#将列表每个元素作为参数传入函数" class="headerlink" title="将列表每个元素作为参数传入函数"></a>将列表每个元素作为参数传入函数</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="comment"># 将列表a作为整体传入函数func</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(a)</span>:</span></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将列表每一个元素作为参数传入函数func</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">func</span><span class="params">(*a)</span>:</span></span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
 <h1 id="以字符分割字符串，长度不超过n的数字作为一个字符"><a href="#以字符分割字符串，长度不超过n的数字作为一个字符" class="headerlink" title="以字符分割字符串，长度不超过n的数字作为一个字符"></a>以字符分割字符串，长度不超过n的数字作为一个字符</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">splice_string</span><span class="params">(string: str, nums: int = <span class="number">3</span>)</span> -&gt; str:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    按字符分割字符串，不超过 nums 个的数字不切分</span></span><br><span class="line"><span class="string">    :param string:</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    pattern = re.compile(<span class="string">'((?&lt;!\d)(\d&#123;1,%d&#125;)(?!(\d+))|(\S))'</span> % (nums))</span><br><span class="line">    result = re.sub(pattern, <span class="string">r'\1\t'</span>, string)</span><br><span class="line">    <span class="keyword">return</span> <span class="string">' '</span>.join(result.strip().split())</span><br><span class="line"></span><br><span class="line">res = splice_string(<span class="string">'人一天要睡20-24小时，一天24小时有1小时可以娱乐，一年365天这样做，30000块钱就到手了'</span>)</span><br><span class="line">print(res)</span><br></pre></td></tr></table></figure>
-<pre><code>&apos;人 一 天 要 睡 20 - 24 小 时 ， 一 天 24 小 时 有 1 小 时 可 以 娱 乐 ， 一 年 365 天 这 样 做 ， 3 0 0 0 0 块 钱 就 到 手 了&apos;
+<pre><code>&#39;人 一 天 要 睡 20 - 24 小 时 ， 一 天 24 小 时 有 1 小 时 可 以 娱 乐 ， 一 年 365 天 这 样 做 ， 3 0 0 0 0 块 钱 就 到 手 了&#39;
 </code></pre><h1 id="判断奇偶"><a href="#判断奇偶" class="headerlink" title="判断奇偶"></a>判断奇偶</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 方法一</span></span><br><span class="line"><span class="keyword">if</span> nums % <span class="number">2</span> == <span class="number">1</span>:</span><br><span class="line">    <span class="comment"># 奇数</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="comment"># 偶数</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法二</span></span><br><span class="line"><span class="keyword">if</span> nums &amp; <span class="number">1</span> == <span class="number">1</span>:</span><br><span class="line">    <span class="comment"># 奇数</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="comment"># 偶数</span></span><br></pre></td></tr></table></figure>
 <h1 id="不使用第三个变量交换两个数"><a href="#不使用第三个变量交换两个数" class="headerlink" title="不使用第三个变量交换两个数"></a>不使用第三个变量交换两个数</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 方法一</span></span><br><span class="line"><span class="comment"># n ^ n = 0, n ^ 0 = n</span></span><br><span class="line">x = x ^ y</span><br><span class="line">y = x ^ y</span><br><span class="line">x = x ^ y</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法二</span></span><br><span class="line"><span class="comment"># 采用四则运算</span></span><br><span class="line">a = a + b</span><br><span class="line">b = a - b</span><br><span class="line">a = a - b</span><br></pre></td></tr></table></figure>
 
@@ -258,7 +258,7 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/blog/2018/09/16/json/" data-id="cjwbsq3dy0020uo2ulfye937v" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/blog/2018/09/16/json/" data-id="cjwbsxv52001wwc2ustg3g6ez" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -558,6 +558,23 @@
 <!-- Custom Scripts -->
 <script src="/lucas0625.github.io/js/main.js"></script>
 
-    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>

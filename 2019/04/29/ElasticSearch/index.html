@@ -242,7 +242,7 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">文章目录</strong>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第一节-ElasticSearch概述"><span class="toc-number">1.</span> <span class="toc-text">第一节 ElasticSearch概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-ElasticSearch简介"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 ElasticSearch简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-ElasticSearch的基本概念"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 ElasticSearch的基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-Elasticsearch的架构"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 Elasticsearch的架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-RESTfull-API"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 RESTfull API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-CRUL命令"><span class="toc-number">1.5.</span> <span class="toc-text">1.5 CRUL命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6-CentOS7下安装ElasticSearch6-2-4"><span class="toc-number">1.6.</span> <span class="toc-text">1.6 CentOS7下安装ElasticSearch6.2.4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-7-安装Head插件"><span class="toc-number">1.7.</span> <span class="toc-text">1.7 安装Head插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-8-安装Kibana"><span class="toc-number">1.8.</span> <span class="toc-text">1.8 安装Kibana</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-9-安装中文分词器"><span class="toc-number">1.9.</span> <span class="toc-text">1.9 安装中文分词器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第二节-ElasticSearch基本操作"><span class="toc-number">2.</span> <span class="toc-text">第二节 ElasticSearch基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-倒排索引"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 倒排索引</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-倒排索引原理"><span class="toc-number">2.1.1.</span> <span class="toc-text">2.1.1 倒排索引原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-分词器介绍及内置分词器"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.1.2 分词器介绍及内置分词器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-使用ElasticSearch-API-实现CRUD"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 使用ElasticSearch API 实现CRUD</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-批量获取文档"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 批量获取文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-使用Bulk-API-实现批量操作"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 使用Bulk API 实现批量操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-版本控制"><span class="toc-number">2.5.</span> <span class="toc-text">2.5 版本控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-什么是Mapping"><span class="toc-number">2.6.</span> <span class="toc-text">2.6 什么是Mapping</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-1-查看es自动创建的mapping"><span class="toc-number">2.6.1.</span> <span class="toc-text">2.6.1 查看es自动创建的mapping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-2-给索引lib2创建映射类型"><span class="toc-number">2.6.2.</span> <span class="toc-text">2.6.2 给索引lib2创建映射类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-3-给索引lib2创建映射类型"><span class="toc-number">2.6.3.</span> <span class="toc-text">2.6.3 给索引lib2创建映射类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7基本查询-Query查询"><span class="toc-number">2.7.</span> <span class="toc-text">2.7基本查询(Query查询)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-1数据准备"><span class="toc-number">2.7.1.</span> <span class="toc-text">2.7.1数据准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-2-term查询和terms查询"><span class="toc-number">2.7.2.</span> <span class="toc-text">2.7.2 term查询和terms查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-3-控制查询返回的数量"><span class="toc-number">2.7.3.</span> <span class="toc-text">2.7.3 控制查询返回的数量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-4-返回版本号"><span class="toc-number">2.7.4.</span> <span class="toc-text">2.7.4 返回版本号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-5-match查询"><span class="toc-number">2.7.5.</span> <span class="toc-text">2.7.5 match查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-6-指定返回的字段"><span class="toc-number">2.7.6.</span> <span class="toc-text">2.7.6 指定返回的字段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-7控制加载的字段"><span class="toc-number">2.7.7.</span> <span class="toc-text">2.7.7控制加载的字段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-8-排序"><span class="toc-number">2.7.8.</span> <span class="toc-text">2.7.8 排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-9-前缀匹配查询"><span class="toc-number">2.7.9.</span> <span class="toc-text">2.7.9 前缀匹配查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-10-范围查询"><span class="toc-number">2.7.10.</span> <span class="toc-text">2.7.10 范围查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-11-wildcard查询"><span class="toc-number">2.7.11.</span> <span class="toc-text">2.7.11 wildcard查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-12-fuzzy实现模糊查询"><span class="toc-number">2.7.12.</span> <span class="toc-text">2.7.12 fuzzy实现模糊查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-13-高亮搜索结果"><span class="toc-number">2.7.13.</span> <span class="toc-text">2.7.13 高亮搜索结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-8-Filter查询"><span class="toc-number">2.8.</span> <span class="toc-text">2.8 Filter查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-2-bool过滤查询"><span class="toc-number">2.8.1.</span> <span class="toc-text">2.8.2 bool过滤查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-3-范围过滤"><span class="toc-number">2.8.2.</span> <span class="toc-text">2.8.3 范围过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-5-过滤非空"><span class="toc-number">2.8.3.</span> <span class="toc-text">2.8.5 过滤非空</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-6-过滤器缓存"><span class="toc-number">2.8.4.</span> <span class="toc-text">2.8.6 过滤器缓存</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-9-聚合查询"><span class="toc-number">2.9.</span> <span class="toc-text">2.9 聚合查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-10-复合查询"><span class="toc-number">2.10.</span> <span class="toc-text">2.10 复合查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-10-1-使用bool查询"><span class="toc-number">2.10.1.</span> <span class="toc-text">2.10.1 使用bool查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-10-2-constant-score查询"><span class="toc-number">2.10.2.</span> <span class="toc-text">2.10.2 constant_score查询</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第三节-ElasticSearch原理"><span class="toc-number">3.</span> <span class="toc-text">第三节 ElasticSearch原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-解析es的分布式架构"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 解析es的分布式架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-分布式架构的透明隐藏特性"><span class="toc-number">3.1.1.</span> <span class="toc-text">3.1.1 分布式架构的透明隐藏特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-扩容机制"><span class="toc-number">3.1.2.</span> <span class="toc-text">3.1.2 扩容机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-3-rebalance"><span class="toc-number">3.1.3.</span> <span class="toc-text">3.1.3 rebalance</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-4-master节点"><span class="toc-number">3.1.4.</span> <span class="toc-text">3.1.4 master节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-5-节点对等"><span class="toc-number">3.1.5.</span> <span class="toc-text">3.1.5 节点对等</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-分片和副本机制"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 分片和副本机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-单节点环境下创建索引分析"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 单节点环境下创建索引分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-两个节点环境下创建索引分析"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 两个节点环境下创建索引分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-水平扩容的过程"><span class="toc-number">3.5.</span> <span class="toc-text">3.5 水平扩容的过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-6ElasticSearch的容错机制"><span class="toc-number">3.6.</span> <span class="toc-text">3.6ElasticSearch的容错机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-7文档的核心元数据"><span class="toc-number">3.7.</span> <span class="toc-text">3.7文档的核心元数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-8-文档id生成方式"><span class="toc-number">3.8.</span> <span class="toc-text">3.8 文档id生成方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-9-source元数据分析"><span class="toc-number">3.9.</span> <span class="toc-text">3.9 _source元数据分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-10-改变文档内容原理解析"><span class="toc-number">3.10.</span> <span class="toc-text">3.10 改变文档内容原理解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-11-基于groovy脚本执行partial-update"><span class="toc-number">3.11.</span> <span class="toc-text">3.11 基于groovy脚本执行partial update</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-12-partial-update-处理并发冲突"><span class="toc-number">3.12.</span> <span class="toc-text">3.12 partial update 处理并发冲突</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-13-文档数据路由原理解析"><span class="toc-number">3.13.</span> <span class="toc-text">3.13 文档数据路由原理解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-14-文档增删改内部原理"><span class="toc-number">3.14.</span> <span class="toc-text">3.14 文档增删改内部原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-15-写一致性原理和quorum机制"><span class="toc-number">3.15.</span> <span class="toc-text">3.15 写一致性原理和quorum机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-16-文档查询内部原理"><span class="toc-number">3.16.</span> <span class="toc-text">3.16 文档查询内部原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-17-bulk批量操作的json格式解析"><span class="toc-number">3.17.</span> <span class="toc-text">3.17 bulk批量操作的json格式解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-18-查询结果分析"><span class="toc-number">3.18.</span> <span class="toc-text">3.18 查询结果分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-19-多index，多type查询模式"><span class="toc-number">3.19.</span> <span class="toc-text">3.19 多index，多type查询模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-20-分页查询中的deep-paging问题"><span class="toc-number">3.20.</span> <span class="toc-text">3.20 分页查询中的deep paging问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-21-query-string查询及copy-to解析"><span class="toc-number">3.21.</span> <span class="toc-text">3.21 query string查询及copy_to解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-22字符串排序问题"><span class="toc-number">3.22.</span> <span class="toc-text">3.22字符串排序问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-23-如何计算相关度分数"><span class="toc-number">3.23.</span> <span class="toc-text">3.23 如何计算相关度分数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-24-Doc-Values-解析"><span class="toc-number">3.24.</span> <span class="toc-text">3.24 Doc Values 解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-25-基于scroll技术滚动搜索大量数据"><span class="toc-number">3.25.</span> <span class="toc-text">3.25 基于scroll技术滚动搜索大量数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-26-dynamic-mapping策略"><span class="toc-number">3.26.</span> <span class="toc-text">3.26 dynamic mapping策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-27重建索引"><span class="toc-number">3.27.</span> <span class="toc-text">3.27重建索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-28-索引不可变的原因"><span class="toc-number">3.28.</span> <span class="toc-text">3.28 索引不可变的原因</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第四节-在Java应用中访问ElasticSearch"><span class="toc-number">4.</span> <span class="toc-text">第四节 在Java应用中访问ElasticSearch</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1在Java应用中实现查询文档"><span class="toc-number">4.1.</span> <span class="toc-text">4.1在Java应用中实现查询文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-在Java应用中实现添加文档"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 在Java应用中实现添加文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3在Java应用中实现删除文档"><span class="toc-number">4.3.</span> <span class="toc-text">4.3在Java应用中实现删除文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4在Java应用中实现更新文档"><span class="toc-number">4.4.</span> <span class="toc-text">4.4在Java应用中实现更新文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-5在Java应用中实现批量操作"><span class="toc-number">4.5.</span> <span class="toc-text">4.5在Java应用中实现批量操作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第五节-在Python应用中访问ElasticSearch"><span class="toc-number">5.</span> <span class="toc-text">第五节 在Python应用中访问ElasticSearch</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-创建-Index"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 创建 Index</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-删除-Index"><span class="toc-number">5.2.</span> <span class="toc-text">5.2 删除 Index</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-插入数据"><span class="toc-number">5.3.</span> <span class="toc-text">5.3 插入数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-更新数据"><span class="toc-number">5.4.</span> <span class="toc-text">5.4 更新数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-5-删除数据"><span class="toc-number">5.5.</span> <span class="toc-text">5.5 删除数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-6-查询数据"><span class="toc-number">5.6.</span> <span class="toc-text">5.6 查询数据</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第一节-ElasticSearch概述"><span class="toc-number">1.</span> <span class="toc-text">第一节 ElasticSearch概述</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-ElasticSearch简介"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 ElasticSearch简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-ElasticSearch的基本概念"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 ElasticSearch的基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-Elasticsearch的架构"><span class="toc-number">1.3.</span> <span class="toc-text">1.3 Elasticsearch的架构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-RESTfull-API"><span class="toc-number">1.4.</span> <span class="toc-text">1.4 RESTfull API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-CRUL命令"><span class="toc-number">1.5.</span> <span class="toc-text">1.5 CRUL命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6-CentOS7下安装ElasticSearch6-2-4"><span class="toc-number">1.6.</span> <span class="toc-text">1.6 CentOS7下安装ElasticSearch6.2.4</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-7-安装Head插件"><span class="toc-number">1.7.</span> <span class="toc-text">1.7 安装Head插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-8-安装Kibana"><span class="toc-number">1.8.</span> <span class="toc-text">1.8 安装Kibana</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-9-安装中文分词器"><span class="toc-number">1.9.</span> <span class="toc-text">1.9 安装中文分词器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第二节-ElasticSearch基本操作"><span class="toc-number">2.</span> <span class="toc-text">第二节 ElasticSearch基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-倒排索引"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 倒排索引</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-1-倒排索引原理"><span class="toc-number">2.1.1.</span> <span class="toc-text">2.1.1 倒排索引原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-2-分词器介绍及内置分词器"><span class="toc-number">2.1.2.</span> <span class="toc-text">2.1.2 分词器介绍及内置分词器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-使用ElasticSearch-API-实现CRUD"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 使用ElasticSearch API 实现CRUD</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-批量获取文档"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 批量获取文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-使用Bulk-API-实现批量操作"><span class="toc-number">2.4.</span> <span class="toc-text">2.4 使用Bulk API 实现批量操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-5-版本控制"><span class="toc-number">2.5.</span> <span class="toc-text">2.5 版本控制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-6-什么是Mapping"><span class="toc-number">2.6.</span> <span class="toc-text">2.6 什么是Mapping</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-1-查看es自动创建的mapping"><span class="toc-number">2.6.1.</span> <span class="toc-text">2.6.1 查看es自动创建的mapping</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-2-给索引lib2创建映射类型"><span class="toc-number">2.6.2.</span> <span class="toc-text">2.6.2 给索引lib2创建映射类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-3-给索引lib2创建映射类型"><span class="toc-number">2.6.3.</span> <span class="toc-text">2.6.3 给索引lib2创建映射类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-7基本查询-Query查询"><span class="toc-number">2.7.</span> <span class="toc-text">2.7基本查询(Query查询)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-1数据准备"><span class="toc-number">2.7.1.</span> <span class="toc-text">2.7.1数据准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-2-term查询和terms查询"><span class="toc-number">2.7.2.</span> <span class="toc-text">2.7.2 term查询和terms查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-3-控制查询返回的数量"><span class="toc-number">2.7.3.</span> <span class="toc-text">2.7.3 控制查询返回的数量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-4-返回版本号"><span class="toc-number">2.7.4.</span> <span class="toc-text">2.7.4 返回版本号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-5-match查询"><span class="toc-number">2.7.5.</span> <span class="toc-text">2.7.5 match查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-6-指定返回的字段"><span class="toc-number">2.7.6.</span> <span class="toc-text">2.7.6 指定返回的字段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-7控制加载的字段"><span class="toc-number">2.7.7.</span> <span class="toc-text">2.7.7控制加载的字段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-8-排序"><span class="toc-number">2.7.8.</span> <span class="toc-text">2.7.8 排序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-9-前缀匹配查询"><span class="toc-number">2.7.9.</span> <span class="toc-text">2.7.9 前缀匹配查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-10-范围查询"><span class="toc-number">2.7.10.</span> <span class="toc-text">2.7.10 范围查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-11-wildcard查询"><span class="toc-number">2.7.11.</span> <span class="toc-text">2.7.11 wildcard查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-12-fuzzy实现模糊查询"><span class="toc-number">2.7.12.</span> <span class="toc-text">2.7.12 fuzzy实现模糊查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-7-13-高亮搜索结果"><span class="toc-number">2.7.13.</span> <span class="toc-text">2.7.13 高亮搜索结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-8-Filter查询"><span class="toc-number">2.8.</span> <span class="toc-text">2.8 Filter查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-1-简单的过滤查询"><span class="toc-number">2.8.1.</span> <span class="toc-text">2.8.1 简单的过滤查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-2-bool过滤查询"><span class="toc-number">2.8.2.</span> <span class="toc-text">2.8.2 bool过滤查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-3-范围过滤"><span class="toc-number">2.8.3.</span> <span class="toc-text">2.8.3 范围过滤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-5-过滤非空"><span class="toc-number">2.8.4.</span> <span class="toc-text">2.8.5 过滤非空</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-8-6-过滤器缓存"><span class="toc-number">2.8.5.</span> <span class="toc-text">2.8.6 过滤器缓存</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-9-聚合查询"><span class="toc-number">2.9.</span> <span class="toc-text">2.9 聚合查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-10-复合查询"><span class="toc-number">2.10.</span> <span class="toc-text">2.10 复合查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-10-1-使用bool查询"><span class="toc-number">2.10.1.</span> <span class="toc-text">2.10.1 使用bool查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-10-2-constant-score查询"><span class="toc-number">2.10.2.</span> <span class="toc-text">2.10.2 constant_score查询</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第三节-ElasticSearch原理"><span class="toc-number">3.</span> <span class="toc-text">第三节 ElasticSearch原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#3-1-解析es的分布式架构"><span class="toc-number">3.1.</span> <span class="toc-text">3.1 解析es的分布式架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-1-分布式架构的透明隐藏特性"><span class="toc-number">3.1.1.</span> <span class="toc-text">3.1.1 分布式架构的透明隐藏特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-2-扩容机制"><span class="toc-number">3.1.2.</span> <span class="toc-text">3.1.2 扩容机制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-3-rebalance"><span class="toc-number">3.1.3.</span> <span class="toc-text">3.1.3 rebalance</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-4-master节点"><span class="toc-number">3.1.4.</span> <span class="toc-text">3.1.4 master节点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-5-节点对等"><span class="toc-number">3.1.5.</span> <span class="toc-text">3.1.5 节点对等</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-2-分片和副本机制"><span class="toc-number">3.2.</span> <span class="toc-text">3.2 分片和副本机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-3-单节点环境下创建索引分析"><span class="toc-number">3.3.</span> <span class="toc-text">3.3 单节点环境下创建索引分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-4-两个节点环境下创建索引分析"><span class="toc-number">3.4.</span> <span class="toc-text">3.4 两个节点环境下创建索引分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-5-水平扩容的过程"><span class="toc-number">3.5.</span> <span class="toc-text">3.5 水平扩容的过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-6ElasticSearch的容错机制"><span class="toc-number">3.6.</span> <span class="toc-text">3.6ElasticSearch的容错机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-7文档的核心元数据"><span class="toc-number">3.7.</span> <span class="toc-text">3.7文档的核心元数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-8-文档id生成方式"><span class="toc-number">3.8.</span> <span class="toc-text">3.8 文档id生成方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-9-source元数据分析"><span class="toc-number">3.9.</span> <span class="toc-text">3.9 _source元数据分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-10-改变文档内容原理解析"><span class="toc-number">3.10.</span> <span class="toc-text">3.10 改变文档内容原理解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-11-基于groovy脚本执行partial-update"><span class="toc-number">3.11.</span> <span class="toc-text">3.11 基于groovy脚本执行partial update</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-12-partial-update-处理并发冲突"><span class="toc-number">3.12.</span> <span class="toc-text">3.12 partial update 处理并发冲突</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-13-文档数据路由原理解析"><span class="toc-number">3.13.</span> <span class="toc-text">3.13 文档数据路由原理解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-14-文档增删改内部原理"><span class="toc-number">3.14.</span> <span class="toc-text">3.14 文档增删改内部原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-15-写一致性原理和quorum机制"><span class="toc-number">3.15.</span> <span class="toc-text">3.15 写一致性原理和quorum机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-16-文档查询内部原理"><span class="toc-number">3.16.</span> <span class="toc-text">3.16 文档查询内部原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-17-bulk批量操作的json格式解析"><span class="toc-number">3.17.</span> <span class="toc-text">3.17 bulk批量操作的json格式解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-18-查询结果分析"><span class="toc-number">3.18.</span> <span class="toc-text">3.18 查询结果分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-19-多index，多type查询模式"><span class="toc-number">3.19.</span> <span class="toc-text">3.19 多index，多type查询模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-20-分页查询中的deep-paging问题"><span class="toc-number">3.20.</span> <span class="toc-text">3.20 分页查询中的deep paging问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-21-query-string查询及copy-to解析"><span class="toc-number">3.21.</span> <span class="toc-text">3.21 query string查询及copy_to解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-22字符串排序问题"><span class="toc-number">3.22.</span> <span class="toc-text">3.22字符串排序问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-23-如何计算相关度分数"><span class="toc-number">3.23.</span> <span class="toc-text">3.23 如何计算相关度分数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-24-Doc-Values-解析"><span class="toc-number">3.24.</span> <span class="toc-text">3.24 Doc Values 解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-25-基于scroll技术滚动搜索大量数据"><span class="toc-number">3.25.</span> <span class="toc-text">3.25 基于scroll技术滚动搜索大量数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-26-dynamic-mapping策略"><span class="toc-number">3.26.</span> <span class="toc-text">3.26 dynamic mapping策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-27重建索引"><span class="toc-number">3.27.</span> <span class="toc-text">3.27重建索引</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-28-索引不可变的原因"><span class="toc-number">3.28.</span> <span class="toc-text">3.28 索引不可变的原因</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第四节-在Java应用中访问ElasticSearch"><span class="toc-number">4.</span> <span class="toc-text">第四节 在Java应用中访问ElasticSearch</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1在Java应用中实现查询文档"><span class="toc-number">4.1.</span> <span class="toc-text">4.1在Java应用中实现查询文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-在Java应用中实现添加文档"><span class="toc-number">4.2.</span> <span class="toc-text">4.2 在Java应用中实现添加文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-3在Java应用中实现删除文档"><span class="toc-number">4.3.</span> <span class="toc-text">4.3在Java应用中实现删除文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-4在Java应用中实现更新文档"><span class="toc-number">4.4.</span> <span class="toc-text">4.4在Java应用中实现更新文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-5在Java应用中实现批量操作"><span class="toc-number">4.5.</span> <span class="toc-text">4.5在Java应用中实现批量操作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第五节-在Python应用中访问ElasticSearch"><span class="toc-number">5.</span> <span class="toc-text">第五节 在Python应用中访问ElasticSearch</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-创建-Index"><span class="toc-number">5.1.</span> <span class="toc-text">5.1 创建 Index</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-删除-Index"><span class="toc-number">5.2.</span> <span class="toc-text">5.2 删除 Index</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-插入数据"><span class="toc-number">5.3.</span> <span class="toc-text">5.3 插入数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-更新数据"><span class="toc-number">5.4.</span> <span class="toc-text">5.4 更新数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-5-删除数据"><span class="toc-number">5.5.</span> <span class="toc-text">5.5 删除数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-6-查询数据"><span class="toc-number">5.6.</span> <span class="toc-text">5.6 查询数据</span></a></li></ol></li></ol>
                 </div>
             
             <p>ElasticSearch 原理与应用</p>
@@ -287,14 +287,14 @@
 <h2 id="1-5-CRUL命令"><a href="#1-5-CRUL命令" class="headerlink" title="1.5 CRUL命令"></a>1.5 CRUL命令</h2><p>以命令的方式执行HTTP协议的请求<br><strong>GET/POST/PUT/DELETE</strong></p>
 <p>示例：</p>
 <p>访问一个网页</p>
-<p>curl <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a></p>
-<p>curl -o tt.html <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a></p>
+<p>curl www.baidu.com</p>
+<p>curl -o tt.html www.baidu.com</p>
 <hr>
 <p>显示响应的头信息</p>
-<p>curl -i <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a></p>
+<p>curl -i www.baidu.com</p>
 <hr>
 <p>显示一次HTTP请求的通信过程</p>
-<p>curl -v <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a></p>
+<p>curl -v www.baidu.com</p>
 <hr>
 <p>执行GET/POST/PUT/DELETE操作</p>
 <p>curl -X GET/POST/PUT/DELETE url</p>
@@ -360,7 +360,7 @@
 <p>(5)修改Gruntfile.js</p>
 <p>[root@localhost _site]# cd /usr/local/elasticsearch-head/</p>
 <p>[root@localhost elasticsearch-head]# vi Gruntfile.js</p>
-<p>在connect–&gt;server–&gt;options下面添加：hostname:’*’，允许所有IP可以访问</p>
+<p>在connect—&gt;server—&gt;options下面添加：hostname:’*’，允许所有IP可以访问</p>
 <p>(6)修改elasticsearch-head默认连接地址<br>[root@localhost elasticsearch-head]# cd /usr/local/elasticsearch-head/_site/</p>
 <p>[root@localhost _site]# vi app.js</p>
 <p>将this.base_uri = this.config.base_uri || this.prefs.get(“app-base_uri”) || “<a href="http://localhost:9200&quot;;中的localhost修改成你es的服务器地址" target="_blank" rel="noopener">http://localhost:9200&quot;;中的localhost修改成你es的服务器地址</a></p>
@@ -369,9 +369,9 @@
 <p>http.cors.enabled: true</p>
 <p>http.cors.allow-origin: “*”</p>
 <p>(8)打开9100端口</p>
-<p>[root@localhost elasticsearch-head]# firewall-cmd –zone=public –add-port=9100/tcp –permanent</p>
+<p>[root@localhost elasticsearch-head]# firewall-cmd —zone=public —add-port=9100/tcp —permanent</p>
 <p>重启防火墙</p>
-<p>[root@localhost elasticsearch-head]# firewall-cmd –reload</p>
+<p>[root@localhost elasticsearch-head]# firewall-cmd —reload</p>
 <p>(9)启动elasticsearch</p>
 <p>(10)启动elasticsearch-head</p>
 <p>[root@localhost _site]# cd /usr/local/elasticsearch-head/</p>
@@ -390,7 +390,7 @@
 <p>(5)开启5601端口</p>
 <p>Kibana的默认端口是5601</p>
 <p>开启防火墙:systemctl start firewalld.service</p>
-<p>开启5601端口:firewall-cmd –permanent –zone=public –add-port=5601/tcp</p>
+<p>开启5601端口:firewall-cmd —permanent —zone=public —add-port=5601/tcp</p>
 <p>重启防火墙：firewall-cmd –reload</p>
 <p>(6)启动Kibana</p>
 <p>[root@localhost /]# /usr/local/kibana/bin/kibana</p>
@@ -411,11 +411,12 @@
 <p>(3):索引系统还可以记录除此之外的更多信息,下图还记载了单词频率信息（TF）即这个单词在某个文档中的出现次数，之所以要记录这个信息，是因为词频信息在搜索结果排序时，计算查询和文档相似度是很重要的一个计算因子，所以将其记录在倒排列表中，以方便后续排序时进行分值计算。</p>
 <p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-04-29-Xnip2019-04-29_15-12-58.jpg" alt=""></p>
 <p>(4):倒排列表中还可以记录单词在某个文档出现的位置信息</p>
-<p>(1,<11>,1),(2,<7>,1),(3,&lt;3,9&gt;,2)</7></11></p>
+<p>(1,<11>,1),(2,<7>,1),(3,<3,9>,2)</3,9></7></11></p>
 <p>有了这个索引系统，搜索引擎可以很方便地响应用户的查询，比如用户输入查询词“Facebook”，搜索系统查找倒排索引，从中可以读出包含这个单词的文档，这些文档就是提供给用户的搜索结果，而利用单词频率信息、文档频率信息即可以对这些候选搜索结果进行排序，计算文档和查询的相似性，按照相似性得分由高到低排序输出，此即为搜索系统的部分内部流程。</p>
 <h3 id="2-1-1-倒排索引原理"><a href="#2-1-1-倒排索引原理" class="headerlink" title="2.1.1 倒排索引原理"></a>2.1.1 倒排索引原理</h3><p>1.The quick brown fox jumped over the lazy dog</p>
 <p>2.Quick brown foxes leap over lazy dogs in summer</p>
 <p>倒排索引：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -502,7 +503,9 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>搜索<strong>quick brown</strong> ：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -529,6 +532,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <p>计算相关度分数时，文档1的匹配度高，分数会比文档2高</p>
 <p>问题：</p>
 <p><strong>Quick</strong> 和 <strong>quick</strong> 以独立的词条出现，然而用户可能认为它们是相同的词。</p>
@@ -536,6 +540,7 @@
 <p><strong>jumped</strong> 和 <strong>leap</strong>, 尽管没有相同的词根，但他们的意思很相近。他们是同义词。</p>
 <p>搜索含有 <strong>Quick</strong> <strong>fox</strong>的文档是搜索不到的</p>
 <p>使用标准化规则(<strong>normalization</strong>)：<br>建立倒排索引的时候，会对拆分出的各个单词进行相应的处理，以提升后面搜索的时候能够搜索到相关联的文档的概率</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -597,6 +602,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h3 id="2-1-2-分词器介绍及内置分词器"><a href="#2-1-2-分词器介绍及内置分词器" class="headerlink" title="2.1.2 分词器介绍及内置分词器"></a>2.1.2 分词器介绍及内置分词器</h3><p>分词器：从一串文本中切分出一个一个的词条，并对每个词条进行标准化</p>
 <p>包括三部分：</p>
 <p><strong>character filter</strong>：分词之前的预处理，过滤掉HTML标签，特殊符号转换等</p>
@@ -828,8 +834,7 @@ strict：如果碰到陌生字段，抛出异常
 <h2 id="2-8-Filter查询"><a href="#2-8-Filter查询" class="headerlink" title="2.8 Filter查询"></a>2.8 Filter查询</h2><p><strong>filter</strong>是不计算相关性的，同时可以cache。因此，filter速度要快于query。</p>
 <p>POST /lib4/items/_bulk</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;&quot;index&quot;: &#123;&quot;_id&quot;: 1&#125;&#125;</span><br><span class="line"></span><br><span class="line">&#123;&quot;price&quot;: 40,&quot;itemID&quot;: &quot;ID100123&quot;&#125;</span><br><span class="line"></span><br><span class="line">&#123;&quot;index&quot;: &#123;&quot;_id&quot;: 2&#125;&#125;</span><br><span class="line"></span><br><span class="line">&#123;&quot;price&quot;: 50,&quot;itemID&quot;: &quot;ID100124&quot;&#125;</span><br><span class="line"></span><br><span class="line">&#123;&quot;index&quot;: &#123;&quot;_id&quot;: 3&#125;&#125;</span><br><span class="line"></span><br><span class="line">&#123;&quot;price&quot;: 25,&quot;itemID&quot;: &quot;ID100124&quot;&#125;</span><br><span class="line"></span><br><span class="line">&#123;&quot;index&quot;: &#123;&quot;_id&quot;: 4&#125;&#125;</span><br><span class="line"></span><br><span class="line">&#123;&quot;price&quot;: 30,&quot;itemID&quot;: &quot;ID100125&quot;&#125;</span><br><span class="line"></span><br><span class="line">&#123;&quot;index&quot;: &#123;&quot;_id&quot;: 5&#125;&#125;</span><br><span class="line"></span><br><span class="line">&#123;&quot;price&quot;: null,&quot;itemID&quot;: &quot;ID100127&quot;&#125;</span><br></pre></td></tr></table></figure>
-<p>###2.8.1 简单的过滤查询</p>
-<p>GET /lib4/items/_search</p>
+<h3 id="2-8-1-简单的过滤查询"><a href="#2-8-1-简单的过滤查询" class="headerlink" title="2.8.1 简单的过滤查询"></a>2.8.1 简单的过滤查询</h3><p>GET /lib4/items/_search</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123; </span><br><span class="line">       &quot;post_filter&quot;: &#123;</span><br><span class="line">             &quot;term&quot;: &#123;</span><br><span class="line">                 &quot;price&quot;: 40</span><br><span class="line">             &#125;</span><br><span class="line">       &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>GET /lib4/items/_search</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">      &quot;post_filter&quot;: &#123;</span><br><span class="line">          &quot;terms&quot;: &#123;</span><br><span class="line">                 &quot;price&quot;: [25,40]</span><br><span class="line">              &#125;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -844,9 +849,9 @@ strict：如果碰到陌生字段，抛出异常
 <h3 id="2-8-2-bool过滤查询"><a href="#2-8-2-bool过滤查询" class="headerlink" title="2.8.2 bool过滤查询"></a>2.8.2 bool过滤查询</h3><p>可以实现组合过滤查询</p>
 <p>格式：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;bool&quot;: &#123;</span><br><span class="line">        &quot;must&quot;: [],</span><br><span class="line">        &quot;should&quot;: [],</span><br><span class="line">        &quot;must_not&quot;: []</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>must</strong>:必须满足的条件—and</p>
-<p><strong>should</strong>：可以满足也可以不满足的条件–or</p>
-<p><strong>must_not</strong>:不需要满足的条件–not</p>
+<p><strong>must</strong>:必须满足的条件—-and</p>
+<p><strong>should</strong>：可以满足也可以不满足的条件—or</p>
+<p><strong>must_not</strong>:不需要满足的条件—not</p>
 <p>GET /lib4/items/_search</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;post_filter&quot;: &#123;</span><br><span class="line">          &quot;bool&quot;: &#123;</span><br><span class="line">               &quot;should&quot;: [</span><br><span class="line">                    &#123;&quot;term&quot;: &#123;&quot;price&quot;:25&#125;&#125;,</span><br><span class="line">                    &#123;&quot;term&quot;: &#123;&quot;itemID&quot;: &quot;id100123&quot;&#125;&#125;</span><br><span class="line">                   </span><br><span class="line">                  ],</span><br><span class="line">                &quot;must_not&quot;: &#123;</span><br><span class="line">                    &quot;term&quot;:&#123;&quot;price&quot;: 30&#125;</span><br><span class="line">                   &#125;</span><br><span class="line">                       </span><br><span class="line">                &#125;</span><br><span class="line">             &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>嵌套使用bool：</p>
@@ -900,7 +905,7 @@ not
 <h3 id="2-10-1-使用bool查询"><a href="#2-10-1-使用bool查询" class="headerlink" title="2.10.1 使用bool查询"></a>2.10.1 使用bool查询</h3><p>接收以下参数：</p>
 <p><strong>must</strong>：<br>    文档 必须匹配这些条件才能被包含进来。<br><strong>must_not</strong>：<br>    文档 必须不匹配这些条件才能被包含进来。<br><strong>should</strong>：<br>    如果满足这些语句中的任意语句，将增加 _score，否则，无任何影响。它们主要用于修正每个文档的相关性得分。<br><strong>filter</strong>：<br>    必须 匹配，但它以不评分、过滤模式来进行。这些语句对评分没有贡献，只是根据过滤标准来排除或包含文档。</p>
 <p>相关性得分是如何组合的。每一个子查询都独自地计算文档的相关性得分。一旦他们的得分被计算出来， bool 查询就将这些得分进行合并并且返回一个代表整个布尔操作的得分。</p>
-<p>下面的查询用于查找 title 字段匹配 how to make millions 并且不被标识为 spam 的文档。那些被标识为 starred 或在2014之后的文档，将比另外那些文档拥有更高的排名。如果 _两者_ 都满足，那么它排名将更高：</p>
+<p>下面的查询用于查找 title 字段匹配 how to make millions 并且不被标识为 spam 的文档。那些被标识为 starred 或在2014之后的文档，将比另外那些文档拥有更高的排名。如果 <em>两者</em> 都满足，那么它排名将更高：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;bool&quot;: &#123;</span><br><span class="line">        &quot;must&quot;: &#123; &quot;match&quot;: &#123; &quot;title&quot;: &quot;how to make millions&quot; &#125;&#125;,</span><br><span class="line">        &quot;must_not&quot;: &#123; &quot;match&quot;: &#123; &quot;tag&quot;:   &quot;spam&quot; &#125;&#125;,</span><br><span class="line">        &quot;should&quot;: [</span><br><span class="line">            &#123; &quot;match&quot;: &#123; &quot;tag&quot;: &quot;starred&quot; &#125;&#125;,</span><br><span class="line">            &#123; &quot;range&quot;: &#123; &quot;date&quot;: &#123; &quot;gte&quot;: &quot;2014-01-01&quot; &#125;&#125;&#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>如果没有 must 语句，那么至少需要能够匹配其中的一条 should 语句。但，如果存在至少一条 must 语句，则对 should 语句的匹配没有要求。<br>如果我们不想因为文档的时间而影响得分，可以用 filter 语句来重写前面的例子：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;bool&quot;: &#123;</span><br><span class="line">        &quot;must&quot;: &#123; &quot;match&quot;: &#123; &quot;title&quot;: &quot;how to make millions&quot; &#125;&#125;,</span><br><span class="line">        &quot;must_not&quot;: &#123; &quot;match&quot;: &#123; &quot;tag&quot;:   &quot;spam&quot; &#125;&#125;,</span><br><span class="line">        &quot;should&quot;: [</span><br><span class="line">            &#123; &quot;match&quot;: &#123; &quot;tag&quot;: &quot;starred&quot; &#125;&#125;</span><br><span class="line">        ],</span><br><span class="line">        &quot;filter&quot;: &#123;</span><br><span class="line">          &quot;range&quot;: &#123; &quot;date&quot;: &#123; &quot;gte&quot;: &quot;2014-01-01&quot; &#125;&#125; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -964,13 +969,13 @@ not
 <p>说明了一个文档存储在哪个索引中</p>
 <p>同一个索引下存放的是相似的文档(文档的field多数是相同的)</p>
 <p>索引名必须是小写的，不能以下划线开头，不能包括逗号</p>
-<ol start="2">
+<ol>
 <li><strong>_type</strong>:</li>
 </ol>
 <p>表示文档属于索引中的哪个类型</p>
 <p>一个索引下只能有一个type</p>
 <p>类型名可以是大写也可以是小写的，不能以下划线开头，不能包括逗号</p>
-<ol start="3">
+<ol>
 <li><strong>_id</strong>:</li>
 </ol>
 <p>文档的唯一标识，和索引，类型组合在一起唯一标识了一个文档</p>
@@ -1001,27 +1006,27 @@ not
 </ol>
 <p>POST /lib/user/4/_update</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;script&quot;: &quot;ctx._source.age+=1&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="2">
+<ol>
 <li>修改名字</li>
 </ol>
 <p>POST /lib/user/4/_update</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;script&quot;: &quot;ctx._source.last_name+=&apos;hehe&apos;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="3">
+<ol>
 <li>添加爱好</li>
 </ol>
 <p>POST /lib/user/4/_update</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;script&quot;: &#123;</span><br><span class="line">    &quot;source&quot;: &quot;ctx._source.interests.add(params.tag)&quot;,</span><br><span class="line">    &quot;params&quot;: &#123;</span><br><span class="line">      &quot;tag&quot;:&quot;picture&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="4">
+<ol>
 <li>删除爱好</li>
 </ol>
 <p>POST /lib/user/4/_update</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;script&quot;: &#123;</span><br><span class="line">    &quot;source&quot;: &quot;ctx._source.interests.remove(ctx._source.interests.indexOf(params.tag))&quot;,</span><br><span class="line">    &quot;params&quot;: &#123;</span><br><span class="line">      &quot;tag&quot;:&quot;picture&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="5">
+<ol>
 <li>删除文档</li>
 </ol>
 <p>POST /lib/user/4/_update</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;script&quot;: &#123;</span><br><span class="line">    &quot;source&quot;: &quot;ctx.op=ctx._source.age==params.count?&apos;delete&apos;:&apos;none&apos;&quot;,</span><br><span class="line">    &quot;params&quot;: &#123;</span><br><span class="line">        &quot;count&quot;:29</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="6">
+<ol>
 <li>upsert</li>
 </ol>
 <p>POST /lib/user/4/_update</p>
@@ -1042,9 +1047,9 @@ not
 <p>(1)每次增删改查时，都有一个routing值，默认是文档的_id的值</p>
 <p>(2)对这个routing值使用哈希函数进行计算</p>
 <p>(3)计算出的值再和主分片个数取余数</p>
-<p>余数肯定在0—（number_of_pirmary_shards-1）之间，文档就在对应的shard上</p>
+<p>余数肯定在0—-（number_of_pirmary_shards-1）之间，文档就在对应的shard上</p>
 <p>routing值默认是文档的_id的值，也可以手动指定一个值，手动指定对于负载均衡以及提高批量读取的性能都有帮助</p>
-<ol start="3">
+<ol>
 <li>primary shard个数一旦确定就不能修改了</li>
 </ol>
 <h2 id="3-14-文档增删改内部原理"><a href="#3-14-文档增删改内部原理" class="headerlink" title="3.14 文档增删改内部原理"></a>3.14 文档增删改内部原理</h2><p>1:发送增删改请求时，可以选择任意一个节点，该节点就成了协调节点(coordinating node)</p>
@@ -1057,7 +1062,7 @@ not
 <p><strong>one</strong>: (primary shard)只要有一个primary shard是活跃的就可以执行</p>
 <p><strong>all</strong>: (all shard)所有的primary shard和replica shard都是活跃的才能执行</p>
 <p><strong>quorum</strong>: (default) 默认值，大部分shard是活跃的才能执行 （例如共有6个shard，至少有3个shard是活跃的才能执行写操作）</p>
-<ol start="2">
+<ol>
 <li>quorum机制：多数shard都是可用的，</li>
 </ol>
 <p>int((primary+number_of_replica)/2)+1</p>
@@ -1158,14 +1163,14 @@ not
 <p>搜索内容： hello world</p>
 <p>Hello，I love china.</p>
 <p>Hello world,how are you!</p>
-<ol start="2">
+<ol>
 <li>Inverse Document Frequency：我们查询的文本中的词条在索引的所有文档中出现了多少次，出现的次数越多，相关度越低</li>
 </ol>
 <p>搜索内容：hello world</p>
 <p>hello，what are you doing?</p>
 <p>I like the world.</p>
 <p>hello 在索引的所有文档中出现了500次，world出现了100次</p>
-<ol start="3">
+<ol>
 <li>Field-length(字段长度归约) norm:field越长，相关度越低</li>
 </ol>
 <p>搜索内容：hello world</p>
@@ -1180,6 +1185,7 @@ not
 <h2 id="3-24-Doc-Values-解析"><a href="#3-24-Doc-Values-解析" class="headerlink" title="3.24 Doc Values 解析"></a>3.24 Doc Values 解析</h2><p>DocValues其实是Lucene在构建倒排索引时，会额外建立一个有序的正排索引(基于document =&gt; field value的映射列表)</p>
 <p>{“birthday”:”1985-11-11”,age:23}</p>
 <p>{“birthday”:”1989-11-11”,age:29}</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1201,6 +1207,7 @@ not
 </tr>
 </tbody>
 </table>
+</div>
 <p>存储在磁盘上，节省内存 </p>
 <p>对排序，分组和一些聚合操作能够大大提升性能 </p>
 <p>注意：默认对不分词的字段是开启的，对分词字段无效（需要把fielddata设置为true）</p>
@@ -1302,7 +1309,7 @@ not
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/blog/2019/04/29/ElasticSearch/" data-id="cjwbsq3fy003luo2u01ams2ft" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/blog/2019/04/29/ElasticSearch/" data-id="cjwbsxv92003lwc2ukk56cekc" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1602,6 +1609,23 @@ not
 <!-- Custom Scripts -->
 <script src="/lucas0625.github.io/js/main.js"></script>
 
-    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>

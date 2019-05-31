@@ -249,15 +249,12 @@
             
             <p>Logistic 回归理论与实战</p>
 <a id="more"></a>
-<h1 id="Logistic-回归模型"><a href="#Logistic-回归模型" class="headerlink" title="Logistic 回归模型"></a>Logistic 回归模型</h1><h2 id="Sigmoid-函数"><a href="#Sigmoid-函数" class="headerlink" title="Sigmoid 函数"></a>Sigmoid 函数</h2><p>Sigmoid 函数，公示如下:<br>$$f(x)=\frac{1}{1+e^{-x}}$$</p>
-<p>图像如下:<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-10%20%E4%B8%8B%E5%8D%882.46.10.png" alt=""><br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-10%20%E4%B8%8B%E5%8D%882.46.45.png" alt=""></p>
+<h1 id="Logistic-回归模型"><a href="#Logistic-回归模型" class="headerlink" title="Logistic 回归模型"></a>Logistic 回归模型</h1><h2 id="Sigmoid-函数"><a href="#Sigmoid-函数" class="headerlink" title="Sigmoid 函数"></a>Sigmoid 函数</h2><p>Sigmoid 函数，公示如下:</p>
+<script type="math/tex; mode=display">f(x)=\frac{1}{1+e^{-x}}</script><p>图像如下:<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-10%20%E4%B8%8B%E5%8D%882.46.10.png" alt=""><br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-10%20%E4%B8%8B%E5%8D%882.46.45.png" alt=""></p>
 <h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-10%20%E4%B8%8B%E5%8D%882.48.09.png" alt=""></p>
-<p>$$\operatorname{loss} =-(y <em> \log (\hat{y})+(1-y) </em> \log (1-\hat{y}))$$</p>
-<p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-10%20%E4%B8%8B%E5%8D%882.49.08.png" alt=""></p>
-<p>$$\operatorname{loss}=-(\log (1-\hat{y}))$$</p>
-<p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-10%20%E4%B8%8B%E5%8D%882.49.51.png" alt=""></p>
-<p>$$\operatorname{loss}=-(\log (\hat{y}))$$</p>
-<h2 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h2><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-09%20%E4%B8%8B%E5%8D%886.54.35.png" alt=""><br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-09%20%E4%B8%8B%E5%8D%886.55.55.png" alt=""></p>
+<script type="math/tex; mode=display">\operatorname{loss} =-(y * \log (\hat{y})+(1-y) * \log (1-\hat{y}))</script><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-10%20%E4%B8%8B%E5%8D%882.49.08.png" alt=""></p>
+<script type="math/tex; mode=display">\operatorname{loss}=-(\log (1-\hat{y}))</script><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-10%20%E4%B8%8B%E5%8D%882.49.51.png" alt=""></p>
+<script type="math/tex; mode=display">\operatorname{loss}=-(\log (\hat{y}))</script><h2 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h2><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-09%20%E4%B8%8B%E5%8D%886.54.35.png" alt=""><br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-10-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-09%20%E4%B8%8B%E5%8D%886.55.55.png" alt=""></p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torch.autograd <span class="keyword">import</span> Variable</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 设定随机种子</span></span><br><span class="line">torch.manual_seed(<span class="number">2017</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>&lt;torch._C.Generator at 0x10d916550&gt;
@@ -265,8 +262,9 @@
 <pre><code>&lt;matplotlib.legend.Legend at 0x112a31f98&gt;
 </code></pre><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-02-05-output_4_1.png" alt=""></p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">np_data = np.array(data, dtype=<span class="string">'float32'</span>) <span class="comment"># 转换成 numpy array</span></span><br><span class="line">x_data = torch.from_numpy(np_data[:, <span class="number">0</span>:<span class="number">2</span>]) <span class="comment"># 转换成 Tensor, 大小是 [100, 2]</span></span><br><span class="line">y_data = torch.from_numpy(np_data[:, <span class="number">-1</span>]).unsqueeze(<span class="number">1</span>) <span class="comment"># 转换成 Tensor，大小是 [100, 1]</span></span><br></pre></td></tr></table></figure>
-<p>实现Sigmoid 的函数，Sigmoid 函数的公式为<br>$$<br>f(x) = \frac{1}{1 + e^{-x}}<br>$$</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义 sigmoid 函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-x))</span><br></pre></td></tr></table></figure>
+<p>实现Sigmoid 的函数，Sigmoid 函数的公式为</p>
+<script type="math/tex; mode=display">
+f(x) = \frac{1}{1 + e^{-x}}</script><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 定义 sigmoid 函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> / (<span class="number">1</span> + np.exp(-x))</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 画出 sigmoid 的图像</span></span><br><span class="line">plot_x = np.arange(<span class="number">-10</span>, <span class="number">10.01</span>, <span class="number">0.01</span>)</span><br><span class="line">plot_y = sigmoid(plot_x)</span><br><span class="line"></span><br><span class="line">plt.plot(plot_x, plot_y, <span class="string">'r'</span>)</span><br></pre></td></tr></table></figure>
 <pre><code>[&lt;matplotlib.lines.Line2D at 0x115df7fd0&gt;]
 </code></pre><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-02-05-output_8_1-1.png" alt=""></p>
@@ -276,8 +274,8 @@
 <pre><code>&lt;matplotlib.legend.Legend at 0x11686cc18&gt;
 </code></pre><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-02-05-output_11_1-1.png" alt=""></p>
 <p>可以看到分类效果基本是混乱的，我们来计算一下 loss，公式如下</p>
-<p>$$<br>loss = -(y <em> log(\hat{y}) + (1 - y) </em> log(1 - \hat{y}))<br>$$</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 计算loss</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_loss</span><span class="params">(y_pred, y)</span>:</span></span><br><span class="line">    logits = (y * y_pred.clamp(<span class="number">1e-12</span>).log() + (<span class="number">1</span> - y) * (<span class="number">1</span> - y_pred).clamp(<span class="number">1e-12</span>).log()).mean()</span><br><span class="line">    <span class="keyword">return</span> -logits</span><br></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">
+loss = -(y * log(\hat{y}) + (1 - y) * log(1 - \hat{y}))</script><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 计算loss</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_loss</span><span class="params">(y_pred, y)</span>:</span></span><br><span class="line">    logits = (y * y_pred.clamp(<span class="number">1e-12</span>).log() + (<span class="number">1</span> - y) * (<span class="number">1</span> - y_pred).clamp(<span class="number">1e-12</span>).log()).mean()</span><br><span class="line">    <span class="keyword">return</span> -logits</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">y_pred = logistic_regression(x_data)</span><br><span class="line">loss = binary_loss(y_pred, y_data)</span><br><span class="line">print(loss)</span><br></pre></td></tr></table></figure>
 <pre><code>tensor(0.7911, grad_fn=&lt;NegBackward&gt;)
 </code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 自动求导并更新参数</span></span><br><span class="line">loss.backward()</span><br><span class="line">w.data = w.data - <span class="number">0.1</span> * w.grad.data</span><br><span class="line">b.data = b.data - <span class="number">0.1</span> * b.grad.data</span><br><span class="line"></span><br><span class="line"><span class="comment"># 算出一次更新之后的loss</span></span><br><span class="line">y_pred = logistic_regression(x_data)</span><br><span class="line">loss = binary_loss(y_pred, y_data)</span><br><span class="line">print(loss)</span><br></pre></td></tr></table></figure>
@@ -319,7 +317,7 @@ During Time: 0.202 s
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/blog/2019/02/05/Logistic回归/" data-id="cjwbsq3es0035uo2ukhf442cm" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/blog/2019/02/05/Logistic回归/" data-id="cjwbsxv650034wc2uvehouv65" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -619,6 +617,23 @@ During Time: 0.202 s
 <!-- Custom Scripts -->
 <script src="/lucas0625.github.io/js/main.js"></script>
 
-    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>

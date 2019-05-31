@@ -283,7 +283,7 @@ tensor([1.])
 </code></pre><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 矩阵求导</span></span><br><span class="line">x = torch.randn(<span class="number">3</span>)</span><br><span class="line">x = Variable(x, requires_grad=<span class="keyword">True</span>)</span><br><span class="line"></span><br><span class="line">y = x * <span class="number">2</span></span><br><span class="line">print(y)</span><br><span class="line"></span><br><span class="line">y.backward(torch.FloatTensor([<span class="number">1</span>, <span class="number">0.1</span>, <span class="number">0.01</span>]))</span><br><span class="line">print(x.grad)</span><br></pre></td></tr></table></figure>
 <pre><code>tensor([-0.6298,  1.7484, -1.1588], grad_fn=&lt;MulBackward0&gt;)
 tensor([2.0000, 0.2000, 0.0200])
-</code></pre><h1 id="Dataset-数据集"><a href="#Dataset-数据集" class="headerlink" title="Dataset 数据集"></a>Dataset 数据集</h1><p>torch.utils.data.Dataset 代表这一数据的抽象类吗可以自己定义数据类的继承和重写，只需要定义<strong>__len__</strong>和 <strong>__getitem__</strong> 两个函数</p>
+</code></pre><h1 id="Dataset-数据集"><a href="#Dataset-数据集" class="headerlink" title="Dataset 数据集"></a>Dataset 数据集</h1><p>torch.utils.data.Dataset 代表这一数据的抽象类吗可以自己定义数据类的继承和重写，只需要定义<strong>_<em>len_</em></strong>和 <strong>_<em>getitem_</em></strong> 两个函数</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">myDataset</span><span class="params">(Dataset)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, csv_file, txt_file, root_dir, other_file)</span>:</span></span><br><span class="line">        self.csv_data = pd.read_csv(csv_file)</span><br><span class="line">        <span class="keyword">with</span> open(txt_file, <span class="string">'r'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            data_list = f.readlines()</span><br><span class="line">        self.txt_data = data_list</span><br><span class="line">        self.root_dir = root_dir</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__len__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> len(self.csv_data)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getitem__</span><span class="params">(self, idx)</span>:</span></span><br><span class="line">        data = (self.csv_file[idx], self.txt_file[idx])</span><br><span class="line">        <span class="keyword">return</span> data</span><br><span class="line">      </span><br><span class="line"><span class="comment"># DataLoader 来定义一个新的迭代器</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># dataiter = DataLoader(myDataset, batch_size=32, shuffle=True, collate_fn=default_collate)</span></span><br></pre></td></tr></table></figure>
 <h1 id="nn-Module-模组"><a href="#nn-Module-模组" class="headerlink" title="nn.Module 模组"></a>nn.Module 模组</h1><p>PyTorch 编写的神经网络，所有层结构和损失函数都来自于torch.nn，所有的模型构建都从这个基类nn.Module继承</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 构建计算图 也就是模型</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">net_name</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, other_arguments)</span>:</span></span><br><span class="line">        super(net_name, self).__init__()</span><br><span class="line">        self.conv1 = nn.Conv2d(in_channels, out_channels, kernel_size)</span><br><span class="line">        <span class="comment"># other network layer</span></span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        x = self.conv1(x)</span><br><span class="line">        <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
@@ -316,7 +316,7 @@ tensor([2.0000, 0.2000, 0.0200])
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/blog/2019/02/05/基本概念/" data-id="cjwbsq3e4002juo2u6fi93lct" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/blog/2019/02/05/基本概念/" data-id="cjwbsxv5b002mwc2urqexxbpf" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -616,6 +616,23 @@ tensor([2.0000, 0.2000, 0.0200])
 <!-- Custom Scripts -->
 <script src="/lucas0625.github.io/js/main.js"></script>
 
-    </div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+    </div><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 </body>
 </html>
