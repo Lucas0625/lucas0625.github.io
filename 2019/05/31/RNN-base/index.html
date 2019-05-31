@@ -3,15 +3,31 @@
 <head>
     <meta charset="utf-8">
     
-    <title>分类: 其他 | Mr.wang</title>
+    <title>循环神经网络基础概念 | Mr.wang</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Mr.wang">
-<meta property="og:url" content="http://lucas0625.github.io/blog/categories/其他/index.html">
+    <meta name="description" content="循环神经网络概念">
+<meta name="keywords" content="PyTorch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="循环神经网络基础概念">
+<meta property="og:url" content="http://lucas0625.github.io/blog/2019/05/31/RNN-base/index.html">
 <meta property="og:site_name" content="Mr.wang">
+<meta property="og:description" content="循环神经网络概念">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%882.49.37.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%882.31.37.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%882.52.32.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%882.32.42.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%883.06.28.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%883.14.19.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%883.17.57.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%883.21.56.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%883.23.33.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%883.28.03.png">
+<meta property="og:updated_time" content="2019-05-31T07:29:09.991Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mr.wang">
+<meta name="twitter:title" content="循环神经网络基础概念">
+<meta name="twitter:description" content="循环神经网络概念">
+<meta name="twitter:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%882.49.37.png">
     
 
     
@@ -182,50 +198,163 @@
 </aside>
 
             
-            <section id="main">
-<div class="timeline timeline-wrap">
-    <div class="timeline-row timeline-row-major">
-        <span class="node"><i class="fas fa-folder"></i></span>
-        <h1 class="title">其他</h1>
-    </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-RNN-base" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/lucas0625.github.io/2019/05/17/kinds/">百宝箱</a>
+        <h1 class="article-title" itemprop="name">
+            循环神经网络基础概念
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fas fa-calendar-alt"></i>
-        <a href="/lucas0625.github.io/2019/05/17/kinds/">
-            <time datetime="2019-05-17T10:55:02.081Z" itemprop="datePublished">2019-05-17</time>
+        <a href="/lucas0625.github.io/2019/05/31/RNN-base/">
+            <time datetime="2019-05-31T06:46:55.594Z" itemprop="datePublished">2019-05-31</time>
         </a>
     </div>
 
 
-                    
+                        
     <div class="article-category">
     	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/lucas0625.github.io/categories/其他/">其他</a>
+        <a class="article-category-link" href="/lucas0625.github.io/categories/深度学习/">深度学习</a>
     </div>
 
-                    
+                        
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/lucas0625.github.io/tags/其他/">其他</a>
+        <a class="tag-link" href="/lucas0625.github.io/tags/PyTorch/">PyTorch</a>
     </div>
 
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#RNN"><span class="toc-number">1.</span> <span class="toc-text">RNN</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原理"><span class="toc-number">1.1.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#公式"><span class="toc-number">1.2.</span> <span class="toc-text">公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#存在的问题"><span class="toc-number">1.3.</span> <span class="toc-text">存在的问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#LSTM"><span class="toc-number">2.</span> <span class="toc-text">LSTM</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#原理-1"><span class="toc-number">2.1.</span> <span class="toc-text">原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#公式-1"><span class="toc-number">2.2.</span> <span class="toc-text">公式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#GRU"><span class="toc-number">3.</span> <span class="toc-text">GRU</span></a></li></ol>
                 </div>
-            </div>
+            
+            <p>循环神经网络概念</p>
+<a id="more"></a>
+<h1 id="RNN"><a href="#RNN" class="headerlink" title="RNN"></a>RNN</h1><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>具有记忆效果的网络<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%882.49.37.png" alt=""><br>不断将当前序列的中的数据点传入网络。采用参数共享的方式<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%882.31.37.png" alt=""></p>
+<h2 id="公式"><a href="#公式" class="headerlink" title="公式"></a>公式</h2><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%882.52.32.png" alt=""><br>$$h_{t}=\tanh \left(w_{i h} x_{t}+b_{i h}+w_{h h} h_{t-1}+b_{h n}\right)$$<br>其中 $h_{t-1}$ 表示歉意不的记忆状态，$x_t$ 表示当前步的输入，最后得到输出 $h_t$，同时将其传入后面作为这一步的记忆状态。</p>
+<h2 id="存在的问题"><a href="#存在的问题" class="headerlink" title="存在的问题"></a>存在的问题</h2><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%882.32.42.png" alt=""><br>当参数小于 1 的时候，反向传播越乘越小，造成梯度消失<br>当参数大于 1 的时候，反向传播越乘越大，造成梯度爆炸</p>
+<h1 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h1><h2 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h2><p>LSTM 由三个门来控制，分别是输入门，遗忘门和输出门，输入门和输出门限制着输入和输出的大小，而遗忘门控制着记忆的保留度，对于一个任务，遗忘门能够自己学习到该保留多少以前的记忆，不需要人为进行干扰，所以具备长时记忆的功能。<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%883.06.28.png" alt=""></p>
+<h2 id="公式-1"><a href="#公式-1" class="headerlink" title="公式"></a>公式</h2><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%883.14.19.png" alt=""><br>$$f_{t}=\sigma\left(W_{f} \cdot\left[h_{t-1}, x_{t}\right]+b_{f}\right)$$<br>首先结合$t-1$时刻的网络输出和$t$时刻的网络输入，通过线性变换和 <strong>sigmoid</strong> 函数得到一个 0-1 之间的值$f_t$，这个值称为衰减系数，表示保留过去信息的多少。<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%883.17.57.png" alt=""><br>$$\begin{aligned} i_{t} &amp;=\sigma\left(W_{i} \cdot\left[h_{t-1}, x_{t}\right]+b_{i}\right) \ \tilde{C}<em>{t} &amp;=\tanh \left(W</em>{C} \cdot\left[h_{t-1}, x_{t}\right]+b_{C}\right) \end{aligned}$$<br>然后结合$t-1$时刻的输出和$t$时刻的输入分别计算出另外一个系数$i_t$和新接受的信息$\tilde{C}_{t}$,其中$i_t$表示保留接受的新信息的多少。<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%883.21.56.png" alt=""><br>$$C_{t}=f_{t} <em> C_{t-1}+i_{t} </em> \tilde{C}_{t}$$<br>然后将前面得到的两个衰减系数分别乘上过去的信息和现在的新信息来确定$t$时刻真正的记忆状态$C_t$。<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%883.23.33.png" alt=""><br>$$\begin{array}{l}{o_{t}=\sigma\left(W_{o}\left[h_{t-1}, x_{t}\right]+b_{o}\right)} \ {h_{t}=o_{t} * \tanh \left(C_{t}\right)}\end{array}$$<br>最后使用$t-1$时刻的输出和$t$时刻的输入计算一个系数，这个系数表示$t$时刻到底输出多少的记忆状态$C_t$得到真正的模型输出$h_t$</p>
+<h1 id="GRU"><a href="#GRU" class="headerlink" title="GRU"></a>GRU</h1><p>GRU 和 LSTM 最大的不同是， GRU 将遗忘门和输入门合并成了一个更新门，同时网络不再额外给出记忆状态$C_t$，而是将输出结果作为记忆状态不断往后传。<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-05-31-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-05-31%20%E4%B8%8B%E5%8D%883.28.03.png" alt=""><br>$$\begin{aligned} z_{t} &amp;=\sigma\left(W_{z} \cdot\left[h_{t-1}, x_{t}\right]\right) \ r_{t} &amp;=\sigma\left(W_{r} \cdot\left[h_{t-1}, x_{t}\right]\right) \ \tilde{h}<em>{t} &amp;=\tanh \left(W \cdot\left[r</em>{t} <em> h_{t-1}, x_{t}\right]\right) \ h_{t} &amp;=\left(1-z_{t}\right) </em> h_{t-1}+z_{t} * \tilde{h}_{t} \end{aligned}$$</p>
+
+        
         </div>
-    
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
+
+    <a data-url="http://lucas0625.github.io/blog/2019/05/31/RNN-base/" data-id="cjwbro69r000uk22uo098b1pl" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fab fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fab fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fab fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fab fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/lucas0625.github.io/2019/05/29/network-train/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">神经网络训练技巧</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
 </section>
             
                 
