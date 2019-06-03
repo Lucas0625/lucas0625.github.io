@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Mr.chen">
 <meta property="og:description" content="面试准备(理论篇)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-05T08:31:43.373Z">
+<meta property="og:updated_time" content="2019-06-03T09:35:39.042Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法面试理论试题集锦">
 <meta name="twitter:description" content="面试准备(理论篇)">
@@ -232,12 +232,19 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">文章目录</strong>
-                    
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Python"><span class="toc-number">1.</span> <span class="toc-text">Python</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#自然语言处理"><span class="toc-number">2.</span> <span class="toc-text">自然语言处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#LR-为什么使用-sigmoid"><span class="toc-number">2.1.</span> <span class="toc-text">LR 为什么使用 sigmoid</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简述-Dropout-的原理"><span class="toc-number">2.2.</span> <span class="toc-text">简述 Dropout 的原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LSTM"><span class="toc-number">2.3.</span> <span class="toc-text">LSTM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LSTM-参数量"><span class="toc-number">2.3.1.</span> <span class="toc-text">LSTM 参数量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LSTM-能解决-RNN-什么问题，并通过数学公式推导"><span class="toc-number">2.3.2.</span> <span class="toc-text">LSTM 能解决 RNN 什么问题，并通过数学公式推导</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#双向-LSTM-比-LSTM-好在哪"><span class="toc-number">2.3.3.</span> <span class="toc-text">双向 LSTM 比 LSTM 好在哪</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍一下-LSTM-的各个门"><span class="toc-number">2.3.4.</span> <span class="toc-text">介绍一下 LSTM 的各个门</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优化方法"><span class="toc-number">2.4.</span> <span class="toc-text">优化方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Adam的特点"><span class="toc-number">2.4.1.</span> <span class="toc-text">Adam的特点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#word2vec"><span class="toc-number">2.5.</span> <span class="toc-text">word2vec</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#讲一下-word2vec"><span class="toc-number">2.5.1.</span> <span class="toc-text">讲一下 word2vec</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍哈夫曼树与负采样"><span class="toc-number">2.5.2.</span> <span class="toc-text">介绍哈夫曼树与负采样</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CBOW-的损失函数"><span class="toc-number">2.5.3.</span> <span class="toc-text">CBOW 的损失函数</span></a></li></ol></li></ol></li></ol>
                 </div>
             
             <p>面试准备(理论篇)</p>
 <a id="more"></a>
-
+<h1 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h1><h1 id="自然语言处理"><a href="#自然语言处理" class="headerlink" title="自然语言处理"></a>自然语言处理</h1><h2 id="LR-为什么使用-sigmoid"><a href="#LR-为什么使用-sigmoid" class="headerlink" title="LR 为什么使用 sigmoid"></a>LR 为什么使用 sigmoid</h2><h2 id="简述-Dropout-的原理"><a href="#简述-Dropout-的原理" class="headerlink" title="简述 Dropout 的原理"></a>简述 Dropout 的原理</h2><p><strong>Dropout</strong> 是指在深度网络的训练中，以一定的概率随机地‘临时丢弃’一部分神经元节点。<strong>Dropout</strong> 作用于每份小批量训练数据，由于随机丢去部分神经元的机制，相当于每次迭代都在训练不同结构的神经网络。<strong>Dropout</strong> 可被认为是一种大规模深度神经网络的集成算法，在包含 <strong>N</strong> 个神经元节点的网络中，<strong>Dropout</strong> 可以看作是 <strong>$2^n$</strong> 个模型的集成。一定程度上抑制过拟合。方法是前向传播的时候以概率 <strong>P</strong> 生成 <strong>0</strong> 或 <strong>1</strong> 作用于神经元上。</p>
+<h2 id="LSTM"><a href="#LSTM" class="headerlink" title="LSTM"></a>LSTM</h2><h3 id="LSTM-参数量"><a href="#LSTM-参数量" class="headerlink" title="LSTM 参数量"></a>LSTM 参数量</h3><p><strong>LSTM</strong> 结构：</p>
+<ol>
+<li>第一层是一个 embedding 层，输出是 100 维的。</li>
+<li>第二层是一个 LSTM 层，输出是 512 维的。</li>
+</ol>
+<p>设 LSTM 输入维度为 x_dim， 输出维度为 y_dim，那么参数个数 n 为：<br><strong>n = 4 <em> ((x_dim + y_dim) </em> y_dim + y_dim)</strong><br>对应上诉网络结构就是：<br><strong>n = 4 <em> ((100 + 512) </em> 512 + 512) = 1255424</strong></p>
+<h3 id="LSTM-能解决-RNN-什么问题，并通过数学公式推导"><a href="#LSTM-能解决-RNN-什么问题，并通过数学公式推导" class="headerlink" title="LSTM 能解决 RNN 什么问题，并通过数学公式推导"></a>LSTM 能解决 RNN 什么问题，并通过数学公式推导</h3><h3 id="双向-LSTM-比-LSTM-好在哪"><a href="#双向-LSTM-比-LSTM-好在哪" class="headerlink" title="双向 LSTM 比 LSTM 好在哪"></a>双向 LSTM 比 LSTM 好在哪</h3><h3 id="介绍一下-LSTM-的各个门"><a href="#介绍一下-LSTM-的各个门" class="headerlink" title="介绍一下 LSTM 的各个门"></a>介绍一下 LSTM 的各个门</h3><h2 id="优化方法"><a href="#优化方法" class="headerlink" title="优化方法"></a>优化方法</h2><h3 id="Adam的特点"><a href="#Adam的特点" class="headerlink" title="Adam的特点"></a>Adam的特点</h3><h2 id="word2vec"><a href="#word2vec" class="headerlink" title="word2vec"></a>word2vec</h2><h3 id="讲一下-word2vec"><a href="#讲一下-word2vec" class="headerlink" title="讲一下 word2vec"></a>讲一下 word2vec</h3><h3 id="介绍哈夫曼树与负采样"><a href="#介绍哈夫曼树与负采样" class="headerlink" title="介绍哈夫曼树与负采样"></a>介绍哈夫曼树与负采样</h3><h3 id="CBOW-的损失函数"><a href="#CBOW-的损失函数" class="headerlink" title="CBOW 的损失函数"></a>CBOW 的损失函数</h3>
         
         </div>
         <footer class="article-footer">
@@ -247,7 +254,7 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/blog/2019/05/05/interviewTheory/" data-id="cjwbvlgvd001x562uhd9yw61y" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/blog/2019/05/05/interviewTheory/" data-id="cjwg6j62b001v2s2uvjozcxn5" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
