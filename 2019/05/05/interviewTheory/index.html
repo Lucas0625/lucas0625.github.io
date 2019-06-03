@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Mr.chen">
 <meta property="og:description" content="面试准备(理论篇)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-03T09:35:39.042Z">
+<meta property="og:updated_time" content="2019-06-03T09:38:18.031Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="算法面试理论试题集锦">
 <meta name="twitter:description" content="面试准备(理论篇)">
@@ -243,7 +243,7 @@
 <li>第一层是一个 embedding 层，输出是 100 维的。</li>
 <li>第二层是一个 LSTM 层，输出是 512 维的。</li>
 </ol>
-<p>设 LSTM 输入维度为 x_dim， 输出维度为 y_dim，那么参数个数 n 为：<br><strong>n = 4 <em> ((x_dim + y_dim) </em> y_dim + y_dim)</strong><br>对应上诉网络结构就是：<br><strong>n = 4 <em> ((100 + 512) </em> 512 + 512) = 1255424</strong></p>
+<p>设 LSTM 输入维度为 x_dim， 输出维度为 y_dim，那么参数个数 n 为：<br><strong>n = 4 x ((x_dim + y_dim) * y_dim + y_dim)</strong><br>对应上诉网络结构就是：<br><strong>n = 4 x ((100 + 512) * 512 + 512) = 1255424</strong></p>
 <h3 id="LSTM-能解决-RNN-什么问题，并通过数学公式推导"><a href="#LSTM-能解决-RNN-什么问题，并通过数学公式推导" class="headerlink" title="LSTM 能解决 RNN 什么问题，并通过数学公式推导"></a>LSTM 能解决 RNN 什么问题，并通过数学公式推导</h3><h3 id="双向-LSTM-比-LSTM-好在哪"><a href="#双向-LSTM-比-LSTM-好在哪" class="headerlink" title="双向 LSTM 比 LSTM 好在哪"></a>双向 LSTM 比 LSTM 好在哪</h3><h3 id="介绍一下-LSTM-的各个门"><a href="#介绍一下-LSTM-的各个门" class="headerlink" title="介绍一下 LSTM 的各个门"></a>介绍一下 LSTM 的各个门</h3><h2 id="优化方法"><a href="#优化方法" class="headerlink" title="优化方法"></a>优化方法</h2><h3 id="Adam的特点"><a href="#Adam的特点" class="headerlink" title="Adam的特点"></a>Adam的特点</h3><h2 id="word2vec"><a href="#word2vec" class="headerlink" title="word2vec"></a>word2vec</h2><h3 id="讲一下-word2vec"><a href="#讲一下-word2vec" class="headerlink" title="讲一下 word2vec"></a>讲一下 word2vec</h3><h3 id="介绍哈夫曼树与负采样"><a href="#介绍哈夫曼树与负采样" class="headerlink" title="介绍哈夫曼树与负采样"></a>介绍哈夫曼树与负采样</h3><h3 id="CBOW-的损失函数"><a href="#CBOW-的损失函数" class="headerlink" title="CBOW 的损失函数"></a>CBOW 的损失函数</h3>
         
         </div>
@@ -254,7 +254,7 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/blog/2019/05/05/interviewTheory/" data-id="cjwg6jf6b001w3b2uryek7gas" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/blog/2019/05/05/interviewTheory/" data-id="cjwg6lqsp001r462u40mzftos" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
