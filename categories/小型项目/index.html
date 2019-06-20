@@ -3,20 +3,15 @@
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     
-    <title>Linux 常用操作 | Mr.chen</title>
+    <title>分类: 小型项目 | Mr.chen</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="记录平时用到的一些linux命令">
-<meta name="keywords" content="基础">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Linux 常用操作">
-<meta property="og:url" content="http://lucas0625.github.io/blog/2019/05/17/linux/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Mr.chen">
+<meta property="og:url" content="http://lucas0625.github.io/blog/categories/小型项目/index.html">
 <meta property="og:site_name" content="Mr.chen">
-<meta property="og:description" content="记录平时用到的一些linux命令">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-14T09:02:11.993Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux 常用操作">
-<meta name="twitter:description" content="记录平时用到的一些linux命令">
+<meta name="twitter:title" content="Mr.chen">
     
 
     
@@ -187,195 +182,50 @@
 </aside>
 
             
-            <section id="main"><article id="post-linux" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
+            <section id="main">
+<div class="timeline timeline-wrap">
+    <div class="timeline-row timeline-row-major">
+        <span class="node"><i class="fas fa-folder"></i></span>
+        <h1 class="title">小型项目</h1>
+    </div>
+    
+        <div class="timeline-row">
+            <span class="node"></span>
+            <div class="content">
                 
     
-        <h1 class="article-title" itemprop="name">
-            Linux 常用操作
+        <h1 itemprop="name">
+            <a class="timeline-article-title" href="/lucas0625.github.io/2019/06/14/email-category/">垃圾邮件分类</a>
         </h1>
     
 
-                
-                    <div class="article-meta">
-                        
+                <div class="article-meta">
+                    
     <div class="article-date">
         <i class="fas fa-calendar-alt"></i>
-        <a href="/lucas0625.github.io/2019/05/17/linux/">
-            <time datetime="2019-05-17T01:26:51.213Z" itemprop="datePublished">2019-05-17</time>
+        <a href="/lucas0625.github.io/2019/06/14/email-category/">
+            <time datetime="2019-06-14T06:41:26.939Z" itemprop="datePublished">2019-06-14</time>
         </a>
     </div>
 
 
-                        
+                    
     <div class="article-category">
     	<i class="fas fa-folder"></i>
-        <a class="article-category-link" href="/lucas0625.github.io/categories/工具/">工具</a>
+        <a class="article-category-link" href="/lucas0625.github.io/categories/小型项目/">小型项目</a>
     </div>
 
-                        
+                    
     <div class="article-tag">
         <i class="fas fa-tag"></i>
-        <a class="tag-link" href="/lucas0625.github.io/tags/基础/">基础</a>
+        <a class="tag-link" href="/lucas0625.github.io/tags/实战/">实战</a>
     </div>
 
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-                <div id="toc" class="toc-article">
-                <strong class="toc-title">文章目录</strong>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#查看当前目录下文件夹的大小"><span class="toc-number">1.</span> <span class="toc-text">查看当前目录下文件夹的大小</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分割，合并文件"><span class="toc-number">2.</span> <span class="toc-text">分割，合并文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#替换"><span class="toc-number">3.</span> <span class="toc-text">替换</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文件编码"><span class="toc-number">4.</span> <span class="toc-text">文件编码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文件查找"><span class="toc-number">5.</span> <span class="toc-text">文件查找</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#统计文件大小"><span class="toc-number">6.</span> <span class="toc-text">统计文件大小</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文件操作"><span class="toc-number">7.</span> <span class="toc-text">文件操作</span></a></li></ol>
                 </div>
-            
-            <p>记录平时用到的一些linux命令</p>
-<a id="more"></a>
-<h1 id="查看当前目录下文件夹的大小"><a href="#查看当前目录下文件夹的大小" class="headerlink" title="查看当前目录下文件夹的大小"></a>查看当前目录下文件夹的大小</h1><p>du -h —max-depth=1</p>
-<h1 id="分割，合并文件"><a href="#分割，合并文件" class="headerlink" title="分割，合并文件"></a>分割，合并文件</h1><ol>
-<li>分割: sed -n ‘1, 100p’ file &gt; file_part1</li>
-<li>合并: cat file1 file2 &gt; file</li>
-</ol>
-<h1 id="替换"><a href="#替换" class="headerlink" title="替换"></a>替换</h1><p>sed  -i “s/ //g” test 替换空格为空</p>
-<h1 id="文件编码"><a href="#文件编码" class="headerlink" title="文件编码"></a>文件编码</h1><ol>
-<li>查看文件编码: file filename</li>
-<li>转换文件编码: iconv -f 原编码 -t 新编码 原文件 -o 新文件</li>
-<li>批量转换文件编码:<br> 第一步：先克隆原文件夹得目录结构<br> 第二步：开始批量转换<br> find 文件夹名 -type d -exec sh -c “mkdir -p new/{}” \;<br> find 文件夹名 -type f -exec sh -c “iconv -f GBK -t UTF-8 {} &gt; new/{}” \;</li>
-</ol>
-<h1 id="文件查找"><a href="#文件查找" class="headerlink" title="文件查找"></a>文件查找</h1><p>grep -rn ‘words’ *</p>
-<ul>
-<li>: 表示当前目录所有文件，也可以是某个文件名<br>-r 是递归查找<br>-n 是显示行号<br>-R 查找所有文件包含子目录<br>-i 忽略大小写</li>
-</ul>
-<h1 id="统计文件大小"><a href="#统计文件大小" class="headerlink" title="统计文件大小"></a>统计文件大小</h1><ol>
-<li>wc -l file 计算文件行数</li>
-<li>wc -w file 计算文件中的单词数</li>
-<li>wc -c file 计算文件中的字符数</li>
-</ol>
-<h1 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h1><ol>
-<li>cp sourcefile destfile 文件拷贝</li>
-<li>mv oldname newname 重命名或者文件移动</li>
-<li>rm file 删除文件</li>
-<li>grep ‘pattern’ file 在文件内搜索字符串</li>
-<li>cut -b colnum file 指定欲显示的文件内容范围</li>
-<li>cat file 输出文件内容</li>
-<li>file somefile 得到文件类型</li>
-</ol>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://lucas0625.github.io/blog/2019/05/17/linux/" data-id="cjx44qss200243g2uej7mvk77" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fab fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fab fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fab fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fab fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-        
-<nav id="article-nav">
-    
-        <a href="/lucas0625.github.io/2019/05/17/kinds/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    百宝箱
-                
             </div>
-        </a>
+        </div>
     
-    
-        <a href="/lucas0625.github.io/2019/05/17/vim/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">vim 常用技巧</div>
-        </a>
-    
-</nav>
-
-
-    
-</article>
-
-
-    
-    
-
+</div>
 </section>
             
                 

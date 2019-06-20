@@ -5,15 +5,23 @@
     
     <title>Word2Vec 原理与实现 | Mr.chen</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="keywords" content="算法">
+    <meta name="description" content="word2vec 详细推导与代码实现">
+<meta name="keywords" content="算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Word2Vec 原理与实现">
 <meta property="og:url" content="http://lucas0625.github.io/blog/2019/04/25/Word2Vec/index.html">
 <meta property="og:site_name" content="Mr.chen">
+<meta property="og:description" content="word2vec 详细推导与代码实现">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-25T02:30:06.909Z">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-06-17-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-06-17%20%E4%B8%8B%E5%8D%883.17.49.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-06-17-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-06-17%20%E4%B8%8B%E5%8D%888.33.06.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-06-17-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-06-17%20%E4%B8%8B%E5%8D%888.33.59.png">
+<meta property="og:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-06-18-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-06-18%20%E4%B8%8A%E5%8D%8811.24.53.png">
+<meta property="og:updated_time" content="2019-06-18T03:25:42.612Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Word2Vec 原理与实现">
+<meta name="twitter:description" content="word2vec 详细推导与代码实现">
+<meta name="twitter:image" content="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-06-17-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-06-17%20%E4%B8%8B%E5%8D%883.17.49.png">
     
 
     
@@ -156,11 +164,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                39
+                40
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                12
+                13
                 <span>标签</span>
             </div>
         </div>
@@ -229,10 +237,24 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">文章目录</strong>
-                    
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#基础知识"><span class="toc-number">1.</span> <span class="toc-text">基础知识</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#逻辑回归"><span class="toc-number">1.1.</span> <span class="toc-text">逻辑回归</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#sigmoid-函数"><span class="toc-number">1.1.1.</span> <span class="toc-text">sigmoid 函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分类过程"><span class="toc-number">1.1.2.</span> <span class="toc-text">分类过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#损失函数"><span class="toc-number">1.1.3.</span> <span class="toc-text">损失函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bayes-公式"><span class="toc-number">1.2.</span> <span class="toc-text">Bayes 公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Huffman-编码"><span class="toc-number">1.3.</span> <span class="toc-text">Huffman 编码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Huffman-树"><span class="toc-number">1.3.1.</span> <span class="toc-text">Huffman 树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Huffman树构造"><span class="toc-number">1.3.2.</span> <span class="toc-text">Huffman树构造</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#算法原理"><span class="toc-number">2.</span> <span class="toc-text">算法原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#基于Hierarchiacal-Softmax-的模型"><span class="toc-number">2.1.</span> <span class="toc-text">基于Hierarchiacal Softmax 的模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CBOW-模型"><span class="toc-number">2.1.1.</span> <span class="toc-text">CBOW 模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Skip-gram-模型"><span class="toc-number">2.1.2.</span> <span class="toc-text">Skip-gram 模型</span></a></li></ol></li></ol></li></ol>
                 </div>
             
-            
+            <p>word2vec 详细推导与代码实现</p>
+<a id="more"></a>
+<h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="逻辑回归"><a href="#逻辑回归" class="headerlink" title="逻辑回归"></a>逻辑回归</h2><h3 id="sigmoid-函数"><a href="#sigmoid-函数" class="headerlink" title="sigmoid 函数"></a>sigmoid 函数</h3><p>定义：</p>
+<script type="math/tex; mode=display">\sigma(x)=\frac{1}{1+e^{-x}}</script><p>函数定义域为$(-\infty,+\infty)$, 值域为$(0.1)$，图像如下图所示：<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-06-17-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-06-17%20%E4%B8%8B%E5%8D%883.17.49.png" alt=""><br>导函数：</p>
+<script type="math/tex; mode=display">\sigma^{\prime}(x)=\sigma(x)[1-\sigma(x)]</script><p>其中，以下两个导函数在后续推导中会用到。<br>$\log \sigma(x)$ 的导函数为：</p>
+<script type="math/tex; mode=display">[\log \sigma(x)]^{\prime}=1-\sigma(x)</script><p>$\log (1-\sigma(x))$ 的导函数为：</p>
+<script type="math/tex; mode=display">[\log (1-\sigma(x))]^{\prime}=-\sigma(x)</script><h3 id="分类过程"><a href="#分类过程" class="headerlink" title="分类过程"></a>分类过程</h3><p>$\mathbf{x}<em>{i} \in \mathbb{R}^{n}, y</em>{i} \in{0,1}$，而分类问题可写为：</p>
+<script type="math/tex; mode=display">h_{\theta}(\mathbf{x})=\sigma\left(\theta_{0}+\theta_{1} x_{1}+\theta_{2} x_{2}+\cdots+\theta_{n} x_{n}\right)</script><script type="math/tex; mode=display">h_{\theta}(\mathbf{x})=\sigma\left(\theta^{\top} \mathbf{x}\right)=\frac{1}{1+e^{-\theta^{\top} \mathbf{x}}}</script><p>而分类判别公式：</p>
+<script type="math/tex; mode=display">y(\mathrm{x})=\left\{\begin{array}{ll}{1,} & {h_{\theta}(\mathrm{x}) \geq 0.5} \\ {0,} & {h_{\theta}(\mathrm{x})<0.5}\end{array}\right.</script><h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>当 y=1 的时候，属于正类，此时优化的目标是 $h<em>{\theta}(\mathbf{x})$ 尽可能大。<br>当 y=0 的时候，属于负类，此时优化的目标是 $h</em>{\theta}(\mathbf{x})$ 尽可能小。<br>因此，损失函数表示为：</p>
+<script type="math/tex; mode=display">\operatorname{cost}\left(\mathbf{x}_{i}, y_{i}\right)=-y_{i} \cdot \log \left(h_{\theta}\left(\mathbf{x}_{i}\right)\right)-\left(1-y_{i}\right) \cdot \log \left(1-h_{\theta}\left(\mathbf{x}_{i}\right)\right)</script><h2 id="Bayes-公式"><a href="#Bayes-公式" class="headerlink" title="Bayes 公式"></a>Bayes 公式</h2><p>用来描述两个条件概率之间的关系。公式如下：</p>
+<script type="math/tex; mode=display">P(A | B)=P(A) \frac{P(B | A)}{P(B)}</script><h2 id="Huffman-编码"><a href="#Huffman-编码" class="headerlink" title="Huffman 编码"></a>Huffman 编码</h2><h3 id="Huffman-树"><a href="#Huffman-树" class="headerlink" title="Huffman 树"></a>Huffman 树</h3><p>给定 n 个权值作为 n 个叶子节点，构造一棵二叉树，若它的带权路径长度达到最小，则称这样的二叉树为最优二叉树，也称为 Huffman 树</p>
+<h3 id="Huffman树构造"><a href="#Huffman树构造" class="headerlink" title="Huffman树构造"></a>Huffman树构造</h3><p><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-06-17-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-06-17%20%E4%B8%8B%E5%8D%888.33.06.png" alt=""></p>
+<p>word2vec 中，采用词频作为权重，每个词作为节点。构造过程如下：<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-06-17-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-06-17%20%E4%B8%8B%E5%8D%888.33.59.png" alt=""></p>
+<h1 id="算法原理"><a href="#算法原理" class="headerlink" title="算法原理"></a>算法原理</h1><h2 id="基于Hierarchiacal-Softmax-的模型"><a href="#基于Hierarchiacal-Softmax-的模型" class="headerlink" title="基于Hierarchiacal Softmax 的模型"></a>基于Hierarchiacal Softmax 的模型</h2><h3 id="CBOW-模型"><a href="#CBOW-模型" class="headerlink" title="CBOW 模型"></a>CBOW 模型</h3><p>模型图：<br><img src="http://pangfu.oss-cn-beijing.aliyuncs.com/markdown/2019-06-18-%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202019-06-18%20%E4%B8%8A%E5%8D%8811.24.53.png" alt=""></p>
+<h3 id="Skip-gram-模型"><a href="#Skip-gram-模型" class="headerlink" title="Skip-gram 模型"></a>Skip-gram 模型</h3>
         
         </div>
         <footer class="article-footer">
@@ -242,7 +264,7 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/blog/2019/04/25/Word2Vec/" data-id="cjwuhufaa001bp42uutvd22hv" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/blog/2019/04/25/Word2Vec/" data-id="cjx44qsrq00143g2uhnpxrqeo" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -356,6 +378,25 @@
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/lucas0625.github.io/2019/06/14/email-category/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/lucas0625.github.io/categories/小型项目/">小型项目</a></p>
+                            <p class="item-title"><a href="/lucas0625.github.io/2019/06/14/email-category/" class="title">垃圾邮件分类</a></p>
+                            <p class="item-date"><time datetime="2019-06-14T06:41:26.939Z" itemprop="datePublished">2019-06-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/lucas0625.github.io/2019/05/31/classic-RNN-LSTM-GRU/" class="thumbnail">
     
     
@@ -429,25 +470,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/lucas0625.github.io/2019/05/27/classic-ResNet/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/lucas0625.github.io/categories/深度学习/">深度学习</a></p>
-                            <p class="item-title"><a href="/lucas0625.github.io/2019/05/27/classic-ResNet/" class="title">经典卷积神经网络-ResNet</a></p>
-                            <p class="item-date"><time datetime="2019-05-27T08:23:35.439Z" itemprop="datePublished">2019-05-27</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -457,7 +479,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/其他/">其他</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/工具/">工具</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/求职面试/">求职面试</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/深度学习/">深度学习</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/爬虫/">爬虫</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/算法/">算法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/编程/">编程</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/自然语言处理/">自然语言处理</a><span class="category-list-count">10</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/其他/">其他</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/小型项目/">小型项目</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/工具/">工具</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/数据库/">数据库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/求职面试/">求职面试</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/深度学习/">深度学习</a><span class="category-list-count">13</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/爬虫/">爬虫</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/算法/">算法</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/编程/">编程</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/lucas0625.github.io/categories/自然语言处理/">自然语言处理</a><span class="category-list-count">10</span></li></ul>
         </div>
     </div>
 
@@ -466,7 +488,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2019/05/">五月 2019</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2019/04/">四月 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2019/02/">二月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2018/10/">十月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2018/09/">九月 2018</a><span class="archive-list-count">2</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2019/06/">六月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2019/05/">五月 2019</a><span class="archive-list-count">17</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2019/04/">四月 2019</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2019/02/">二月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2018/12/">十二月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2018/10/">十月 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/lucas0625.github.io/archives/2018/09/">九月 2018</a><span class="archive-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -475,7 +497,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/PyTorch/">PyTorch</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/es/">es</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/re/">re</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/其他/">其他</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/基础/">基础</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/基础概念/">基础概念</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/基础知识/">基础知识</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/技巧/">技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/算法/">算法</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/经验/">经验</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/面试/">面试</a><span class="tag-list-count">3</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/Git/">Git</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/PyTorch/">PyTorch</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/es/">es</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/re/">re</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/其他/">其他</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/基础/">基础</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/基础概念/">基础概念</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/基础知识/">基础知识</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/实战/">实战</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/技巧/">技巧</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/算法/">算法</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/经验/">经验</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/lucas0625.github.io/tags/面试/">面试</a><span class="tag-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -484,7 +506,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/lucas0625.github.io/tags/Git/" style="font-size: 10px;">Git</a> <a href="/lucas0625.github.io/tags/PyTorch/" style="font-size: 20px;">PyTorch</a> <a href="/lucas0625.github.io/tags/es/" style="font-size: 10px;">es</a> <a href="/lucas0625.github.io/tags/re/" style="font-size: 10px;">re</a> <a href="/lucas0625.github.io/tags/其他/" style="font-size: 10px;">其他</a> <a href="/lucas0625.github.io/tags/基础/" style="font-size: 16.67px;">基础</a> <a href="/lucas0625.github.io/tags/基础概念/" style="font-size: 10px;">基础概念</a> <a href="/lucas0625.github.io/tags/基础知识/" style="font-size: 10px;">基础知识</a> <a href="/lucas0625.github.io/tags/技巧/" style="font-size: 10px;">技巧</a> <a href="/lucas0625.github.io/tags/算法/" style="font-size: 20px;">算法</a> <a href="/lucas0625.github.io/tags/经验/" style="font-size: 10px;">经验</a> <a href="/lucas0625.github.io/tags/面试/" style="font-size: 13.33px;">面试</a>
+            <a href="/lucas0625.github.io/tags/Git/" style="font-size: 10px;">Git</a> <a href="/lucas0625.github.io/tags/PyTorch/" style="font-size: 20px;">PyTorch</a> <a href="/lucas0625.github.io/tags/es/" style="font-size: 10px;">es</a> <a href="/lucas0625.github.io/tags/re/" style="font-size: 10px;">re</a> <a href="/lucas0625.github.io/tags/其他/" style="font-size: 10px;">其他</a> <a href="/lucas0625.github.io/tags/基础/" style="font-size: 16.67px;">基础</a> <a href="/lucas0625.github.io/tags/基础概念/" style="font-size: 10px;">基础概念</a> <a href="/lucas0625.github.io/tags/基础知识/" style="font-size: 10px;">基础知识</a> <a href="/lucas0625.github.io/tags/实战/" style="font-size: 10px;">实战</a> <a href="/lucas0625.github.io/tags/技巧/" style="font-size: 10px;">技巧</a> <a href="/lucas0625.github.io/tags/算法/" style="font-size: 20px;">算法</a> <a href="/lucas0625.github.io/tags/经验/" style="font-size: 10px;">经验</a> <a href="/lucas0625.github.io/tags/面试/" style="font-size: 13.33px;">面试</a>
         </div>
     </div>
 
