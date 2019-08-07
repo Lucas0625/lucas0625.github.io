@@ -5,15 +5,18 @@
     
     <title>传统文本相似度算法 | Mr.chen</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="keywords" content="算法">
+    <meta name="description" content="文本相似度算法TF−IDF 算法　　TF是指归一化后的词频，IDF是指逆文档频率。给定一个文档集合 D，有 $d_1,d_2,d_3,……,d_n ∈ D$。文档集合总共包含 m 个词（注：一般在计算 TF−IDF时会去除如 “的” 这一类的停用词），有 $w_1,w_2,w_3,……,w_m ∈W $ 。我们现在以计算词 $w_i$ 在文档 $d_j$ 中的 TF−IDF 指为例。TF的计算公式">
+<meta name="keywords" content="算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="传统文本相似度算法">
 <meta property="og:url" content="http://lucas0625.github.io/blog/2019/08/07/class-text-similarity/index.html">
 <meta property="og:site_name" content="Mr.chen">
+<meta property="og:description" content="文本相似度算法TF−IDF 算法　　TF是指归一化后的词频，IDF是指逆文档频率。给定一个文档集合 D，有 $d_1,d_2,d_3,……,d_n ∈ D$。文档集合总共包含 m 个词（注：一般在计算 TF−IDF时会去除如 “的” 这一类的停用词），有 $w_1,w_2,w_3,……,w_m ∈W $ 。我们现在以计算词 $w_i$ 在文档 $d_j$ 中的 TF−IDF 指为例。TF的计算公式">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-07T09:48:17.903Z">
+<meta property="og:updated_time" content="2019-08-07T09:49:45.332Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="传统文本相似度算法">
+<meta name="twitter:description" content="文本相似度算法TF−IDF 算法　　TF是指归一化后的词频，IDF是指逆文档频率。给定一个文档集合 D，有 $d_1,d_2,d_3,……,d_n ∈ D$。文档集合总共包含 m 个词（注：一般在计算 TF−IDF时会去除如 “的” 这一类的停用词），有 $w_1,w_2,w_3,……,w_m ∈W $ 。我们现在以计算词 $w_i$ 在文档 $d_j$ 中的 TF−IDF 指为例。TF的计算公式">
     
 
     
@@ -227,7 +230,32 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            
+            <h1 id="文本相似度算法"><a href="#文本相似度算法" class="headerlink" title="文本相似度算法"></a>文本相似度算法</h1><h2 id="TF−IDF-算法"><a href="#TF−IDF-算法" class="headerlink" title="TF−IDF 算法"></a>TF−IDF 算法</h2><p>　　<strong>TF</strong>是指归一化后的词频，<strong>IDF</strong>是指逆文档频率。给定一个文档集合 <strong>D</strong>，有 $d_1,d_2,d_3,……,d_n ∈ D$。文档集合总共包含 <strong>m</strong> 个词（<strong>注：一般在计算 TF−IDF时会去除如 “的” 这一类的停用词</strong>），有 $w_1,w_2,w_3,……,w_m ∈W $ 。我们现在以计算词 $w_i$ 在文档 $d_j$ 中的 <strong>TF−IDF</strong> 指为例。<strong>TF</strong>的计算公式为：</p>
+<script type="math/tex; mode=display">T F=\frac{f r e q(i, j)}{\max _{l e n}(j)}</script><p>　　在这里 $freq(i,j)$ 为 $w<em>i$ 在 $d_j$ 中出现的频率，$max</em>{len}(j)$ 为 $d_j$ 长度。</p>
+<p>　　<strong>TF</strong> 只能是描述词在文档中的频率，但假设现在有个词为 ” 我们 “，这个词可能在文档集 <strong>D</strong> 中每篇文档中都会出现，并且有较高的频率。那么这一类词就不具有很好的区分文档的能力，为了降低这种通用词的作用，引入了 <strong>IDF</strong> 。<br>　　<br>　　<strong>IDF</strong>的表达式如下：</p>
+<p>　　　　<script type="math/tex">IDF = \log (\frac {len(D)} {n(i)})</script></p>
+<p>　　在这里 $len(D)$ 表示文档集合 $D$ 中文档的总数，$n(i)$ 表示含有 $w_i$ 这个词的文档的数量。</p>
+<p>　　得到 <strong>TF</strong> 和 <strong>IDF</strong> 之后，我们将这两个值相乘得到 <strong>TF−IDF</strong> 的值：</p>
+<p>　　　<script type="math/tex">TF-IDF = TF * IDF</script></p>
+<p>　　<strong>TF</strong> 可以计算在一篇文档中词出现的频率，而 <strong>IDF</strong> 可以降低一些通用词的作用。因此对于一篇文档我们可以用文档中每个词的 <strong>TF−IDF</strong> 组成的向量来表示该文档，再根据余弦相似度这类的方法来计算文档之间的相关性。</p>
+<h2 id="BM25-算法"><a href="#BM25-算法" class="headerlink" title="BM25 算法"></a>BM25 算法</h2><h3 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h3><p>　　<strong>BM25</strong> 算法通常用来做搜索相关性评分的，也是 <strong>ES</strong> 中的搜索算法，通常用来计算 <strong>query</strong> 和文本集合 <strong>D</strong> 中每篇文本之间的相关性。我们用 <strong>Q</strong> 表示 <strong>query</strong>，在这里 <strong>Q</strong> 一般是一个句子。在这里我们要对 <strong>Q</strong> 进行语素解析（一般是分词），在这里以分词为例，我们对 <strong>Q</strong> 进行分词，得到 $q_1, q_2,……, q_t$ 这样一个词序列。给定文本 $d \in D$，现在以计算 <strong>Q</strong> 和 <strong>d</strong> 之间的分数（相关性），其表达式如下：</p>
+<p>　　　　<script type="math/tex">Score(Q, d) = \sum_{i = 1}^t w_i * R(q_i, d)</script></p>
+<p>　   上面式子中 $w_i$ 表示 $q_i$ 的权重，$R(q_i, d)$ 为 $q_i$ 和 $d$ 的相关性，$Score(Q, d)$ 就是每个语素 $q_i$ 和 $d$ 的相关性的加权和。</p>
+<p>　　$w_i$ 的计算方法有很多，一般是用 $IDF$ 来表示的，但这里的 $IDF$ 计算和上面的有所不同，具体的表达式如下：</p>
+<p>　　　　<script type="math/tex">IDF(q_i) = \log \frac {N - n(q_i) + 0.5} {n(q_i) + 0.5}</script></p>
+<p>　　上面式子中 $N$ 表示文本集合中文本的总数量，$n(q_i)$ 表示包含 $q_i$ 这个词的文本的数量，$0.5$ 主要是做平滑处理。<br>    $R(q_i, d)$ 的计算公式如下：</p>
+<p>　　　　<script type="math/tex">R(q_i, d) = \frac {f_i * (k_1 + 1)} {f_i + K} * \frac {qf_i * (k_2 + 1)} {qf_i + k_2}</script></p>
+<p>　　其中</p>
+<p>　　　　<script type="math/tex">K = k_1 * (1 - b + b * \frac {dl} {avg dl})</script></p>
+<p>　　上面式子中 $f_i$ 为 $q_i$ 在文本 $d$ 中出现的频率，$qf_i$ 为 $q_i$ 在 $Q$ 中出现的频率，$k_1, k_2, b$都是可调节的参数，$dl, avg dl$分别为文本 $d$ 的长度和文本集 $D$ 中所有文本的平均长度。</p>
+<p>　　一般 $qf_i = 1$ ，取 $k_2 = 0$ ，则可以去除后一项，将上面式子改写成：</p>
+<p>　　　<script type="math/tex">R(q_i, d) = \frac {f_i * (k_1 + 1)} {f_i + K}</script></p>
+<p>　　通常设置 $k_1 = 2, b = 0.75$。参数 $b$ 的作用主要是调节文本长度对相关性的影响。
+　</p>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> jieba</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BM25</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, docs)</span>:</span></span><br><span class="line">        self.D = len(docs)</span><br><span class="line">        self.avgdl = sum([len(doc) <span class="keyword">for</span> doc <span class="keyword">in</span> docs]) / self.D</span><br><span class="line">        self.docs = docs</span><br><span class="line">        self.f = []  <span class="comment"># 列表的每一个元素是一个dict，dict存储着一个文档中每个词的出现次数</span></span><br><span class="line">        self.df = &#123;&#125; <span class="comment"># 存储每个词及出现了该词的文档数量</span></span><br><span class="line">        self.idf = &#123;&#125; <span class="comment"># 存储每个词的idf值</span></span><br><span class="line">        self.k1 = <span class="number">2.0</span></span><br><span class="line">        self.b = <span class="number">0.75</span></span><br><span class="line">        self.init()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">init</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> doc <span class="keyword">in</span> self.docs:</span><br><span class="line">            tmp = &#123;&#125;</span><br><span class="line">            <span class="keyword">for</span> word <span class="keyword">in</span> [item <span class="keyword">for</span> item <span class="keyword">in</span> jieba.cut(doc, cut_all=<span class="keyword">True</span>)]:</span><br><span class="line">                tmp[word] = tmp.get(word, <span class="number">0</span>) + <span class="number">1</span>  <span class="comment"># 存储每个文档中每个词的出现次数</span></span><br><span class="line">            self.f.append(tmp)</span><br><span class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> tmp.keys():</span><br><span class="line">                self.df[k] = self.df.get(k, <span class="number">0</span>) + <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> k, v <span class="keyword">in</span> self.df.items():</span><br><span class="line">            self.idf[k] = math.log(self.D-v+<span class="number">0.5</span>) - math.log(v+<span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_score</span><span class="params">(self, doc, index)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        :param doc: 待查询的文本</span></span><br><span class="line"><span class="string">        :param index: 已知文档集合的索引，index=0 表示计算待查询文本与第一个文本之间的分数。</span></span><br><span class="line"><span class="string">        :return: 分数</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        score = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> word <span class="keyword">in</span> [item <span class="keyword">for</span> item <span class="keyword">in</span> jieba.cut(doc, cut_all=<span class="keyword">True</span>)]:</span><br><span class="line">            <span class="keyword">if</span> word <span class="keyword">not</span> <span class="keyword">in</span> self.f[index]:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            d = len(self.docs[index])</span><br><span class="line">            score += (self.idf[word]*self.f[index][word]*(self.k1+<span class="number">1</span>)</span><br><span class="line">                      / (self.f[index][word]+self.k1*(<span class="number">1</span>-self.b+self.b*d</span><br><span class="line">                                                      / self.avgdl)))</span><br><span class="line">        <span class="comment"># print(score)</span></span><br><span class="line">        <span class="keyword">return</span> score</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_scores</span><span class="params">(self, doc)</span>:</span></span><br><span class="line">        scores = []</span><br><span class="line">        <span class="keyword">for</span> index <span class="keyword">in</span> range(self.D):</span><br><span class="line">            score = self.get_score(doc, index)</span><br><span class="line">            scores.append(score)</span><br><span class="line">        <span class="keyword">return</span> scores</span><br></pre></td></tr></table></figure>
+<p>　
+　　</p>
+
         
         </div>
         <footer class="article-footer">
@@ -237,7 +265,7 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/blog/2019/08/07/class-text-similarity/" data-id="cjz12mkka001mj72ueo9vg3ik" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/blog/2019/08/07/class-text-similarity/" data-id="cjz12mwym001djs2ugls4tw07" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
