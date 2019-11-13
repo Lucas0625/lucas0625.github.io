@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Mr.chen">
 <meta property="og:description" content="形势所迫，从零开始学Java。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-13T10:23:03.580Z">
+<meta property="og:updated_time" content="2019-11-13T10:30:24.961Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java零基础学习笔记">
 <meta name="twitter:description" content="形势所迫，从零开始学Java。">
@@ -493,11 +493,11 @@
 <ol>
 <li><p>自增自减运算注意事项：</p>
  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> b = ++a;</span><br><span class="line"><span class="keyword">int</span> b = a++;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>变量前++， 变量a自己加1，将加1后的结果赋值给b，也就是说a先计算，a和b的结果都是2</li>
+<li>变量后++，变量a先把自己的值1，赋值给变量b，此时变量b的值就是1，变量a自己再加1，a的结果是2，b的结果是1。</li>
+</ul>
 </li>
-</ol>
-<pre><code>+ 变量前++， 变量a自己加1，将加1后的结果赋值给b，也就是说a先计算，a和b的结果都是2
-+ 变量后++，变量a先把自己的值1，赋值给变量b，此时变量b的值就是1，变量a自己再加1，a的结果是2，b的结果是1。
-</code></pre><ol>
 <li><p><strong>+</strong>运算符的注意事项：</p>
 <ul>
 <li><strong>+</strong> 符号在遇到字符串的时候，表示连接，拼接的含义。</li>
@@ -741,11 +741,12 @@
 <li><p>格式：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> 类名称(参数类型 参数名称)&#123;</span><br><span class="line">    方法体;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>作用：专门用来创建对象的方法，当我们通过关键字 <strong>new</strong> 来创建对象时，就是在调用构造方法。</p>
+</li>
 </ul>
 </li>
 </ol>
-<pre><code>+ 作用：专门用来创建对象的方法，当我们通过关键字**new**来创建对象时，就是在调用构造方法。
-</code></pre>
+
         
         </div>
         <footer class="article-footer">
@@ -755,7 +756,7 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/blog/2019/11/13/Java学习笔记/" data-id="ck2x4zl17000eglfyf42xo0kc" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/blog/2019/11/13/Java学习笔记/" data-id="ck2x58myv000midfyymaydyqx" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
