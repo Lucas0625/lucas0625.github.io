@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Mr.chen">
 <meta property="og:description" content="形势所迫，从零开始学Java。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-13T10:11:28.296Z">
+<meta property="og:updated_time" content="2019-11-13T10:20:12.882Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java零基础学习笔记">
 <meta name="twitter:description" content="形势所迫，从零开始学Java。">
@@ -268,17 +268,11 @@
 </ol>
 <h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><ol>
 <li>概念：是指在java程序中固定不变的数据。</li>
-<li>分类：</li>
+<li><p>分类：</p>
+<p> 类型|含义|数据举例<br> :-:|:-:|:-:<br> 整数常量|所有整数|0，1，567，-9<br> 小数常量|所有的小数|0.0, -0.1, 2.55<br> 字符常量|单引号引起来，只能写一个字符，必须有内容|‘a’, ‘好’<br> 字符串常量|双引号引起来，可以写多个字符，也可以不写|”A”, “Hello”, “你好”, “”<br> 布尔常量|只有两个值|true, false<br> 空常量|代表没有任何数据，只有一个值|null</p>
+</li>
 </ol>
-<pre><code>类型|含义|数据举例
----|---|---
-整数常量|所有整数|0，1，567，-9
-小数常量|所有的小数|0.0, -0.1, 2.55
-字符常量|单引号引起来，只能写一个字符，必须有内容|‘a’, &#39;好&#39;
-字符串常量|双引号引起来，可以写多个字符，也可以不写|&quot;A&quot;, &quot;Hello&quot;, &quot;你好&quot;, &quot;&quot;
-布尔常量|只有两个值|true, false
-空常量|代表没有任何数据，只有一个值|null
-</code></pre><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ol>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ol>
 <li><p>数据类型分类：</p>
 <ul>
 <li>基本数据类型：整数(byte, short, int, long)，浮点数(float, double)，字符(char)，布尔(boolean)</li>
@@ -286,24 +280,13 @@
 </ul>
 </li>
 <li><p>基本数据类型：</p>
+<p> 数据类型|关键字|内存占用|取值范围<br> :-:|:-:|:-:|:-:<br> 字节型|byte|1个字节|-128 ～ 127<br> 短整型|short|2个字节|-32768 ～ 32767<br> 整型|int(默认)|4个字节|-2^31 ～ 2^31 - 1<br> 长整型|long|8个字节|-2^63 ～ 2^63 - 1<br> 单精度浮点数|float|4个字节|1.4013E-45 ～ 3.4028E+38<br> 双精度浮点数|double(默认)|8个字节|4.9E-324- ～ 1.7977E+308<br> 字符型|char|2个字节|0 ～ 65535<br> 布尔类型|boolean|1个字节|true，false</p>
+<blockquote>
+<p>long类型：建议数据后加L表示，1234L<br>float类型：建议数据后加F表示，1234F</p>
+</blockquote>
 </li>
 </ol>
-<pre><code>数据类型|关键字|内存占用|取值范围
----|---|---|---
-字节型|byte|1个字节|-128 ～ 127
-短整型|short|2个字节|-32768 ～ 32767
-整型|int(默认)|4个字节|-2^31 ～ 2^31 - 1
-长整型|long|8个字节|-2^63 ～ 2^63 - 1
-单精度浮点数|float|4个字节|1.4013E-45 ～ 3.4028E+38
-双精度浮点数|double(默认)|8个字节|4.9E-324- ～ 1.7977E+308
-字符型|char|2个字节|0 ～ 65535
-布尔类型|boolean|1个字节|true，false
-
-
-
-&gt; long类型：建议数据后加L表示，1234L
-&gt; float类型：建议数据后加F表示，1234F
-</code></pre><h2 id="变量定义"><a href="#变量定义" class="headerlink" title="变量定义"></a>变量定义</h2><ol>
+<h2 id="变量定义"><a href="#变量定义" class="headerlink" title="变量定义"></a>变量定义</h2><ol>
 <li>格式：数据类型 变量名 = 数值;</li>
 <li>注意事项：<ul>
 <li>变量名称：在同一个大括号范围内，变量的名字不可以相同。</li>
@@ -320,22 +303,17 @@
 <li>注意事项：1). 强制类型转换一般不推荐使用。2). byte/short/char这三种类型在运算的时候，首先提升为int类型，然后再计算。3). boolean类型不能发生数据类型转换。</li>
 </ul>
 </li>
-<li>数字和字符对照关系表(编码表)：</li>
+<li><p>数字和字符对照关系表(编码表)：</p>
+<ul>
+<li>ASCII 码表</li>
+<li>Unicode 码表，开头0-127和ASCII码表一致，从128开始包含更多字符。</li>
+</ul>
+</li>
+<li><p>ASCII码：</p>
+<p> 字符|数值<br> :-:|:-:<br> 0|48<br> 9|57<br> A|65<br> Z|90<br> a|97<br> z|122</p>
+</li>
 </ol>
-<pre><code>+ ASCII 码表
-+ Unicode 码表，开头0-127和ASCII码表一致，从128开始包含更多字符。
-</code></pre><ol>
-<li>ASCII码：</li>
-</ol>
-<pre><code>字符|数值
----|---
-0|48
-9|57
-A|65
-Z|90
-a|97
-z|122
-</code></pre><h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><ol>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><ol>
 <li>运算符：进行特定操作的符号，如：’+’</li>
 <li>表达式：用运算符连接起来的式子叫做表达式。</li>
 </ol>
@@ -343,87 +321,89 @@ z|122
 <table>
 <thead>
 <tr>
-<th>符号</th>
-<th>解释</th>
+<th style="text-align:center">符号</th>
+<th style="text-align:center">解释</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>+</td>
-<td>加法运算，字符串连接运算</td>
+<td style="text-align:center">+</td>
+<td style="text-align:center">加法运算，字符串连接运算</td>
 </tr>
 <tr>
-<td>-</td>
-<td>减法运算</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">减法运算</td>
 </tr>
 <tr>
-<td>*</td>
-<td>乘法运算</td>
+<td style="text-align:center">*</td>
+<td style="text-align:center">乘法运算</td>
 </tr>
 <tr>
-<td>/</td>
-<td>除法运算</td>
+<td style="text-align:center">/</td>
+<td style="text-align:center">除法运算</td>
 </tr>
 <tr>
-<td>%</td>
-<td>取模运算，两个数字相除取余数</td>
+<td style="text-align:center">%</td>
+<td style="text-align:center">取模运算，两个数字相除取余数</td>
 </tr>
 <tr>
-<td>++，—</td>
-<td>自增自减运算</td>
+<td style="text-align:center">++，—</td>
+<td style="text-align:center">自增自减运算</td>
 </tr>
 </tbody>
 </table>
 </div>
 <ol>
-<li>自增自减运算注意事项：</li>
+<li><p>自增自减运算注意事项：</p>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> b = ++a;</span><br><span class="line"><span class="keyword">int</span> b = a++;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<pre><code><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> b = ++a;</span><br><span class="line"><span class="keyword">int</span> b = a++;</span><br></pre></td></tr></table></figure>
-
-
-+ 变量前++， 变量a自己加1，将加1后的结果赋值给b，也就是说a先计算，a和b的结果都是2
+<pre><code>+ 变量前++， 变量a自己加1，将加1后的结果赋值给b，也就是说a先计算，a和b的结果都是2
 + 变量后++，变量a先把自己的值1，赋值给变量b，此时变量b的值就是1，变量a自己再加1，a的结果是2，b的结果是1。
 </code></pre><ol>
-<li><strong>+</strong>运算符的注意事项：</li>
+<li><p><strong>+</strong>运算符的注意事项：</p>
+<ul>
+<li><strong>+</strong> 符号在遇到字符串的时候，表示连接，拼接的含义。</li>
+<li><strong>+</strong> 符号再遇到字符类型的时候，在计算之前char会被提升为int，然后再计算。</li>
+<li>任何数据类型和字符串进行连接的时候，结果都会变成字符串</li>
+</ul>
+</li>
 </ol>
-<pre><code>+ **+** 符号在遇到字符串的时候，表示连接，拼接的含义。
-+ **+** 符号再遇到字符类型的时候，在计算之前char会被提升为int，然后再计算。
-+ 任何数据类型和字符串进行连接的时候，结果都会变成字符串
-</code></pre><h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><ol>
+<h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><ol>
 <li>说明：将右侧的数据交给左侧的变量。</li>
 </ol>
 <div class="table-container">
 <table>
 <thead>
 <tr>
-<th>符号</th>
-<th>说明</th>
+<th style="text-align:center">符号</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>=</td>
-<td>等于号</td>
+<td style="text-align:center">=</td>
+<td style="text-align:center">等于号</td>
 </tr>
 <tr>
-<td>+=</td>
-<td>加等于</td>
+<td style="text-align:center">+=</td>
+<td style="text-align:center">加等于</td>
 </tr>
 <tr>
-<td>-=</td>
-<td>减等于</td>
+<td style="text-align:center">-=</td>
+<td style="text-align:center">减等于</td>
 </tr>
 <tr>
-<td>*=</td>
-<td>乘等于</td>
+<td style="text-align:center">*=</td>
+<td style="text-align:center">乘等于</td>
 </tr>
 <tr>
-<td>/=</td>
-<td>除等于</td>
+<td style="text-align:center">/=</td>
+<td style="text-align:center">除等于</td>
 </tr>
 <tr>
-<td>%=</td>
-<td>取模等</td>
+<td style="text-align:center">%=</td>
+<td style="text-align:center">取模等</td>
 </tr>
 </tbody>
 </table>
@@ -435,34 +415,34 @@ z|122
 <table>
 <thead>
 <tr>
-<th>符号</th>
-<th>说明</th>
+<th style="text-align:center">符号</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>==</td>
-<td>两侧是否相等</td>
+<td style="text-align:center">==</td>
+<td style="text-align:center">两侧是否相等</td>
 </tr>
 <tr>
-<td>&lt;</td>
-<td>左边数据是否小于右边数据</td>
+<td style="text-align:center">&lt;</td>
+<td style="text-align:center">左边数据是否小于右边数据</td>
 </tr>
 <tr>
-<td>&gt;</td>
-<td>左边数据是否大于右边数据</td>
+<td style="text-align:center">&gt;</td>
+<td style="text-align:center">左边数据是否大于右边数据</td>
 </tr>
 <tr>
-<td>&lt;=</td>
-<td>左边数据是否小于等于右边数据</td>
+<td style="text-align:center">&lt;=</td>
+<td style="text-align:center">左边数据是否小于等于右边数据</td>
 </tr>
 <tr>
-<td>&gt;=</td>
-<td>左边数据是否大于等于右边数据</td>
+<td style="text-align:center">&gt;=</td>
+<td style="text-align:center">左边数据是否大于等于右边数据</td>
 </tr>
 <tr>
-<td>!=</td>
-<td>不等于符号</td>
+<td style="text-align:center">!=</td>
+<td style="text-align:center">不等于符号</td>
 </tr>
 </tbody>
 </table>
@@ -477,24 +457,24 @@ z|122
 <table>
 <thead>
 <tr>
-<th>符号</th>
-<th>说明</th>
+<th style="text-align:center">符号</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>&amp;&amp;</td>
-<td>与运算</td>
+<td style="text-align:center">&amp;&amp;</td>
+<td style="text-align:center">与运算</td>
 </tr>
 <tr>
-<td>\</td>
-<td>\</td>
+<td style="text-align:center">\</td>
+<td style="text-align:center">\</td>
 <td></td>
 <td>或运算</td>
 </tr>
 <tr>
-<td>!</td>
-<td>取反运算</td>
+<td style="text-align:center">!</td>
+<td style="text-align:center">取反运算</td>
 </tr>
 </tbody>
 </table>
@@ -638,7 +618,7 @@ z|122
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/blog/2019/11/13/Java学习笔记/" data-id="ck2x4kjty000jcvfyixwf252k" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/blog/2019/11/13/Java学习笔记/" data-id="ck2x4vi1p000bexfyhoq646dy" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
