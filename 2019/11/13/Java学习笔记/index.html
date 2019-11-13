@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Mr.chen">
 <meta property="og:description" content="形势所迫，从零开始学Java。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-11-13T10:08:16.816Z">
+<meta property="og:updated_time" content="2019-11-13T10:11:28.296Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java零基础学习笔记">
 <meta name="twitter:description" content="形势所迫，从零开始学Java。">
@@ -268,11 +268,17 @@
 </ol>
 <h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><ol>
 <li>概念：是指在java程序中固定不变的数据。</li>
-<li><p>分类：</p>
-<p> 类型|含义|数据举例<br> —-|—-|—-<br> 整数常量|所有整数|0，1，567，-9<br> 小数常量|所有的小数|0.0, -0.1, 2.55<br> 字符常量|单引号引起来，只能写一个字符，必须有内容|‘a’, ‘好’<br> 字符串常量|双引号引起来，可以写多个字符，也可以不写|”A”, “Hello”, “你好”, “”<br> 布尔常量|只有两个值|true, false<br> 空常量|代表没有任何数据，只有一个值|null</p>
-</li>
+<li>分类：</li>
 </ol>
-<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ol>
+<pre><code>类型|含义|数据举例
+---|---|---
+整数常量|所有整数|0，1，567，-9
+小数常量|所有的小数|0.0, -0.1, 2.55
+字符常量|单引号引起来，只能写一个字符，必须有内容|‘a’, &#39;好&#39;
+字符串常量|双引号引起来，可以写多个字符，也可以不写|&quot;A&quot;, &quot;Hello&quot;, &quot;你好&quot;, &quot;&quot;
+布尔常量|只有两个值|true, false
+空常量|代表没有任何数据，只有一个值|null
+</code></pre><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><ol>
 <li><p>数据类型分类：</p>
 <ul>
 <li>基本数据类型：整数(byte, short, int, long)，浮点数(float, double)，字符(char)，布尔(boolean)</li>
@@ -280,13 +286,24 @@
 </ul>
 </li>
 <li><p>基本数据类型：</p>
-<p> 数据类型|关键字|内存占用|取值范围<br> —-|—-|—-|—-<br> 字节型|byte|1个字节|-128 ～ 127<br> 短整型|short|2个字节|-32768 ～ 32767<br> 整型|int(默认)|4个字节|-2^31 ～ 2^31 - 1<br> 长整型|long|8个字节|-2^63 ～ 2^63 - 1<br> 单精度浮点数|float|4个字节|1.4013E-45 ～ 3.4028E+38<br> 双精度浮点数|double(默认)|8个字节|4.9E-324- ～ 1.7977E+308<br> 字符型|char|2个字节|0 ～ 65535<br> 布尔类型|boolean|1个字节|true，false</p>
-<blockquote>
-<p>long类型：建议数据后加L表示，1234L<br>float类型：建议数据后加F表示，1234F</p>
-</blockquote>
 </li>
 </ol>
-<h2 id="变量定义"><a href="#变量定义" class="headerlink" title="变量定义"></a>变量定义</h2><ol>
+<pre><code>数据类型|关键字|内存占用|取值范围
+---|---|---|---
+字节型|byte|1个字节|-128 ～ 127
+短整型|short|2个字节|-32768 ～ 32767
+整型|int(默认)|4个字节|-2^31 ～ 2^31 - 1
+长整型|long|8个字节|-2^63 ～ 2^63 - 1
+单精度浮点数|float|4个字节|1.4013E-45 ～ 3.4028E+38
+双精度浮点数|double(默认)|8个字节|4.9E-324- ～ 1.7977E+308
+字符型|char|2个字节|0 ～ 65535
+布尔类型|boolean|1个字节|true，false
+
+
+
+&gt; long类型：建议数据后加L表示，1234L
+&gt; float类型：建议数据后加F表示，1234F
+</code></pre><h2 id="变量定义"><a href="#变量定义" class="headerlink" title="变量定义"></a>变量定义</h2><ol>
 <li>格式：数据类型 变量名 = 数值;</li>
 <li>注意事项：<ul>
 <li>变量名称：在同一个大括号范围内，变量的名字不可以相同。</li>
@@ -303,17 +320,22 @@
 <li>注意事项：1). 强制类型转换一般不推荐使用。2). byte/short/char这三种类型在运算的时候，首先提升为int类型，然后再计算。3). boolean类型不能发生数据类型转换。</li>
 </ul>
 </li>
-<li>数字和字符对照关系表(编码表)：<ul>
-<li>ASCII 码表</li>
-<li>Unicode 码表，开头0-127和ASCII码表一致，从128开始包含更多字符。</li>
-<li></li>
-</ul>
-</li>
-<li><p>ASCII码：</p>
-<p> 字符|数值<br> —-|—-<br> 0|48<br> 9|57<br> A|65<br> Z|90<br> a|97<br> z|122</p>
-</li>
+<li>数字和字符对照关系表(编码表)：</li>
 </ol>
-<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><ol>
+<pre><code>+ ASCII 码表
++ Unicode 码表，开头0-127和ASCII码表一致，从128开始包含更多字符。
+</code></pre><ol>
+<li>ASCII码：</li>
+</ol>
+<pre><code>字符|数值
+---|---
+0|48
+9|57
+A|65
+Z|90
+a|97
+z|122
+</code></pre><h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><ol>
 <li>运算符：进行特定操作的符号，如：’+’</li>
 <li>表达式：用运算符连接起来的式子叫做表达式。</li>
 </ol>
@@ -354,20 +376,20 @@
 </table>
 </div>
 <ol>
-<li>自增自减运算注意事项： <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> b = ++a;</span><br><span class="line"><span class="keyword">int</span> b = a++;</span><br></pre></td></tr></table></figure>
-</li>
+<li>自增自减运算注意事项：</li>
 </ol>
-<pre><code>+ 变量前++， 变量a自己加1，将加1后的结果赋值给b，也就是说a先计算，a和b的结果都是2
+<pre><code><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> b = ++a;</span><br><span class="line"><span class="keyword">int</span> b = a++;</span><br></pre></td></tr></table></figure>
+
+
++ 变量前++， 变量a自己加1，将加1后的结果赋值给b，也就是说a先计算，a和b的结果都是2
 + 变量后++，变量a先把自己的值1，赋值给变量b，此时变量b的值就是1，变量a自己再加1，a的结果是2，b的结果是1。
 </code></pre><ol>
-<li><strong>+</strong>运算符的注意事项：<ul>
-<li><strong>+</strong> 符号在遇到字符串的时候，表示连接，拼接的含义。</li>
-<li><strong>+</strong> 符号再遇到字符类型的时候，在计算之前char会被提升为int，然后再计算。</li>
-<li>任何数据类型和字符串进行连接的时候，结果都会变成字符串</li>
-</ul>
-</li>
+<li><strong>+</strong>运算符的注意事项：</li>
 </ol>
-<h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><ol>
+<pre><code>+ **+** 符号在遇到字符串的时候，表示连接，拼接的含义。
++ **+** 符号再遇到字符类型的时候，在计算之前char会被提升为int，然后再计算。
++ 任何数据类型和字符串进行连接的时候，结果都会变成字符串
+</code></pre><h3 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h3><ol>
 <li>说明：将右侧的数据交给左侧的变量。</li>
 </ol>
 <div class="table-container">
@@ -486,9 +508,9 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = (<span class="number">1</span>==<span class="number">2</span> ? <span class="number">100</span> : <span class="number">200</span>);</span><br><span class="line">    System.out.println(i); <span class="comment">// 200</span></span><br><span class="line">    <span class="keyword">int</span> j = (<span class="number">2</span>&lt;=<span class="number">4</span> ? <span class="number">500</span> : <span class="number">600</span>);</span><br><span class="line">    System.out.println(j); <span class="comment">// 500</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><ol>
 <li>定义：就是将一个功能抽取出来，把代码单独定义在一个大括号内，形成一个单独的功能。</li>
-<li>格式：<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">修饰符 返回值类型 方法名 (参数列表)&#123;</span><br><span class="line">    代码...</span><br><span class="line">    reutn  ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<li>格式：</li>
 </ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">修饰符 返回值类型 方法名 (参数列表)&#123;</span><br><span class="line">    代码...</span><br><span class="line">    reutn  ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="JShell的使用"><a href="#JShell的使用" class="headerlink" title="JShell的使用"></a>JShell的使用</h2><ol>
 <li>使用场景：当我们编写的代码非常少的时候，而又不愿意编写类，main方法，也不愿意去编译和运行，这个时候就可以使用JShell工具</li>
 <li>启动方式：在终端直接输入<strong>jshell</strong>命令。</li>
@@ -616,7 +638,7 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/blog/2019/11/13/Java学习笔记/" data-id="ck2x4gjih000ebgfyr8bhnk6u" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/blog/2019/11/13/Java学习笔记/" data-id="ck2x4ka6y000pcgfy71hmkx65" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
