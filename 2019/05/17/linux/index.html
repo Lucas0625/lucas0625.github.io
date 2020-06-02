@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Mr.chen">
 <meta property="og:description" content="记录平时用到的一些linux命令">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-14T09:02:11.993Z">
+<meta property="og:updated_time" content="2020-06-02T10:31:24.613Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux 常用操作">
 <meta name="twitter:description" content="记录平时用到的一些linux命令">
@@ -232,7 +232,7 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">文章目录</strong>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#查看当前目录下文件夹的大小"><span class="toc-number">1.</span> <span class="toc-text">查看当前目录下文件夹的大小</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分割，合并文件"><span class="toc-number">2.</span> <span class="toc-text">分割，合并文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#替换"><span class="toc-number">3.</span> <span class="toc-text">替换</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文件编码"><span class="toc-number">4.</span> <span class="toc-text">文件编码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文件查找"><span class="toc-number">5.</span> <span class="toc-text">文件查找</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#统计文件大小"><span class="toc-number">6.</span> <span class="toc-text">统计文件大小</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文件操作"><span class="toc-number">7.</span> <span class="toc-text">文件操作</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#查看当前目录下文件夹的大小"><span class="toc-number">1.</span> <span class="toc-text">查看当前目录下文件夹的大小</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#分割，合并文件"><span class="toc-number">2.</span> <span class="toc-text">分割，合并文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#替换"><span class="toc-number">3.</span> <span class="toc-text">替换</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文件编码"><span class="toc-number">4.</span> <span class="toc-text">文件编码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文件查找"><span class="toc-number">5.</span> <span class="toc-text">文件查找</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#统计文件大小"><span class="toc-number">6.</span> <span class="toc-text">统计文件大小</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#文件操作"><span class="toc-number">7.</span> <span class="toc-text">文件操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#抓包操作-tcpdump"><span class="toc-number">8.</span> <span class="toc-text">抓包操作 tcpdump</span></a></li></ol>
                 </div>
             
             <p>记录平时用到的一些linux命令</p>
@@ -266,6 +266,36 @@
 <li>cat file 输出文件内容</li>
 <li>file somefile 得到文件类型</li>
 </ol>
+<h1 id="抓包操作-tcpdump"><a href="#抓包操作-tcpdump" class="headerlink" title="抓包操作 tcpdump"></a>抓包操作 tcpdump</h1><p><code>tcpdump</code>是linux系统自带的抓包工具，主要通过命令行的方式。</p>
+<ol>
+<li><p>命令行格式：<br> tcpdump [ -adeflnNOpqStvx ] [ -c 数量 ] [ -F 文件名 ][ -i 网络接口 ] [ -r 文件名] [ -s snaplen ][ -T 类型 ] [ -w 文件名 ] [表达式 ]</p>
+</li>
+<li><p>常用的参数：<br> <code>-l</code> 　　　使标准输出变为缓冲行形式；<br> <code>-n</code> 　　  不把网络地址转换成名字；<br> <code>-c</code> 　　　在收到指定的包的数目后，tcpdump就会停止；<br> <code>-i</code> 　　　指定监听的网络接口；(如果没有指定可能在默认网卡上监听，需要指定绑定了特定IP的网卡)<br> <code>-w</code> 　　  直接将包写入文件中，并不分析和打印出来；<br> <code>-s</code>      指定记录package的大小，常见 -s 0 ，代表最大值65535，一半linux传输最小单元MTU为1500，足够了<br> <code>-X</code>      直接输出package data数据，默认不设置，只能通过-w指定文件进行输出</p>
+</li>
+<li><p>常用表达式：<br> 关于类型的关键字，主要包括<code>host</code>，<code>net</code>，<code>port</code><br> 传输方向的关键字，主要包括<code>src</code> , <code>dst</code> ,<code>dst or src</code>, <code>dst and src</code><br> 协议的关键字，主要包括<code>fddi</code>,<code>ip</code> ,<code>arp</code>,<code>rarp</code>,<code>tcp</code>,<code>udp</code>等类型<br> 逻辑运算，取非运算是 <code>not</code> <code>!</code>, 与运算是<code>and</code>,<code>&amp;&amp;</code>;或运算 是<code>or</code> ,<code>||</code><br> 其他重要的关键字如下：<code>gateway</code>, <code>broadcast</code>,<code>less</code>,<code>greater</code></p>
+</li>
+<li><p>例子：</p>
+<ul>
+<li><p>http数据包抓取 (直接在终端输出package data)</p>
+<p><code>tcpdump tcp port 80 -n -X -s 0</code> 指定80端口进行输出 </p>
+</li>
+<li><p>抓取http包数据指定文件进行输出package</p>
+<p><code>tcpdump tcp port 80 -n -s 0 -w /tmp/tcp.cap</code></p>
+<p>对应的/tmp/tcp.cap基本靠肉眼已经能看一下信息，比如http Header , content信息等</p>
+</li>
+<li><p>结合管道流</p>
+<p><code>tcpdump tcp port 80 -n -s 0 -X -l | grep xxxx</code></p>
+<p>这样可以实时对数据包进行字符串匹配过滤</p>
+</li>
+<li><p>mod_proxy反向代理抓包</p>
+<p>线上服务器apache+jetty，通过apache mod_proxy进行一个反向代理，80 apache端口, 7001 jetty端口</p>
+<p>apache端口数据抓包：<code>tcpdump tcp port 80 -n -s 0 -X -i eth0</code> 　　注意：指定eth0网络接口<br>jetty端口数据抓包：　<code>tcpdump tcp port 7001 -n -s 0 -X -i lo</code> 注意：指定Loopback网络接口</p>
+</li>
+<li><p>只监控特定的ip主机<br><code>tcpdump tcp host 10.16.2.85 and port 2100 -s 0 -X</code><br>需要使用tcp表达式的组合，这里是host指示只监听该ip</p>
+</li>
+</ul>
+</li>
+</ol>
 
         
         </div>
@@ -276,7 +306,7 @@
 
 </div>
 
-    <a data-url="http://lucas0625.github.io/blog/2019/05/17/linux/" data-id="ck2x62o770031rrfy5qa0lvki" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
+    <a data-url="http://lucas0625.github.io/blog/2019/05/17/linux/" data-id="ckaxs85tv002ktk2u85cp8hlw" class="article-share-link"><i class="fas fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -547,7 +577,7 @@
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2019 琛<br>
+            &copy; 2020 琛<br>
             Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="http://github.com/ppoffice">PPOffice</a>
         </div>
     </div>
